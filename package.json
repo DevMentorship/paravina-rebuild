@@ -1,6 +1,7 @@
 {
   "name": "paravina-rebuild",
   "version": "0.1.0",
+  "author": "Andrey Kudinov",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,14 +10,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^2.0.2",
+    "@sanity/client": "^5.4.1",
+    "@sanity/image-url": "^1.0.2",
+    "next": "13.2.4",
+    "next-sanity-image": "^6.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swiper": "^9.2.0"
+  },
+  "devDependencies": {
     "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
+    "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "sass": "^1.60.0",
     "typescript": "5.0.3"
   }
 }
