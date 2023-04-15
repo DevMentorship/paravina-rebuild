@@ -1,0 +1,78 @@
+.services {
+  margin: 40px 20px;
+}
+
+.services-title {
+  text-align: center;
+  font-size: 24px;
+  color: #4C5056;
+}
+
+.services-title span {
+  color: #FAC0AA;
+}
+
+.services__description {
+  margin: 0 auto;
+  width: 70%;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #4C5056;
+}
+.wrapper {
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.triggers-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.triggers {
+  border: 1px #FAC0AA solid;
+  display: flex;
+  border-radius: 12px;
+}
+
+.trigger {
+  font-size: 16px;
+  color: #4C5056;
+  padding: 20px;
+}
+
+.trigger--active {
+  background-color: #FAC0AA;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.content {
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.item {
+  width: 250px;
+  padding: 20px;
+  border: 1px #FAC0AA solid;
+}
+
+.img {
+  width: 70px;
+}
+
+.title {
+  margin-top: 5px;
+  font-size: 18px;
+  color: #4C5056;
+}
+
+.description {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #4C5056;
+}
