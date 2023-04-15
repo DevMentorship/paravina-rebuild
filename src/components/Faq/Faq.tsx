@@ -1,8 +1,9 @@
 import styles from './Faq.module.css';
+import cn from 'classnames';
 
 export const Faq = () => {
   return (
-    <section className={styles.faq}>
+    <section className='container'>
       <h2 className={styles.title}>
         Часто задаваемые <span>вопросы</span>
       </h2>

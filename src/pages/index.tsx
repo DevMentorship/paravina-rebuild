@@ -6,6 +6,7 @@ import styles from '@/styles/Home.module.css';
 import { PortableText } from '@portabletext/react';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { Faq } from '@/components/Faq/Faq';
+import { Hero } from '@/components/Hero/Hero';
 
 export interface IPost {
   _id: string;
@@ -44,9 +45,10 @@ export default function Home({ posts }: IProps) {
             <PortableText value={post.body} />
           </div>
         ))}
-        <Tabs />
-        <Faq />
       </section>
+      <Tabs />
+      <Faq />
+      <Hero />
     </>
   );
 }
