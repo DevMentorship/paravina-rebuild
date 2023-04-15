@@ -1,13 +1,16 @@
-import { Page } from '@/components/Page';
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
 import Head from 'next/head';
+
 import { useRouter } from 'next/router';
+import { Page } from '@/components/Page';
+
+import type { AppProps } from 'next/app';
+
+import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const canonicalUrl = (
-    `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'unie.space'}` + (router.asPath === '/' ? '' : router.asPath)
+    `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'paravina.site'}` + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
 
   return (

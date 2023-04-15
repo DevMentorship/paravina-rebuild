@@ -2,7 +2,6 @@ import Head from 'next/head';
 
 import { client } from '@/lib/client';
 
-import styles from '@/styles/Home.module.css';
 import { PortableText } from '@portabletext/react';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { Faq } from '@/components/Faq/Faq';
@@ -40,8 +39,8 @@ export default function Home({ posts }: IProps) {
       <section className='container'>
         {posts.map(post => (
           <div key='styles.title'>
-            <h2 className={styles.title}>{post.title}</h2>
-            <p className={styles.date}>{post.publishedAt}</p>
+            <h2>{post.title}</h2>
+            <p>{post.publishedAt}</p>
             <PortableText value={post.body} />
           </div>
         ))}
