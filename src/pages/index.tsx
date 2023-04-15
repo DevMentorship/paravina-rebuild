@@ -5,6 +5,7 @@ import { client } from '@/lib/client';
 import styles from '@/styles/Home.module.css';
 import { PortableText } from '@portabletext/react';
 import { Tabs } from '@/components/Tabs/Tabs';
+import { Faq } from '@/components/Faq/Faq';
 
 export interface IPost {
   _id: string;
@@ -44,6 +45,7 @@ export default function Home({ posts }: IProps) {
           </div>
         ))}
         <Tabs />
+        <Faq />
       </section>
     </>
   );
