@@ -1,27 +1,28 @@
-import Head from 'next/head';
+import Head from 'next/head'
 
-import { PortableText } from '@portabletext/react';
-import { Tabs } from '@/components/Tabs/Tabs';
-import { Faq } from '@/components/Faq/Faq';
-import { Hero } from '@/components/Hero/Hero';
+import { PortableText } from '@portabletext/react'
+import { Tabs } from '@/components/Tabs/Tabs'
+import { Faq } from '@/components/Faq/Faq'
+import { Hero } from '@/components/Hero/Hero'
+import { Standards } from '@/components/Standards/Standards'
 
 export interface IPost {
-  _id: string;
+  _id: string
   slug: {
-    current: string;
-  };
+    current: string
+  }
   mainImage: {
-    caption: string;
-  };
-  title: string;
-  body: any;
-  publishedAt: string;
-  description: string;
+    caption: string
+  }
+  title: string
+  body: any
+  publishedAt: string
+  description: string
 }
 
 interface IProps {
-  posts: IPost[];
-  total: number;
+  posts: IPost[]
+  total: number
 }
 
 export default function Home({ posts }: IProps) {
@@ -47,10 +48,11 @@ export default function Home({ posts }: IProps) {
       </section> */}
 
       <Tabs />
+      <Standards />
       <Faq />
       <Hero />
     </>
-  );
+  )
 }
 
 // Temporary hide getStaticProps
