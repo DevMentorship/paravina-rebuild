@@ -10,6 +10,7 @@
     "lint": "next lint",
     "typecheck": "tsc",
     "eslint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
+    "eslint-fix": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
     "stylelint": "stylelint **/*.css",
     "stylelint-fix": "stylelint **/*.css --fix",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
@@ -17,11 +18,11 @@
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
-      "lint",
-      "eslint --ignore-path .gitignore --fix",
+      "yarn lint",
+      "eslint --ignore-path .gitignore",
       "prettier --ignore-path .gitignore --write"
     ],
-    "**/*.{css,scss}": [
+    "**/*.css": [
       "stylelint"
     ]
   },
@@ -40,6 +41,7 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "classnames": "^2.3.2",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
