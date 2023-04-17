@@ -21,6 +21,7 @@ yarn
 - `yarn start` — Starts the application in production mode.
 - `yarn typecheck` — Validates code using TypeScript compiler.
 - `yarn eslint` — Runs ESLint.
+- `yarn eslint-fix` — Fix ESLint issues.
 - `yarn stylelint` — Runs Stylelint.
 - `yarn stylelint-fix` — Fix stylelint issues.
 - `yarn format` — Runs Prettier.
