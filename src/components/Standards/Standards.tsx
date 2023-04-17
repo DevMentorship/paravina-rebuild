@@ -2,9 +2,20 @@ import styles from './Standards.module.css'
 import Image from 'next/image'
 
 export const Standards = () => {
+  const cards = [
+    { id: '1', title: 'Авторские методики', text: 'Профессиональное признание стоматологов- экспертов' },
+    { id: '2', title: 'Дентальный микроскоп', text: 'Это новое качество в стоматологии XXI века' },
+    { id: '3', title: 'Новое оборудование', text: 'А также лучшие доступные материалы и расходники' },
+    { id: '4', title: 'Безопасность', text: 'Одноразовый инструментарий, стерилизация, ультрафиолет ' },
+    { id: '5', title: 'Домашняя атмосфера', text: 'Всегда ждём гостей! Кофе тоже наливаем (без сахара)' },
+    { id: '6', title: 'Цены не московские', text: 'А ещё скидки в честь открытия клиники!' },
+    { id: '7', title: 'Экономия времени', text: 'Доступны все услуги — не нужно колесить по городу' },
+    { id: '8', title: 'Гарантии клиники', text: 'На все работы даём официальную гарантию' }
+  ]
+
   return (
     <section className='container'>
-      <div className={styles.standards_wrapper}>
+      <div className={styles.wrapper}>
         <h2 className={styles.title}>
           Авторская клиника <span>по стандартам Италии</span>
         </h2>
@@ -13,95 +24,20 @@ export const Standards = () => {
           знаний, полученных в клиниках Италии во время интенсивов и мастер-классов у лидеров рынка.
         </p>
 
-        <ul className={styles.cards_list}>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-1.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Авторские методики</h3>
-            <p className={styles.card_text}>Профессиональное признание стоматологов- экспертов</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-2.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Дентальный микроскоп</h3>
-            <p className={styles.card_text}>Это новое качество в стоматологии XXI века</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-3.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Новое оборудование</h3>
-            <p className={styles.card_text}>А также лучшие доступные материалы и расходники</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-4.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Безопасность</h3>
-            <p className={styles.card_text}>Одноразовый инструментарий, стерилизация, ультрафиолет</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-5.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Домашняя атмосфера</h3>
-            <p className={styles.card_text}>Всегда ждём гостей! Кофе тоже наливаем (без сахара)</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-6.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Цены не московские</h3>
-            <p className={styles.card_text}>А ещё скидки в честь открытия клиники!</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-7.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Экономия времени</h3>
-            <p className={styles.card_text}>Доступны все услуги — не нужно колесить по городу</p>
-          </li>
-          <li className={styles.card}>
-            <Image
-              src='/standards-image/standards-8.jpg'
-              alt='photographer'
-              width={100}
-              height={100}
-              className={styles.img}
-            />
-            <h3 className={styles.card_title}>Гарантии клиники</h3>
-            <p className={styles.card_text}>На все работы даём официальную гарантию</p>
-          </li>
+        <ul className={styles['cards-list']}>
+          {cards.map((card, index) => (
+            <li key={card.id} className={styles.card}>
+              <Image
+                src={`/standards-image/standards-${index + 1}.jpg`}
+                alt={`${card.title}`}
+                width={100}
+                height={100}
+                className={styles.img}
+              />
+              <h3 className={styles['card-title']}>{card.title}</h3>
+              <p className={styles.text}>{card.text}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
