@@ -1,11 +1,11 @@
 .title {
-  text-align: center;
   font-size: 24px;
-  color: #4C5056;
+  color: #4c5056;
+  text-align: center;
 }
 
 .title span {
-  color: #FAC0AA;
+  color: #fac0aa;
 }
 
 .accordion {
@@ -18,31 +18,30 @@
 }
 
 .trigger {
-  border-bottom: 2px dashed #949596;
+  display: flex;
+  align-items: center;
   padding: 10px;
   margin: 20px 0;
   font-size: 20px;
-  color: #4C5056;
-  display: flex;
-  align-items: center;
+  color: #4c5056;
   cursor: pointer;
-  
+  border-bottom: 2px dashed #949596;
 }
 
 .trigger::after {
-  content: '+';
   margin-left: auto;
+  content: '+';
 }
 
 .description {
-  transition: all 0.3s linear;
-  font-size: 18px;
-  color: #4C5056;
   height: 0;
   margin-left: 10px;
+  font-size: 18px;
+  color: #4c5056;
+  transition: all .3s linear;
 }
 
 .description span {
-  margin-top: 20px;
   display: block;
+  margin-top: 20px;
 }

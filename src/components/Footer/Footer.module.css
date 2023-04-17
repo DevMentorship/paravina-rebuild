@@ -1,32 +1,32 @@
 .footer {
   display: flex;
   gap: 40px;
-  justify-content: center;
   align-items: baseline;
+  justify-content: center;
 }
 
 .link {
-  color: #18272F;
-  font-size: 4rem;
   position: relative;
+  font-size: 4rem;
+  color: #18272f;
   text-decoration: none;
 }
 
 .link::before {
-  content: '';
   position: absolute;
-  width: 100%;
-  height: 4px;
-  border-radius: 4px;
-  background-color: #18272F;
   bottom: 0;
   left: 0;
-  transform-origin: right;
-  transform: scaleX(0);
+  width: 100%;
+  height: 4px;
+  content: '';
+  background-color: #18272f;
+  border-radius: 4px;
   transition: transform .3s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: right;
 }
 
 .link:hover::before {
-  transform-origin: left;
   transform: scaleX(1);
+  transform-origin: left;
 }
