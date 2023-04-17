@@ -24,3 +24,8 @@ yarn
 - `yarn stylelint` — Runs Stylelint.
 - `yarn stylelint-fix` — Fix stylelint issues.
 - `yarn format` — Runs Prettier.
+
+## Зачем нам все эти линтеры в проекте?
+
+[youtube видео](https://youtu.be/j9E0ZRbPW_c) с ответом на вопрос
+[PR](https://github.com/DevMentorship/paravina-rebuild/pull/3) с добавлением линтеров
