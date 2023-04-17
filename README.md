@@ -28,4 +28,5 @@ yarn
 ## Зачем нам все эти линтеры в проекте?
 
 [youtube видео](https://youtu.be/j9E0ZRbPW_c) с ответом на вопрос
+
 [PR](https://github.com/DevMentorship/paravina-rebuild/pull/3) с добавлением линтеров
