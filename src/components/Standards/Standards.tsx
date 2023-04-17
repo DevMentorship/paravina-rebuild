@@ -1,5 +1,6 @@
-import styles from './Standards.module.css'
-import Image from 'next/image'
+import Image from 'next/image';
+
+import styles from './Standards.module.css';
 
 export const Standards = () => {
   const cards = [
@@ -10,11 +11,11 @@ export const Standards = () => {
     { id: '5', title: 'Домашняя атмосфера', text: 'Всегда ждём гостей! Кофе тоже наливаем (без сахара)' },
     { id: '6', title: 'Цены не московские', text: 'А ещё скидки в честь открытия клиники!' },
     { id: '7', title: 'Экономия времени', text: 'Доступны все услуги — не нужно колесить по городу' },
-    { id: '8', title: 'Гарантии клиники', text: 'На все работы даём официальную гарантию' }
-  ]
+    { id: '8', title: 'Гарантии клиники', text: 'На все работы даём официальную гарантию' },
+  ];
 
   return (
-    <section className='container'>
+    <section className="container">
       <div className={styles.wrapper}>
         <h2 className={styles.title}>
           Авторская клиника <span>по стандартам Италии</span>
@@ -41,5 +42,5 @@ export const Standards = () => {
         </ul>
       </div>
     </section>
-  )
-}
+  );
+};
