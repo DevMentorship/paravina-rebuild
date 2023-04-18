@@ -1,7 +1,7 @@
 .title {
-  text-align: center;
   font-size: 24px;
   color: #4c5056;
+  text-align: center;
 }
 
 .title span {
@@ -9,18 +9,19 @@
 }
 
 .description {
-  margin: 0 auto;
   width: 70%;
+  margin: 0 auto;
   margin-top: 20px;
-  text-align: center;
   font-size: 16px;
   color: #4c5056;
+  text-align: center;
 }
+
 .wrapper {
-  margin: 40px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 40px auto;
 }
 
 .triggers-wrapper {
@@ -29,30 +30,30 @@
 }
 
 .triggers {
-  border: 1px #fac0aa solid;
   display: flex;
+  border: 1px #fac0aa solid;
   border-radius: 12px;
 }
 
 .trigger {
+  padding: 20px;
   font-size: 16px;
   color: #4c5056;
-  padding: 20px;
   cursor: pointer;
 }
 
 .trigger--active {
-  background-color: #fac0aa;
   color: #ffffff;
+  background-color: #fac0aa;
   border-radius: 12px;
 }
 
 .content {
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .item {
@@ -81,7 +82,7 @@
 .items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 30px;
+  justify-content: center;
   margin-top: 40px;
 }
