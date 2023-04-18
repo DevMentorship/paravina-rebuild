@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { Page } from '@/components/Page';
 
 export default function App({ Component, pageProps }: AppProps) {
-
   const router = useRouter();
   const canonicalUrl = (
     `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'paravina.site'}` +
