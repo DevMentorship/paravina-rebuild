@@ -1,9 +1,10 @@
+import { PortableText } from '@portabletext/react';
 import Head from 'next/head';
 
-import { PortableText } from '@portabletext/react';
-import { Tabs } from '@/components/Tabs/Tabs';
 import { Faq } from '@/components/Faq/Faq';
 import { Hero } from '@/components/Hero/Hero';
+import { Standards } from '@/components/Standards/Standards';
+import { Tabs } from '@/components/Tabs/Tabs';
 
 export interface IPost {
   _id: string;
@@ -14,6 +15,7 @@ export interface IPost {
     caption: string;
   };
   title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any;
   publishedAt: string;
   description: string;
@@ -31,22 +33,23 @@ export default function Home({ posts }: IProps) {
         <title>Паравина</title>
       </Head>
 
-      <h1 className='visually-hidden'>Стоматология Паравина</h1>
-      <h2 className='visually-hidden'>
+      <h1 className="visually-hidden">Стоматология Паравина</h1>
+      <h2 className="visually-hidden">
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </h2>
 
-      {/* <section className='container'>
-        {posts.map(post => (
-          <div key='styles.title'>
+      <section className="container">
+        {posts?.map((post, index) => (
+          <div key={index}>
             <h2>{post.title}</h2>
             <p>{post.publishedAt}</p>
             <PortableText value={post.body} />
           </div>
         ))}
-      </section> */}
+      </section>
 
       <Tabs />
+      <Standards />
       <Faq />
       <Hero />
     </>
