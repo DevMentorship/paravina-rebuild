@@ -1,22 +1,29 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/jsx-no-comment-textnodes */
-import cn from 'classnames';
+import { useEffect, useRef, useState } from 'react';
 
 import { IFaqItem } from '../Faq/Faq';
 import styles from './FaqItem.module.css';
 
-export const FaqItem = ({ data, isOpen, btnOnClick }: { data: IFaqItem; isOpen: boolean; btnOnClick: () => void }) => (
-  <div className={styles.wrapper}>
-    <h4 className={styles.trigger} onClick={btnOnClick}>
-      {data.title}
-    </h4>
-    <p
-      className={cn(styles.description, {
-        [styles.active]: isOpen,
-      })}
-    >
-      {data.content}
-    </p>
-  </div>
-);
+export const FaqItem = ({ data, isOpen, btnOnClick }: { data: IFaqItem; isOpen: boolean; btnOnClick: () => void }) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (isOpen) {
+      const contentEl = contentRef.current as HTMLDivElement;
+
+      setHeight(contentEl.scrollHeight);
+    } else {
+      setHeight(0);
+    }
+  }, [isOpen]);
+  return (
+    <div className={styles.wrapper}>
+      <button className={styles.trigger} onClick={btnOnClick}>
+        {data.title}
+      </button>
+      <p className={styles.description} ref={contentRef} style={{ height }}>
+        {data.content}
+      </p>
+    </div>
+  );
+};
