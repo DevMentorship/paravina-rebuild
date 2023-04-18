@@ -13,36 +13,6 @@
   margin: 40px auto;
 }
 
-.wrapper {
-  overflow: hidden;
-}
 
-.trigger {
-  border-bottom: 2px dashed #949596;
-  padding: 10px;
-  margin: 20px 0;
-  font-size: 20px;
-  color: #4C5056;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  
-}
 
-.trigger::after {
-  content: '+';
-  margin-left: auto;
-}
 
-.description {
-  transition: all 0.3s linear;
-  font-size: 18px;
-  color: #4C5056;
-  height: 0;
-  margin-left: 10px;
-}
-
-.description span {
-  margin-top: 20px;
-  display: block;
-}
