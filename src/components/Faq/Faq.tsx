@@ -20,7 +20,8 @@ export const Faq = ({ items }: { items: Array<FaqData> }) => {
           <FaqItem key={idx} data={item} isOpen={idx === currentIdx}
             btnOnClick={() => btnOnClick(idx)} />
         ))}
-      </div>
-    </section>
-  );
-};
+        </div>
+        </section>
+  )
+        }
+

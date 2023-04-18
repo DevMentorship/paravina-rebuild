@@ -1,11 +1,11 @@
 .title {
-  text-align: center;
   font-size: 24px;
-  color: #4C5056;
+  color: #4c5056;
+  text-align: center;
 }
 
 .title span {
-  color: #FAC0AA;
+  color: #fac0aa;
 }
 
 .accordion {

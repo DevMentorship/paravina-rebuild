@@ -7,7 +7,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc",
+    "eslint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
+    "eslint-fix": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
+    "stylelint": "stylelint **/*.css",
+    "stylelint-fix": "stylelint **/*.css --fix",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "postinstall": "husky install"
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "yarn lint",
+      "eslint --ignore-path .gitignore",
+      "prettier --ignore-path .gitignore --write"
+    ],
+    "**/*.css": [
+      "stylelint"
+    ]
   },
   "dependencies": {
     "@portabletext/react": "^2.0.2",
@@ -24,10 +41,25 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "classnames": "^2.3.2",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
-    "sass": "^1.60.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-typescript": "2.7.1",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.0",
+    "prettier": "2.6.2",
+    "stylelint": "^14.2.0",
+    "stylelint-declaration-strict-value": "^1.1.2",
+    "stylelint-order": "^2.0.0",
     "typescript": "5.0.3"
   }
 }
