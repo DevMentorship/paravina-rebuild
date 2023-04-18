@@ -1,12 +1,21 @@
 import { useState } from 'react';
+import { ReactNode } from 'react';
 
 import { FaqItem } from '../FaqItem/FaqItem';
-import { FaqData } from '../FaqItem/types';
 import styles from './Faq.module.css';
 
-export const Faq = ({ items }: { items: Array<FaqData> }) => {
+export interface IFaqItem {
+  title: string;
+  content: ReactNode;
+}
+
+interface IProps {
+  items: IFaqItem[];
+}
+
+export const Faq = ({ items }: IProps) => {
   const [currentIdx, setCurrentIdx] = useState(-1);
-  const btnOnClick = (idx: number) => {
+  const handleClick = (idx: number) => {
     setCurrentIdx((currentValue) => (currentValue !== idx ? idx : -1));
   };
 
@@ -17,7 +26,7 @@ export const Faq = ({ items }: { items: Array<FaqData> }) => {
       </h2>
       <div className={styles.accordion}>
         {items?.map((item, idx) => (
-          <FaqItem key={idx} data={item} isOpen={idx === currentIdx} btnOnClick={() => btnOnClick(idx)} />
+          <FaqItem key={idx} data={item} isOpen={idx === currentIdx} btnOnClick={() => handleClick(idx)} />
         ))}
       </div>
     </section>

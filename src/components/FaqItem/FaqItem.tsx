@@ -3,10 +3,10 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import cn from 'classnames';
 
+import { IFaqItem } from '../Faq/Faq';
 import styles from './FaqItem.module.css';
-import { FaqData } from './types';
 
-export const FaqItem = ({ data, isOpen, btnOnClick }: { data: FaqData; isOpen: boolean; btnOnClick: () => void }) => (
+export const FaqItem = ({ data, isOpen, btnOnClick }: { data: IFaqItem; isOpen: boolean; btnOnClick: () => void }) => (
   <div className={styles.wrapper}>
     <h4 className={styles.trigger} onClick={btnOnClick}>
       {data.title}
