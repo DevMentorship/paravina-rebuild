@@ -1,125 +1,135 @@
 import styles from './Tabs.module.css';
 import cn from 'classnames';
 import Image from 'next/image';
+import {useState} from "react";
+
+
+interface Services {
+  [key: string]: Service[];
+}
+
+interface Service {
+  imgSrc: string;
+  title: string;
+  description: string;
+}
 
 export const Tabs = () => {
+
+  const services: Services = {
+    stomatology: [
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-1.png',
+        title: 'Лечение кариеса',
+        description: 'С комфортом и полностью без боли!',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-2.png',
+        title: 'Реставрация зубов',
+        description: 'Используем только лучшие материалы в отрасли',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-3.png',
+        title: 'Виниры и вкладки',
+        description: 'Широкий выбор возможностей',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-4.png',
+        title: 'Профгигиена',
+        description: 'Профессиональная чистка, уход и отбеливание',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-5.png',
+        title: 'Брекеты',
+        description: 'Исправим прикус современными системами',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-6.png',
+        title: 'Протезирование',
+        description: 'Подскажем наилучший выход',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-7.png',
+        title: 'Имплантация зубов',
+        description: 'Надёжные импланты из Германии',
+      },
+      {
+        imgSrc: '/stomatology-icons/stomatology-icon-8.png',
+        title: 'Детский стоматолог',
+        description: 'Без слёз!',
+      }
+    ],
+    cosmetology: [
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-1.png',
+        title: 'Комплексные уходы',
+        description: 'С индивидуальным подбором средств',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-2.png',
+        title: 'Чистка лица',
+        description: 'Комфортно и деликатно',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-3.png',
+        title: 'Пилинги',
+        description: 'Профессиональная линейка косметики',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-4.png',
+        title: 'Биоревитализация',
+        description: 'Омоложение на все 100',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-5.png',
+        title: 'Мезотерапия',
+        description: 'Быстрое решение проблем кожи',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-6.png',
+        title: 'Ботулинотерапия',
+        description: 'Нет морщинам!',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-7.png',
+        title: 'Плазмотерапия',
+        description: 'Глубокое воздействие собственной плазмой',
+      },
+      {
+        imgSrc: '/cosmetology-icons/cosmetology-icon-8.png',
+        title: 'Массажи',
+        description: 'Здоровье и расслабление',
+      }
+    ]
+  };
+
+  const [selectedCategory, setSelectedCategory] = useState<'stomatology' | 'cosmetology'>('stomatology');
+
+
   return (
-    <section className='container'>
-      <h2 className={styles.title}>
-        Стоматология и косметология <span>в одной клинике!</span>
-      </h2>
-      <p className={styles.description}>
-        Мы предоставляем весь спектр стоматологических и косметологических услуг по демократичным ценам.
-        Профессиональный и перспективный коллектив нашей клиники гарантирует высочайшее качество лечения.
-      </p>
-      <div className={styles.wrapper}>
-        <div className={styles['triggers-wrapper']}>
-          <div className={styles.triggers}>
-            <div className={cn(styles.trigger, styles['trigger--active'])}>Стоматология</div>
-            <div className={styles.trigger}>Косметология</div>
+      <section className={cn('container', styles.container)}>
+        <div className={styles.wrapper}>
+          <div className={styles['triggers-wrapper']}>
+            <div className={styles.triggers}>
+              <a href={"#"}
+                  className={cn(styles.trigger, selectedCategory === 'stomatology' && styles['trigger--active'])} onClick={() => setSelectedCategory('stomatology')}>Стоматология
+              </a>
+              <a href={"/#"}
+                  className={cn(styles.trigger, selectedCategory === 'cosmetology' && styles['trigger--active'])} onClick={() => setSelectedCategory('cosmetology')}>Косметология
+              </a>
+            </div>
           </div>
         </div>
-
-        <div className={styles.content}>
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-1.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Лечение кариеса</h3>
-            <p className={styles['item-description']}>С комфортом и полностью без боли!</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-2.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Реставрация зубов</h3>
-            <p className={styles['item-description']}>Используем только лучшие материалы в отрасли</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-3.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Виниры и вкладки</h3>
-            <p className={styles['item-description']}>Широкий выбор возможностей</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-4.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Профгигиена</h3>
-            <p className={styles['item-description']}>Профессиональная чистка, уход и отбеливание</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-5.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Брекеты</h3>
-            <p className={styles['item-description']}>Исправим прикус современными системами</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-6.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Протезирование</h3>
-            <p className={styles['item-description']}>Подскажем наилучший выход</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-7.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Имплантация зубов</h3>
-            <p className={styles['item-description']}>Надёжные импланты из Германии</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/stomatology-icons/stomatology-icon-8.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Детский стоматолог</h3>
-            <p className={styles['item-description']}>Без слёз!</p>
-          </div>
+        <div className={styles.items}>
+          {services[selectedCategory].map((service, index) => (
+              <a href={"/#"} key={index} className={styles.item}>
+                <Image src={service.imgSrc} alt={service.title} className={styles.img} width={100}
+                       height={100}/>
+                <h3 className={styles['item-title']}>{service.title}</h3>
+                <p className={styles['item-description']}>{service.description}</p>
+              </a>
+          ))}
         </div>
-
-        <div className={styles.content}>
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-1.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Комплексные уходы</h3>
-            <p className={styles['item-description']}>С индивидуальным подбором средств</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-2.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Чистка лица</h3>
-            <p className={styles['item-description']}>Комфортно и деликатно</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-3.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Пилинги</h3>
-            <p className={styles['item-description']}>Профессиональная линейка косметики</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-4.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Биоревитализация</h3>
-            <p className={styles['item-description']}>Омоложение на все 100</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-5.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Мезотерапия</h3>
-            <p className={styles['item-description']}>Быстрое решение проблем кожи</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-6.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Ботулинотерапия</h3>
-            <p className={styles['item-description']}>Нет морщинам!</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-7.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Плазмотерапия</h3>
-            <p className={styles['item-description']}>Глубокое воздействие собственной плазмой</p>
-          </div>
-
-          <div className={styles.item}>
-            <Image className={styles.img} src='/cosmetology-icons/cosmetology-icon-8.png' alt='' width={100} height={100} />
-            <h3 className={styles['item-title']}>Массажи</h3>
-            <p className={styles['item-description']}>Здоровье и расслабление</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
