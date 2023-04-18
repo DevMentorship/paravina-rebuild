@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import { Faq } from '@/components/Faq/Faq';
 import { Hero } from '@/components/Hero/Hero';
-import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { faqItems } from '@/data/faq';
 

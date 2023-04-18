@@ -20,11 +20,13 @@
 .trigger {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 10px;
   margin: 20px 0;
   font-size: 20px;
   color: #4c5056;
   cursor: pointer;
+  background-color: transparent;
   border: none;
   border-bottom: 2px dashed #949596;
   outline: none;
@@ -39,7 +41,7 @@
   margin-left: 10px;
   font-size: 18px;
   color: #4c5056;
-  transition: max-height .5s cubic-bezier(0, 1, 0, 1);
+  transition: max-height .3s ease;
 }
 
 .description span {
