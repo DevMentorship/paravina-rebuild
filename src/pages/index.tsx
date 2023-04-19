@@ -2,6 +2,7 @@ import { PortableText } from '@portabletext/react';
 import Head from 'next/head';
 
 import { Faq } from '@/components/Faq/Faq';
+import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
@@ -50,6 +51,7 @@ export default function Home({ posts }: IProps) {
 
       <Tabs />
       <Standards />
+      <Gallery />
       <Faq />
       <Hero />
     </>
