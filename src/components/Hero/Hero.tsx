@@ -6,21 +6,21 @@ import styles from './Hero.module.css';
 export const Hero = () => (
   <section className={styles.section}>
     <div className={cn(styles.container, 'container')}>
-      <h2 className={styles.title}>Доверьте свою улыбку профессионалам!</h2>
+      <h2 className={cn(styles.title, 'third-color', 'heading1')}>Доверьте свою улыбку профессионалам!</h2>
 
-      <p className={styles.description}>
+      <p className={cn(styles.description, 'third-color')}>
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </p>
 
       <div className={styles.sign}>
-        <button className={styles.btn}>Записаться</button>
+        <button className={cn(styles.btn, 'third-color', 'heading4')}>Записаться</button>
 
         <div className={styles['video-about']}>
           <a>
             <Image className={styles.img} src="/watch-video-icon.png" alt="" width={48} height={48} />
           </a>
 
-          <p className={styles.text}>Смотреть видео о нас</p>
+          <p className="third-color">Смотреть видео о нас</p>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Image from 'next/image';
 
 import styles from './Gallery.module.css';
@@ -14,8 +15,8 @@ export const Gallery = (): JSX.Element => {
   ];
   return (
     <section className="container">
-      <h2 className={styles.title}>
-        Мы рады <span>каждому гостю!</span>
+      <h2 className={cn(styles.title, 'heading2')}>
+        Мы рады <span className="primary-color">каждому гостю!</span>
       </h2>
 
       <div className={styles.gallery}>
