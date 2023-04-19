@@ -18,6 +18,9 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 40px auto;
 }
 
@@ -36,6 +39,7 @@
   padding: 20px;
   font-size: 16px;
   color: #4c5056;
+  cursor: pointer;
 }
 
 .trigger--active {
@@ -59,7 +63,8 @@
 }
 
 .img {
-  width: 70px;
+  max-width: 100%;
+  height: auto;
 }
 
 .item-title {
@@ -72,4 +77,12 @@
   margin-top: 5px;
   font-size: 16px;
   color: #4c5056;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
 }
