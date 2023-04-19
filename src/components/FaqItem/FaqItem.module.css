@@ -35,6 +35,11 @@
 .trigger::after {
   margin-left: auto;
   content: '+';
+  transition: transform .2s ease;
+}
+
+.trigger:hover::after {
+  transform: rotate(45deg);
 }
 
 .description {
