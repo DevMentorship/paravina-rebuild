@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
 import { IFaqItem } from '../Faq/Faq';
@@ -9,29 +10,26 @@ interface IProps {
 
 export const FaqItem = ({ data }: IProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
+  const [maxHeight, setMaxHeight] = useState(0);
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       const contentEl = contentRef.current as HTMLDivElement;
-      setHeight(contentEl.scrollHeight);
+      setMaxHeight(contentEl.scrollHeight);
     } else {
-      setHeight(0);
+      setMaxHeight(0);
     }
   }, [isOpen]);
 
   return (
-    <div className={styles.wrapper}>
-      <button className={styles.trigger} onClick={() => setOpen(!isOpen)}>
+    <div className={cn(styles.wrapper, isOpen && styles.active)}>
+      <button className={cn(styles.trigger, 'heading4')} onClick={() => setOpen(!isOpen)}>
         {data.title}
       </button>
-      <div
-        className={styles.description}
-        ref={contentRef}
-        style={{ maxHeight: height }}
-        dangerouslySetInnerHTML={{ __html: data.content }}
-      />
+      <div className={styles.container} ref={contentRef} style={{ maxHeight }}>
+        <div className={styles.description} dangerouslySetInnerHTML={{ __html: data.content }} />
+      </div>
     </div>
   );
 };

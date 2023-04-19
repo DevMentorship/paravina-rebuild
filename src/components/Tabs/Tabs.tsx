@@ -110,7 +110,7 @@ export const Tabs = () => {
   const [selectedCategory, setSelectedCategory] = useState<'stomatology' | 'cosmetology'>(VARIANTS.STOMATOLOGY);
 
   return (
-    <section className={cn('container', styles.container)}>
+    <section className="container">
       <div className={styles.wrapper}>
         <div className={styles['triggers-wrapper']}>
           <div className={styles.triggers}>
@@ -133,11 +133,11 @@ export const Tabs = () => {
       </div>
       <div className={styles.items}>
         {services[selectedCategory].map((service, index) => (
-          <a href={`#${selectedCategory}`} key={index} className={styles.item}>
+          <div key={index} className={styles.item}>
             <Image src={service.imgSrc} alt={service.title} className={styles.img} width={100} height={100} />
-            <h3 className={styles['item-title']}>{service.title}</h3>
-            <p className={styles['item-description']}>{service.description}</p>
-          </a>
+            <h3 className={cn(styles.title, 'heading4')}>{service.title}</h3>
+            <p className={styles.description}>{service.description}</p>
+          </div>
         ))}
       </div>
     </section>
