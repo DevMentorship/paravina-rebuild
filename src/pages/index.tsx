@@ -6,6 +6,7 @@ import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
+import { faqItems } from '@/data/faq';
 
 export interface IPost {
   _id: string;
@@ -52,7 +53,7 @@ export default function Home({ posts }: IProps) {
       <Tabs />
       <Standards />
       <Gallery />
-      <Faq />
+      <Faq items={faqItems} />
       <Hero />
     </>
   );
