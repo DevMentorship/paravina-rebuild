@@ -23,7 +23,7 @@ export interface IPost {
   description: string;
 }
 
-interface IProps {
+export interface IProps {
   posts: IPost[];
   total: number;
 }
