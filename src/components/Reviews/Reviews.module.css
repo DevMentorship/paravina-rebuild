@@ -1,0 +1,39 @@
+.title {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.review {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 40px;
+  place-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-bottom: 150px;
+}
+
+.reviews__loc {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.swiper__content {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .swiper__content {
+    display: block;
+    text-align: center;
+  }
+
+  .review {
+    display: none;
+  }
+}
+
