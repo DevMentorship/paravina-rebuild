@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Faq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
+import { Promotions } from '@/components/Promotions/Promotions';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { faqItems } from '@/data/faq';
@@ -50,6 +51,7 @@ export default function Home({ posts }: IProps) {
         ))}
       </section>
 
+      <Promotions />
       <Tabs />
       <Standards />
       <Gallery />
