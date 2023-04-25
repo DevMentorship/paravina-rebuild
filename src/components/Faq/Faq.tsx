@@ -2,9 +2,8 @@ import cn from 'classnames';
 
 import { FaqItem } from '../FaqItem/FaqItem';
 import styles from './Faq.module.css';
-import { IFaq } from '@/pages';
 
-export interface IFaqItem {
+export interface IFaq {
   title: string;
   content: string;
 }

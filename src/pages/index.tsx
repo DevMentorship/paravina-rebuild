@@ -1,12 +1,13 @@
 import { PortableText } from '@portabletext/react';
-import { createClient } from '@sanity/client';
+import type { TypedObject } from '@portabletext/types';
 import Head from 'next/head';
 
-import { Faq } from '@/components/Faq/Faq';
+import { Faq, IFaq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
+import { client } from '@/lib/client';
 
 export interface IPost {
   _id: string;
@@ -17,24 +18,18 @@ export interface IPost {
     caption: string;
   };
   title: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body: any;
+  body: TypedObject;
   publishedAt: string;
   description: string;
 }
 
-export interface IFaq {
-  title: string;
-  content: string;
-}
-
-export interface IProps {
+interface IProps {
   posts: IPost[];
   total: number;
-  faqItems: IFaq[];
+  faq: IFaq[];
 }
 
-export default function Home({ posts, faqItems }: IProps) {
+export default function Home({ posts, faq }: IProps) {
   return (
     <>
       <Head>
@@ -45,6 +40,7 @@ export default function Home({ posts, faqItems }: IProps) {
       <h2 className="visually-hidden">
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </h2>
+
       <section className="container">
         {posts?.map((post, index) => (
           <div key={index}>
@@ -58,32 +54,25 @@ export default function Home({ posts, faqItems }: IProps) {
       <Tabs />
       <Standards />
       <Gallery />
-      <Faq items={faqItems} />
+      <Faq items={faq} />
       <Hero />
     </>
   );
 }
 
-// Temporary hide getStaticProps
-const client = createClient({
-  projectId: 'tbbsybnu',
-  dataset: 'production',
-  apiVersion: '2023-04-24',
-  useCdn: false,
-});
 export const getStaticProps = async () => {
   const query = `{
     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
+    "faq": *[_type == "faq"]
   }`;
-  const { posts: result } = await client.fetch(query);
+  const result = await client.fetch(query);
 
-  const posts = result.map((post: any) => ({
+  const posts = result.posts.map((post: IPost) => ({
     ...post,
     publishedAt: new Date(post.publishedAt).toLocaleString('default', { month: 'short', day: 'numeric' }),
   }));
 
-  const faq = await client.fetch(`*[_type == "faq"]`);
-  const faqItems = faq[0].faqItems;
+  const faq = result.faq[0].faqItems;
 
-  return { props: { posts, faqItems } };
+  return { props: { posts, faq } };
 };
