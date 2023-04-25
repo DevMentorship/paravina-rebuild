@@ -1,8 +1,12 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
-import { IFaqItem } from '../Faq/Faq';
 import styles from './FaqItem.module.css';
+
+interface IFaqItem {
+  title: string;
+  content: string;
+}
 
 interface IProps {
   data: IFaqItem;
