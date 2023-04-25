@@ -1,12 +1,13 @@
 import { PortableText } from '@portabletext/react';
+import type { TypedObject } from '@portabletext/types';
 import Head from 'next/head';
 
-import { Faq } from '@/components/Faq/Faq';
+import { Faq, IFaq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
-import { faqItems } from '@/data/faq';
+import { client } from '@/lib/client';
 
 export interface IPost {
   _id: string;
@@ -17,18 +18,18 @@ export interface IPost {
     caption: string;
   };
   title: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body: any;
+  body: TypedObject;
   publishedAt: string;
   description: string;
 }
 
-export interface IProps {
+interface IProps {
   posts: IPost[];
   total: number;
+  faq: IFaq[];
 }
 
-export default function Home({ posts }: IProps) {
+export default function Home({ posts, faq }: IProps) {
   return (
     <>
       <Head>
@@ -53,24 +54,25 @@ export default function Home({ posts }: IProps) {
       <Tabs />
       <Standards />
       <Gallery />
-      <Faq items={faqItems} />
+      <Faq items={faq} />
       <Hero />
     </>
   );
 }
 
-// Temporary hide getStaticProps
+export const getStaticProps = async () => {
+  const query = `{
+    "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
+    "faq": *[_type == "faq"]
+  }`;
+  const result = await client.fetch(query);
 
-// export const getStaticProps = async () => {
-//   const query = `{
-//     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
-//   }`;
-//   const { posts: result } = await client.fetch(query);
+  const posts = result.posts.map((post: IPost) => ({
+    ...post,
+    publishedAt: new Date(post.publishedAt).toLocaleString('default', { month: 'short', day: 'numeric' }),
+  }));
 
-//   const posts = result.map((post: any) => ({
-//     ...post,
-//     publishedAt: new Date(post.publishedAt).toLocaleString('default', { month: 'short', day: 'numeric' })
-//   }));
+  const faq = result.faq[0].faqItems;
 
-//   return { props: { posts } };
-// };
+  return { props: { posts, faq } };
+};
