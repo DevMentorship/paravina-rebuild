@@ -1,17 +1,9 @@
-.promotions-list {
+.promotions {
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
   justify-content: center;
   list-style-type: none;
-}
-
-.promotion {
-  display: flex;
-  flex-direction: column;
-  width: 346.67px;
-  padding: 0;
-  text-align: center;
 }
 
 .img {

@@ -1,21 +1,21 @@
 import cn from 'classnames';
 import { useEffect } from 'react';
 
-import styles from './PopupItem.module.css';
+import styles from './PromotionPopup.module.css';
 
-export interface ModalProps {
+interface IProps {
   active: boolean;
-  setActive: any;
+  toggle: (arg0: boolean) => void;
   header: string;
   text: string;
   footer: string;
 }
 
-export const ModalItem = ({ active, setActive, header, text, footer }: ModalProps) => {
+export const PromotionPopup = ({ active, toggle, header, footer }: IProps) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setActive(false);
+        toggle(false);
       }
     };
 
@@ -24,13 +24,13 @@ export const ModalItem = ({ active, setActive, header, text, footer }: ModalProp
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setActive]);
+  }, [toggle]);
 
   return (
     <div
-      className={active ? styles.back + ' ' + styles['back-active'] : styles.back}
-      onClick={() => setActive(false)}
-      onKeyDown={() => setActive(false)}
+      className={cn(styles.back, active && styles.active)}
+      onClick={() => toggle(false)}
+      onKeyDown={() => toggle(false)}
       role="link"
       tabIndex={0}
     >
@@ -41,8 +41,9 @@ export const ModalItem = ({ active, setActive, header, text, footer }: ModalProp
         role="link"
         tabIndex={0}
       >
-        <h1 className={cn(styles.header, 'heading2', 'secondary-color')}>{header}</h1>
-        <p className={cn('paragraph', 'secondary-color')} dangerouslySetInnerHTML={{ __html: text }} />
+        <h3 className={cn(styles.header, 'heading2', 'secondary-color')}>{header}</h3>
+        {/* TODO: Сделать вместо модалок отдельные страницы */}
+        {/* <p className={cn('paragraph', 'secondary-color')} dangerouslySetInnerHTML={{ __html: text }} /> */}
         <p className={styles.footer}>{footer}</p>
       </div>
     </div>

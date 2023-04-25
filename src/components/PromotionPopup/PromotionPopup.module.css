@@ -11,7 +11,7 @@
   opacity: 0;
 }
 
-.back.back-active {
+.active {
   pointer-events: all;
   opacity: 1;
 }
