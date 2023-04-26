@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { Faq, IFaq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
+import { Promotions } from '@/components/Promotions/Promotions';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
@@ -51,6 +52,7 @@ export default function Home({ posts, faq }: IProps) {
         ))}
       </section>
 
+      <Promotions />
       <Tabs />
       <Standards />
       <Gallery />
