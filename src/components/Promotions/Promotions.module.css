@@ -1,0 +1,11 @@
+.promotions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.img {
+  width: auto;
+}

@@ -29,9 +29,9 @@ a {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-    font-size: 1.8rem;
-    line-height: 1.2;
-    color: #4c5056;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #4c5056;
 }
 
 html {
@@ -103,12 +103,12 @@ a {
     font-size: 1.8rem;
     line-height: 1.2;
   }
-  
+
   .heading3 {
     font-size: 1.6rem;
     line-height: 1.2;
   }
-  
+
   .paragraph {
     font-size: 1.6rem;
     line-height: 1.2;

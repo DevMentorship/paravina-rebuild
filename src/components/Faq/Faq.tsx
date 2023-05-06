@@ -3,13 +3,13 @@ import cn from 'classnames';
 import { FaqItem } from '../FaqItem/FaqItem';
 import styles from './Faq.module.css';
 
-export interface IFaqItem {
+export interface IFaq {
   title: string;
   content: string;
 }
 
 interface IProps {
-  items: IFaqItem[];
+  items: IFaq[];
 }
 
 export const Faq = ({ items }: IProps) => (
