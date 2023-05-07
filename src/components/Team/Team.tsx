@@ -1,26 +1,22 @@
-import 'swiper/css';
-import 'swiper/swiper-bundle.min.css';
-
+import cn from 'classnames';
 import Image from 'next/image';
 import { Navigation } from 'swiper';
-// import { useSwiper } from 'swiper/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import styles from './Team.module.css';
 
 export const Team = () => {
   const doctors = [
-    { id: '1', name: 'Екатерина Паравина', position: 'Главный врач' },
-    { id: '2', name: 'Татьяна Шафикова', position: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
-    { id: '3', name: 'Жале Султанова', position: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
-    { id: '4', name: 'Светлана Старостина', position: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
-    { id: '5', name: 'Анастасия Антонова', position: 'Детский врач' },
-    { id: '6', name: 'Александр Кузнецов', position: 'Стоматолог-ортопед' },
-    { id: '7', name: 'Надежда Музыка', position: 'Стоматолог-ортопед' },
-    { id: '8', name: 'Артур Радзевич', position: 'Челюстно-лицевой хирург, стоматолог-имплантолог' },
+    { id: '1', name: 'Екатерина Паравина', role: 'Главный врач' },
+    { id: '2', name: 'Татьяна Шафикова', role: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
+    { id: '3', name: 'Жале Султанова', role: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
+    { id: '4', name: 'Светлана Старостина', role: 'Стоматолог-терапевт, эндодонтист, микроскопист' },
+    { id: '5', name: 'Анастасия Антонова', role: 'Детский врач' },
+    { id: '6', name: 'Александр Кузнецов', role: 'Стоматолог-ортопед' },
+    { id: '7', name: 'Надежда Музыка', role: 'Стоматолог-ортопед' },
+    { id: '8', name: 'Артур Радзевич', role: 'Челюстно-лицевой хирург, стоматолог-имплантолог' },
   ];
 
-  // const swiper = useSwiper();
   return (
     <section className={`${styles.team}`}>
       <div className="container">
@@ -34,24 +30,52 @@ export const Team = () => {
         <Swiper
           className={styles['swiper-slider']}
           modules={[Navigation]}
-          navigation
+          navigation={{
+            nextEl: '.next',
+            prevEl: '.prev',
+          }}
           spaceBetween={40}
-          slidesPerView={3}
+          loop={true}
+          slidesPerView={1}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+            },
+            1200: {
+              slidesPerView: 3,
+            },
+          }}
         >
           {doctors.map((doctor, index) => (
             <SwiperSlide key={doctor.id}>
               <div className={styles.item}>
-                <Image width={360} height={340} src={`/team-image/doctor-${index + 1}.jpg`} alt={doctor.name} />
+                <Image
+                  width={360}
+                  height={340}
+                  src={`/team-image/doctor-${index + 1}.jpg`}
+                  alt={doctor.name}
+                  className={styles.img}
+                />
                 <div className={styles.content}>
                   <div className={styles.name}>{doctor.name}</div>
-                  <div className={styles.position}>{doctor.position}</div>
+                  <div className={styles.role}>{doctor.role}</div>
                 </div>
                 <button className={styles.btn}>О докторе</button>
               </div>
             </SwiperSlide>
           ))}
-          {/* <button onClick={() => swiper.slidePrev()}>--</button>
-          <button onClick={() => swiper.slideNext()}>++</button> */}
+          <div className={styles.arrows}>
+            {/* TODO: fix arrow svg (vertical) */}
+            <button className={cn(styles.prev, 'prev')}>
+              <span className="visually-hidden">Prev Slide</span>
+              <Image src="/arrow.svg" alt="prev arrow" width={30} height={30} />
+            </button>
+
+            <button className={cn(styles.next, 'next')}>
+              <span className="visually-hidden">Next Slide</span>
+              <Image src="/arrow.svg" alt="next arrow" width={30} height={30} />
+            </button>
+          </div>
         </Swiper>
       </div>
     </section>

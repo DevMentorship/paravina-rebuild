@@ -1,14 +1,16 @@
 .team {
   width: 100%;
-  padding-top: 18px;
-  padding-bottom: 300px;
+  padding: 40px 0;
   object-fit: cover;
   background-image: url('../../../public/team-image/bg-team.png');
   background-repeat: no-repeat;
 }
 
+.team > div {
+  margin: 0 auto;
+}
+
 .title {
-  margin-top: 150px;
   font-size: 24px;
   font-weight: 700;
   color: #4c5056;
@@ -36,6 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 540px;
+  width: 100%;
   padding-bottom: 20px;
   background-color: #ffffff;
 }
@@ -56,7 +59,7 @@
   color: #000000;
 }
 
-.position {
+.role {
   margin-top: 10px;
   font-size: 16px;
   font-weight: 400;
@@ -74,4 +77,24 @@
   background-color: #fac0aa;
   border: none;
   border-radius: 15px;
+}
+.arrows {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.prev,
+.next {
+  padding: 10px;
+  cursor: pointer;
+  background: #fac0aa;
+  border: 2px solid #fac0aa;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.prev {
+  transform: rotate(180deg);
 }
