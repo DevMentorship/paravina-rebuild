@@ -1,3 +1,8 @@
+import 'swiper/css';
+import 'swiper/css/bundle';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 import { ReactNode } from 'react';
 
 import { Footer } from '@/components/Footer/Footer';

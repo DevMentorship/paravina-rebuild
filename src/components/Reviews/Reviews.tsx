@@ -1,6 +1,3 @@
-import 'swiper/css';
-import 'swiper/css/virtual';
-
 import cn from 'classnames';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
