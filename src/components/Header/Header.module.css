@@ -1,16 +1,22 @@
 .header {
   display: flex;
-  gap: 40px;
-  align-items: baseline;
-  justify-content: center;
-  margin: 50px 0;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  background-color: rgb(82, 92, 69); /* цвет оставлен для так как весь текст header белый */
 }
 
 .link {
   position: relative;
-  font-size: 4rem;
-  color: #18272f;
+  font-size: 35px;
+  color: #ffffff;
   text-decoration: none;
+}
+
+@media (max-width: 450px) {
+  .link {
+    width: 100%;
+  }
 }
 
 .link::before {
@@ -18,9 +24,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 3px;
   content: '';
-  background-color: #18272f;
+  background-color: #fac0aa;
   border-radius: 4px;
   transition: transform .3s ease-in-out;
   transform: scaleX(0);
@@ -30,4 +36,32 @@
 .link:hover::before {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 485px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+@media (max-width: 450px) {
+  .nav {
+    margin-top: 20px;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.img {
+  width: 30%;
+  max-width: 290px;
+  height: fit-content;
 }
