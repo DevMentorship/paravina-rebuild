@@ -1,0 +1,26 @@
+.about {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 232px;
+  left: 70px;
+  font-size: 67px;
+  line-height: 79px;
+  color: #ffffff;
+}
+
+.title_yellow {
+  color: #fac0aa;
+}
+
+.text {
+  position: absolute;
+  top: 468px;
+  left: 70px;
+  width: 770px;
+  font-size: 40px;
+  line-height: 47px;
+  color: #ffffff;
+}
