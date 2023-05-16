@@ -1,9 +1,37 @@
 .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.header::after {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  bottom: 0;
+  left: -5px;
+  content: '';
+  background-color: #4c5056;
+  filter: blur(2px);
+  border-bottom-right-radius: 25%;
+  border-bottom-left-radius: 25%;
+  opacity: .95;
+}
+
+.header > div {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
-  width: 95%;
+  padding: 30px 20px;
   margin: 0 auto;
-  background-color: rgb(82, 92, 69); /* цвет оставлен для так как весь текст header белый */
+}
+
+@media (max-width: 768px) {
+  .header > div {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .link {
@@ -11,12 +39,6 @@
   font-size: 35px;
   color: #ffffff;
   text-decoration: none;
-}
-
-@media (max-width: 450px) {
-  .link {
-    width: 100%;
-  }
 }
 
 .link::before {
@@ -40,28 +62,27 @@
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 485px;
   margin: 0 auto;
-  margin-top: 70px;
-}
-
-@media (max-width: 450px) {
-  .nav {
-    margin-top: 20px;
-  }
 }
 
 .logo {
   display: flex;
-  justify-content: start;
-  width: 100%;
+  flex-shrink: 0;
+  padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin-bottom: 20px;
+  }
 }
 
 .img {
-  width: 30%;
-  max-width: 290px;
-  height: fit-content;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
