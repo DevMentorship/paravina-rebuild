@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { PromotionPopup } from '@/components/PromotionPopup/PromotionPopup';
 
 import styles from './PromotionCard.module.css';
+import { useInView } from 'react-intersection-observer';
 
 interface IProps {
   description: string;
@@ -19,8 +20,13 @@ interface IProps {
 export const PromotionCard = ({ firstWords, description, header, text, footer, alt, index }: IProps) => {
   const [open, setOpen] = useState(false);
 
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+
+
   return (
-    <li className={styles.card}>
+    <li className={cn(styles.card, { [styles.active]: inView })} ref={ref}>
       {/* TODO: Сделать дату на картинке настраиваемой */}
       <Image
         src={`/promotions-image/promotions-${index + 1}.png`}
