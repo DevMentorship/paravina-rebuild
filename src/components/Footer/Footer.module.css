@@ -1,9 +1,26 @@
 .footer {
+  padding: 90px 20px 70px;
+  background-color: #fac0aa;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 40px;
+  }
+}
+
+.container {
   display: flex;
   align-items: baseline;
   justify-content: space-around;
-  padding: 90px 20px 70px;
-  background-color: #fac0aa;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .additional {
@@ -13,6 +30,13 @@
   align-items: baseline;
   justify-content: space-around;
   width: 65%;
+}
+
+@media (max-width: 768px) {
+  .additional {
+    gap: 50px;
+    width: 100%;
+  }
 }
 
 .subscribe {
@@ -26,19 +50,47 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .subscribe {
+    margin-top: 40px;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+  }
+}
+
 .adress,
 .schedule,
 .phone,
-.documentation {
-  flex: 0 0 45%;
+.documentation,
+.link,
+.consultation {
   font-size: 35px;
   line-height: 45px;
   text-align: center;
 }
 
+.adress,
+.schedule,
+.phone,
+.documentation {
+  flex: 0 0 45%;
+}
+
+@media (max-width: 768px) {
+  .adress,
+  .schedule,
+  .phone,
+  .documentation {
+    flex: 0 0 100%;
+  }
+}
+
 .link {
-  font-size: 35px;
-  line-height: 41px;
-  text-align: center;
+  display: block;
   text-decoration: underline;
+}
+
+.consultation {
+  margin-top: 30px;
 }
