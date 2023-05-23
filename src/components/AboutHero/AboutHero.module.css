@@ -2,7 +2,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 1197px;
+  min-height: 1200px;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    min-height: 85vh;
+  }
 }
 
 .title {
@@ -22,6 +28,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .image {
+    object-position: -600px;
+  }
 }
 
 .title_yellow {
