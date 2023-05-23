@@ -96,21 +96,18 @@ a {
 
 @media (max-width: 768px) {
   .heading1 {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
 
   .heading2 {
-    font-size: 1.8rem;
-    line-height: 1.2;
+    font-size: 2.4rem;
   }
 
   .heading3 {
-    font-size: 1.6rem;
-    line-height: 1.2;
+    font-size: 2rem;
   }
 
   .paragraph {
     font-size: 1.6rem;
-    line-height: 1.2;
   }
 }
