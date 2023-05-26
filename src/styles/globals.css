@@ -70,7 +70,7 @@ a {
   color: #fac0aa;
 }
 
-.secondary-color {
+.second-color {
   color: #4c5056;
 }
 
@@ -90,6 +90,12 @@ a {
 
 .heading3 {
   font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+.heading4 {
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1.2;
 }
 

@@ -13,7 +13,9 @@ export const Hero = () => (
       </p>
 
       <div className={styles.sign}>
-        <button className={cn(styles.btn, 'third-color', 'heading4')}>Записаться</button>
+        <button className={cn(styles.btn, 'third-color')}>
+          <h4 className="heading4">Записаться</h4>
+        </button>
 
         <div className={styles['video-about']}>
           <a>

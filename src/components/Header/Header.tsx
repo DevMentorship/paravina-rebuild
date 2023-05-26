@@ -4,8 +4,9 @@ import Link from 'next/link';
 import styles from '@/components/Header/Header.module.css';
 
 const pages = [
-  { label: 'Акции', href: '/' },
-  { label: 'Услуги', href: '/' },
+  { label: 'Главная', href: '/' },
+  { label: 'Акции', href: '/promotions' },
+  { label: 'Цены', href: '/prices' },
   { label: 'О клинике', href: '/about' },
 ];
 

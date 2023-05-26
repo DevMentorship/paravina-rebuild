@@ -1,12 +1,9 @@
+import { PortableText } from '@portabletext/react';
 import type { TypedObject } from '@portabletext/types';
 import Head from 'next/head';
 
-import { Faq, IFaq } from '@/components/Faq/Faq';
-import { Gallery } from '@/components/Gallery/Gallery';
-import { Header } from '@/components/Header/Header';
-import { Hero } from '@/components/Hero/Hero';
-import { Standards } from '@/components/Standards/Standards';
-import { Tabs } from '@/components/Tabs/Tabs';
+import { IFaq } from '@/components/Faq/Faq';
+import { Promotions } from '@/components/Promotions/Promotions';
 import { client } from '@/lib/client';
 
 export interface IPost {
@@ -29,11 +26,9 @@ interface IProps {
   faq: IFaq[];
 }
 
-export default function Home({ faq }: IProps) {
+export default function Home({ posts }: IProps) {
   return (
     <>
-      <Header />
-      <Hero />
       <Head>
         <title>Паравина</title>
       </Head>
@@ -43,11 +38,17 @@ export default function Home({ faq }: IProps) {
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </h2>
 
-      <Tabs />
-      <Standards />
-      <Gallery />
-      <Faq items={faq} />
-      <Hero />
+      <section className="container">
+        {posts?.map((post, index) => (
+          <div key={index}>
+            <h2>{post.title}</h2>
+            <p>{post.publishedAt}</p>
+            <PortableText value={post.body} />
+          </div>
+        ))}
+      </section>
+
+      <Promotions />
     </>
   );
 }

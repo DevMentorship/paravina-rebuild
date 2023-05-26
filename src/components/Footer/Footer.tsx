@@ -1,3 +1,5 @@
+// import Link from 'next/link';
+
 import styles from '@/components/Footer/Footer.module.css';
 
 // Temporary hide pages
@@ -10,9 +12,9 @@ import styles from '@/components/Footer/Footer.module.css';
 export const Footer = () => (
   <footer className={styles.footer}>
     {/* {pages.map(({ label, href }, index) => (
-        <Link href={href} key={index} className={styles.link}>
-          {label}
-        </Link>
-      ))} */}
+      <Link href={href} key={index} className={styles.link}>
+        {label}
+      </Link>
+    ))} */}
   </footer>
 );
