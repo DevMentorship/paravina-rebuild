@@ -1,3 +1,4 @@
+import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -20,6 +21,8 @@ const VARIANTS = {
 };
 
 export const Tabs = () => {
+  const { ref } = useElementOnScreen();
+
   const services: Services = {
     stomatology: [
       {
@@ -131,9 +134,9 @@ export const Tabs = () => {
           </div>
         </div>
       </div>
-      <div className={styles.items}>
+      <div className={styles.items} ref={ref}>
         {services[selectedCategory].map((service, index) => (
-          <div key={index} className={styles.item}>
+          <div key={index} className={cn(styles.item, 'invisible-child')} data-child>
             <Image src={service.imgSrc} alt={service.title} className={styles.img} width={100} height={100} />
             <h3 className={cn(styles.title, 'heading4')}>{service.title}</h3>
             <p className={styles.description}>{service.description}</p>

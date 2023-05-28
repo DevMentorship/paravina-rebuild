@@ -1,9 +1,12 @@
+import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
 
 import styles from './Standards.module.css';
 
 export const Standards = () => {
+  const { ref } = useElementOnScreen();
+
   const cards = [
     { title: 'Авторские методики', text: 'Профессиональное признание стоматологов- экспертов' },
     { title: 'Дентальный микроскоп', text: 'Это новое качество в стоматологии XXI века' },
@@ -25,9 +28,9 @@ export const Standards = () => {
         знаний, полученных в клиниках Италии во время интенсивов и мастер-классов у лидеров рынка.
       </p>
 
-      <ul className={styles['cards-list']}>
+      <ul className={styles['cards-list']} ref={ref}>
         {cards.map((card, index) => (
-          <li key={index} className={styles.card}>
+          <li key={index} className={cn(styles.card, 'invisible-child')} data-child>
             <Image
               src={`/standards-image/standards-${index + 1}.jpg`}
               alt={`${card.title}`}

@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 350px;
   text-align: center;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25), -2px -2px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .25), -2px -2px 10px rgba(0, 0, 0, .25);
 }
 
 .card img {
@@ -36,20 +36,4 @@
   background-color: #fac0aa;
   border: none;
   border-radius: 15px;
-}
-
-.active {
-  animation: scale-in 0.5s ease-in-out;
-}
-
-@keyframes scale-in {
-  0% {
-    transform: scale(1);
-  }
-  70% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
