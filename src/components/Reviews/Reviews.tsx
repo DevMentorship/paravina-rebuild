@@ -1,21 +1,25 @@
+import imageUrlBuilder from '@sanity/image-url';
 import cn from 'classnames';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { client } from '../../lib/client';
 import styles from './Reviews.module.css';
 
-export const Reviews = (): JSX.Element => {
-  const images = [
-    { idx: 1, alt: 'Review' },
-    { idx: 2, alt: 'Review' },
-    { idx: 3, alt: 'Review' },
-    { idx: 4, alt: 'Review' },
-    { idx: 5, alt: 'Review' },
-    { idx: 6, alt: 'Review' },
-    { idx: 7, alt: 'Review' },
-    { idx: 8, alt: 'Review' },
-    { idx: 9, alt: 'Review' },
-  ];
+export interface IReview {
+  id: string;
+}
+
+interface IProps {
+  review: IReview[];
+}
+
+export const Reviews = ({ review }: IProps): JSX.Element => {
+  const builder = imageUrlBuilder(client);
+
+  function urlFor(source: IReview) {
+    return builder.image(source);
+  }
   return (
     <section className="container">
       <h2 className={cn(styles.title, 'heading2')}>
@@ -35,27 +39,14 @@ export const Reviews = (): JSX.Element => {
         </a>
       </p>
       <div className={styles.review}>
-        {images.map((image, idx) => (
-          <Image
-            key={image.idx}
-            src={`/reviews-images/review-${idx + 1}.png`}
-            alt={`${image.alt}`}
-            width={310}
-            height={210}
-          />
+        {review.map((rev, idx) => (
+          <Image key={idx} src={urlFor(rev).url()} alt={'Review'} width={310} height={210} />
         ))}
       </div>
       <Swiper spaceBetween={0} slidesPerView={1} centeredSlides={true}>
-        {images.map((image, idx) => (
+        {review.map((rev, idx) => (
           <SwiperSlide key={idx} className={styles.swiper__content}>
-            <Image
-              key={image.idx}
-              src={`/reviews-images/review-${idx + 1}.png`}
-              alt={`${image.alt}`}
-              width={310}
-              height={210}
-              className={styles.slide}
-            />
+            <Image key={idx} src={urlFor(rev).url()} alt={`Review`} width={310} height={210} className={styles.slide} />
           </SwiperSlide>
         ))}
       </Swiper>
