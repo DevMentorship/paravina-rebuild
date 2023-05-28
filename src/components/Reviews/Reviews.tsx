@@ -7,7 +7,7 @@ import { client } from '../../lib/client';
 import styles from './Reviews.module.css';
 
 export interface IReview {
-  id: string;
+  _type: string;
 }
 
 interface IProps {
@@ -40,13 +40,20 @@ export const Reviews = ({ review }: IProps): JSX.Element => {
       </p>
       <div className={styles.review}>
         {review.map((rev, idx) => (
-          <Image key={idx} src={urlFor(rev).url()} alt={'Review'} width={310} height={210} />
+          <Image key={idx} src={urlFor(rev).url()} alt={rev._type} width={310} height={210} />
         ))}
       </div>
       <Swiper spaceBetween={0} slidesPerView={1} centeredSlides={true}>
         {review.map((rev, idx) => (
           <SwiperSlide key={idx} className={styles.swiper__content}>
-            <Image key={idx} src={urlFor(rev).url()} alt={`Review`} width={310} height={210} className={styles.slide} />
+            <Image
+              key={idx}
+              src={urlFor(rev).url()}
+              alt={rev._type}
+              width={310}
+              height={210}
+              className={styles.slide}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
