@@ -1,7 +1,8 @@
-import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
 import { useState } from 'react';
+
+import useElementOnScreen from '@/hooks/useElementOnScreen';
 
 import styles from './Tabs.module.css';
 

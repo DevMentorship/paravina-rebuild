@@ -1,6 +1,7 @@
-import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
+
+import useElementOnScreen from '@/hooks/useElementOnScreen';
 
 import styles from './Hero.module.css';
 

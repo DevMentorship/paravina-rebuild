@@ -1,6 +1,7 @@
-import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
+
+import useElementOnScreen from '@/hooks/useElementOnScreen';
 
 import styles from './Standards.module.css';
 
@@ -19,7 +20,7 @@ export const Standards = () => {
   ];
 
   return (
-    <section className="container">
+    <section className="container" ref={ref}>
       <h2 className={cn(styles.title, 'heading2')}>
         Авторская клиника <span className="primary-color">по стандартам Италии</span>
       </h2>
@@ -28,7 +29,7 @@ export const Standards = () => {
         знаний, полученных в клиниках Италии во время интенсивов и мастер-классов у лидеров рынка.
       </p>
 
-      <ul className={styles['cards-list']} ref={ref}>
+      <ul className={styles['cards-list']}>
         {cards.map((card, index) => (
           <li key={index} className={cn(styles.card, 'invisible-child')} data-child>
             <Image

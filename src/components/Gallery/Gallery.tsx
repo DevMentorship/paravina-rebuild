@@ -1,10 +1,11 @@
-import useElementOnScreen from '@/hooks/useElementOnScreen';
 import cn from 'classnames';
 import Image from 'next/image';
 
+import useElementOnScreen from '@/hooks/useElementOnScreen';
+
 import styles from './Gallery.module.css';
 
-export const Gallery = (): JSX.Element => {
+export const Gallery = () => {
   const { ref } = useElementOnScreen();
   const images = [
     { idx: 1, alt: 'A man with guitar' },

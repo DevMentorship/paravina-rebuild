@@ -7,8 +7,8 @@ import styles from './Promotions.module.css';
 export const Promotions = () => {
   const { ref } = useElementOnScreen();
   return (
-    <section className="container">
-      <ul className={styles.promotions} ref={ref}>
+    <section className="container" ref={ref}>
+      <ul className={styles.promotions}>
         {promotions.map(({ alt, firstWords, description, header, text, footer }, index) => (
           <PromotionCard
             key={index}

@@ -1,7 +1,9 @@
 import cn from 'classnames';
 import Image from 'next/image';
 import { useState } from 'react';
+
 import { PromotionPopup } from '@/components/PromotionPopup/PromotionPopup';
+
 import styles from './PromotionCard.module.css';
 
 interface IProps {
