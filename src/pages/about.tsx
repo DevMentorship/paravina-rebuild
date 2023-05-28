@@ -6,16 +6,15 @@ import { Team } from '@/components/Team/Team';
 import { client } from '@/lib/client';
 
 export interface IAbout {
-  _id: string;
   image: TypedObject;
   title: string;
   descr: string;
 }
 
-export default function About(props: IAbout) {
+export default function About({ image, title, descr }: IAbout) {
   return (
     <>
-      <AboutHero {...props} />
+      <AboutHero image={image} title={title} descr={descr} />
       <Team />
       <Reviews />
     </>
@@ -24,7 +23,7 @@ export default function About(props: IAbout) {
 
 export const getStaticProps = async () => {
   const query = `{
-    "aboutData": *[_type == "aboutHero"]  {image, title, descr, _id}
+    "aboutData": *[_type == "aboutHero"]  {image, title, descr,}
   }`;
   const { aboutData } = await client.fetch(query);
 

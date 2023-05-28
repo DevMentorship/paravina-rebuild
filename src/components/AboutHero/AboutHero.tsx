@@ -7,7 +7,7 @@ import { IAbout } from '@/pages/about';
 import styles from './AboutHero.module.css';
 
 export const AboutHero = ({ title, descr, image }: IAbout) => {
-  const dividedTitle = title.split(' ');
+  const [firstTitlePart, secondTitlePart] = title.split(' ');
   // wrap to the {}, and add return() before section
   return (
     <section>
@@ -15,10 +15,10 @@ export const AboutHero = ({ title, descr, image }: IAbout) => {
         <div className={cn(styles.title, 'third-color')}>
           <h3 className="heading1">
             <span className="primary-color">
-              {dividedTitle[0]}
+              {firstTitlePart}
               <br />
             </span>
-            {dividedTitle[1]}
+            {secondTitlePart}
           </h3>
           <p className="heading2">{descr}</p>
         </div>
