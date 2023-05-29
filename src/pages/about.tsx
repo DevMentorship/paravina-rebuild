@@ -4,15 +4,15 @@ import { Team } from '@/components/Team/Team';
 import { client } from '@/lib/client';
 
 interface IPostAbout {
-  review: IReview[];
+  reviews: IReview[];
 }
 
-export default function About({ review }: IPostAbout) {
+export default function About({ reviews }: IPostAbout) {
   return (
     <>
       <AboutHero />
       <Team />
-      <Reviews review={review} />
+      <Reviews reviews={reviews} />
     </>
   );
 }
@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
   }`;
   const result = await client.fetch(query);
 
-  const review = result.review[0].reviews;
+  const reviews = result.review[0].reviews;
 
-  return { props: { review } };
+  return { props: { reviews } };
 };

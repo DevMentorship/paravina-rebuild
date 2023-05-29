@@ -37,3 +37,7 @@ next-env.d.ts
 
 # environment variables
 .env
+
+# editor settings
+
+/.vscode
