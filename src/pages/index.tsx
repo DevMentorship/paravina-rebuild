@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { Faq, IFaq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
+import { IPromotionCard } from '@/components/PromotionCard/PromotionCard';
 import { Promotions } from '@/components/Promotions/Promotions';
 import { Standards } from '@/components/Standards/Standards';
 import { Tabs } from '@/components/Tabs/Tabs';
@@ -28,9 +29,10 @@ interface IProps {
   posts: IPost[];
   total: number;
   faq: IFaq[];
+  promotionCard: IPromotionCard[];
 }
 
-export default function Home({ posts, faq }: IProps) {
+export default function Home({ posts, faq, promotionCard }: IProps) {
   return (
     <>
       <Head>
@@ -52,7 +54,7 @@ export default function Home({ posts, faq }: IProps) {
         ))}
       </section>
 
-      <Promotions />
+      <Promotions promotionCards={promotionCard} />
       <Tabs />
       <Standards />
       <Gallery />
@@ -65,7 +67,7 @@ export default function Home({ posts, faq }: IProps) {
 export const getStaticProps = async () => {
   const query = `{
     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
-    "faq": *[_type == "faq"]
+    "faq": *[_type == "faq"], "promotionCard": *[_type == "promotionCard"]
   }`;
   const result = await client.fetch(query);
 
@@ -75,6 +77,7 @@ export const getStaticProps = async () => {
   }));
 
   const faq = result.faq[0].faqItems;
+  const promotionCard = result.promotionCard[0].promotionCard;
 
-  return { props: { posts, faq } };
+  return { props: { posts, faq, promotionCard } };
 };
