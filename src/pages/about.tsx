@@ -16,7 +16,7 @@ interface IProps {
   about: IAbout;
 }
 
-export default function About({ reviews, about }: IAbout) {
+export default function About({ reviews, about }: IProps) {
   return (
     <>
       <AboutHero image={about.image} title={about.title} descr={about.descr} />
