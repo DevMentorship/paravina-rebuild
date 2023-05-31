@@ -1,29 +1,33 @@
 import cn from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './Hero.module.css';
 
 export const Hero = () => (
-  <section className={styles.section}>
-    <div className={cn(styles.container, 'container')}>
-      <h2 className={cn(styles.title, 'third-color', 'heading1')}>Доверьте свою улыбку профессионалам!</h2>
-
-      <p className={cn(styles.description, 'third-color')}>
+  <section className={styles.hero}>
+    <div>
+      <h2 className={cn(styles['hero-title'])}>Доверьте свою улыбку профессионалам!</h2>
+      <p className={cn(styles['hero-desc'])}>
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </p>
-
-      <div className={styles.sign}>
-        <button className={cn(styles.btn, 'third-color', 'heading4')}>Записаться</button>
-
-        <div className={styles['video-about']}>
-          <a>
-            <Image className={styles.img} src="/watch-video-icon.png" alt="" width={48} height={48} />
-          </a>
-
-          <p className="third-color">Смотреть видео о нас</p>
+      <div className={styles['hero-cta']}>
+        <button className={cn(styles['hero-cta-button'])}>Записаться</button>
+        <div className={styles['hero-cta-video']}>
+          <Link href="/">
+            <Image src="/watch-video-icon.png" alt="" width={100} height={100} />
+          </Link>
+          <p>Смотреть видео о нас</p>
         </div>
       </div>
     </div>
-    <Image className={styles.background} src="/hero-bg.png" alt="" width={1206} height={840} />
+    <Image
+      className={styles['hero-background']}
+      src="/hero-bg.png"
+      alt=""
+      width={1920}
+      height={1300}
+      priority={false}
+    />
   </section>
 );

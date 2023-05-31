@@ -4,7 +4,6 @@ import Head from 'next/head';
 
 import { Faq, IFaq } from '@/components/Faq/Faq';
 import { Gallery } from '@/components/Gallery/Gallery';
-import { Hero } from '@/components/Hero/Hero';
 import { IPromotionCard } from '@/components/PromotionCard/PromotionCard';
 import { Promotions } from '@/components/Promotions/Promotions';
 import { Standards } from '@/components/Standards/Standards';
@@ -59,7 +58,6 @@ export default function Home({ posts, faq, promotionCard }: IProps) {
       <Standards />
       <Gallery />
       <Faq items={faq} />
-      <Hero />
     </>
   );
 }

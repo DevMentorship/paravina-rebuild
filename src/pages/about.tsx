@@ -36,6 +36,5 @@ export const getStaticProps = async () => {
   const reviews = result.review[0].reviews;
   const about = result.aboutData[0];
 
-
   return { props: { reviews, about } };
 };

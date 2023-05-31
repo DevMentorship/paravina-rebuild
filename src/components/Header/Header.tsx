@@ -1,7 +1,10 @@
+import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from '@/components/Header/Header.module.css';
+
+import { Hero } from '../Hero/Hero';
 
 const pages = [
   { label: 'Акции', href: '/' },
@@ -9,19 +12,22 @@ const pages = [
   { label: 'О клинике', href: '/about' },
 ];
 
-export const Header = () => (
-  <header className={styles.header}>
-    <div className="container">
-      <div className={styles.logo}>
-        <Image src={'header-logo.svg'} width={100} height={100} alt="лого" className={styles.img} />
-      </div>
-      <div className={styles.nav}>
+interface IHeaderProps {
+  headerStyle: string;
+}
+
+export const Header = ({ headerStyle }: IHeaderProps) => (
+  <header className={styles['header-wrapper']}>
+    <div className={cn(styles[`header-${headerStyle}`], styles['header'])}>
+      <Image src={'header-logo.svg'} width={290} height={80} alt="лого" className={cn(styles['header-logo'])} />
+      <nav className={styles['header-nav']}>
         {pages.map(({ label, href }, index) => (
-          <Link href={href} key={index} className={styles.link}>
+          <Link href={href} key={index} className={styles['header-link']}>
             {label}
           </Link>
         ))}
-      </div>
+      </nav>
     </div>
+    {headerStyle === 'transparent' && <Hero />}
   </header>
 );
