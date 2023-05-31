@@ -20,7 +20,7 @@ export const PromotionCard = ({ firstWords, description, header, text, footer, a
   const [open, setOpen] = useState(false);
 
   return (
-    <li className={styles.card}>
+    <li className={cn(styles.card, 'invisible-child')} data-child>
       {/* TODO: Сделать дату на картинке настраиваемой */}
       <Image src={url} alt={alt} width="0" height="0" sizes="100vw" className={styles.img} />
 

@@ -1,9 +1,12 @@
 import cn from 'classnames';
 import Image from 'next/image';
 
+import useElementOnScreen from '@/hooks/useElementOnScreen';
+
 import styles from './Gallery.module.css';
 
-export const Gallery = (): JSX.Element => {
+export const Gallery = () => {
+  const { ref } = useElementOnScreen();
   const images = [
     { idx: 1, alt: 'A man with guitar' },
     { idx: 2, alt: 'Medical equipment' },
@@ -19,7 +22,7 @@ export const Gallery = (): JSX.Element => {
         Мы рады <span className="primary-color">каждому гостю!</span>
       </h2>
 
-      <div className={styles.gallery}>
+      <div className={styles.gallery} ref={ref}>
         {images.map((image, idx) => (
           <Image
             key={image.idx}
@@ -27,7 +30,8 @@ export const Gallery = (): JSX.Element => {
             alt={`${image.alt}`}
             width={270}
             height={idx == 1 ? 400 : 190}
-            className={idx == 1 ? styles.img__big : styles.img}
+            className={cn(idx == 1 ? styles.img__big : styles.img, 'invisible-child')}
+            data-child
           />
         ))}
       </div>
