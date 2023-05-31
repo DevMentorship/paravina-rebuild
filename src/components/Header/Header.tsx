@@ -18,7 +18,7 @@ interface IHeaderProps {
 
 export const Header = ({ isVisible }: IHeaderProps) => (
   <header className={styles['header-wrapper']}>
-    <div className={cn(isVisible ? styles[`header-transparent`] : styles['header-gray'], styles['header'])}>
+    <div className={cn(isVisible && styles['header-visible'], styles[`header`])}>
       <Image src={'header-logo.svg'} width={290} height={80} alt="лого" className={cn(styles['header-logo'])} />
       <nav className={styles['header-nav']}>
         {pages.map(({ label, href }, index) => (
@@ -28,6 +28,6 @@ export const Header = ({ isVisible }: IHeaderProps) => (
         ))}
       </nav>
     </div>
-    {isVisible && <Hero />}
+    {!isVisible && <Hero />}
   </header>
 );

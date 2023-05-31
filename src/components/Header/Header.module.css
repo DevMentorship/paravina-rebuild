@@ -2,26 +2,20 @@
   margin-bottom: 130px;
 }
 
-.header-transparent {
+.header {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
   display: flex;
-  align-items: center;
-}
-
-.header {
+  max-height: 150px;
   padding: 30px 50px 40px;
 }
 
-.header-gray {
-  display: flex;
-  max-height: 150px;
+.header-visible {
   background: rgba(76, 80, 86, .4);
 }
-
 
 .header-link {
   position: relative;
