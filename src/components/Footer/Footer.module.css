@@ -1,32 +1,96 @@
 .footer {
+  padding: 90px 20px 70px;
+  background-color: #fac0aa;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 40px;
+  }
+}
+
+.container {
   display: flex;
-  gap: 40px;
   align-items: baseline;
-  justify-content: center;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.additional {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 120px 30px;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 65%;
+}
+
+@media (max-width: 768px) {
+  .additional {
+    gap: 50px;
+    width: 100%;
+  }
+}
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  width: 25%;
+  font-size: 2rem;
+  line-height: 41px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .subscribe {
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+.adress,
+.schedule,
+.phone,
+.documentation,
+.link,
+.consultation {
+  font-size: 2rem;
+  line-height: 45px;
+  text-align: center;
+}
+
+.adress,
+.schedule,
+.phone,
+.documentation {
+  flex: 0 0 45%;
+}
+
+@media (max-width: 768px) {
+  .adress,
+  .schedule,
+  .phone,
+  .documentation {
+    flex: 0 0 100%;
+  }
 }
 
 .link {
-  position: relative;
-  font-size: 4rem;
-  color: #18272f;
-  text-decoration: none;
+  display: block;
+  text-decoration: underline;
 }
 
-.link::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  content: '';
-  background-color: #18272f;
-  border-radius: 4px;
-  transition: transform .3s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: right;
-}
-
-.link:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+.consultation {
+  margin-top: 30px;
 }
