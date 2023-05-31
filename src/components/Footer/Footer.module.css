@@ -45,7 +45,7 @@
   gap: 30px;
   align-items: center;
   width: 25%;
-  font-size: 35px;
+  font-size: 2rem;
   line-height: 41px;
   text-align: center;
 }
@@ -65,7 +65,7 @@
 .documentation,
 .link,
 .consultation {
-  font-size: 35px;
+  font-size: 2rem;
   line-height: 45px;
   text-align: center;
 }

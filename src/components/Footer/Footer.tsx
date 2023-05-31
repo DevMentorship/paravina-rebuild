@@ -31,9 +31,9 @@ export const Footer = () => (
         </div>
         <div className={styles.phone}>
           <p> ТЕЛЕФОН</p>
-          <Link href="/" className={styles.link}>
+          <a href="tel:+79276922501" className={styles.link}>
             +7 927 692-25-01
-          </Link>
+          </a>
         </div>
         <div className={styles.documentation}>
           <p>ДОКУМЕНТЫ</p>
