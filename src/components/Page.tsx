@@ -13,7 +13,7 @@ export const Page = ({ children }: { children?: ReactNode }) => {
   const route = useRouter();
   return (
     <>
-      <Header headerStyle={route.asPath === '/' ? 'transparent' : 'gray'} />
+      <Header isVisible={route.asPath === '/'} />
       <main>
         <h1 className="visually-hidden">Unie espresso bar - Menu</h1>
         <h2 className="visually-hidden">Первый эспрессо бар в Самаре</h2>
