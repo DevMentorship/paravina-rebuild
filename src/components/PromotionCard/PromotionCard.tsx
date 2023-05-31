@@ -13,15 +13,14 @@ export interface IPromotionCard {
   text: string;
   footer: string;
   alt: string;
-  index: number;
-  key: number;
+  url: string;
 }
 
 export const PromotionCard = ({ firstWords, description, header, text, footer, alt, url }: IPromotionCard) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <li className={cn(styles.card, 'invisible-child')} data-child>
+    <li className={styles.card}>
       {/* TODO: Сделать дату на картинке настраиваемой */}
       <Image src={url} alt={alt} width="0" height="0" sizes="100vw" className={styles.img} />
 
