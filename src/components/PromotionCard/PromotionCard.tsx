@@ -6,7 +6,7 @@ import { PromotionPopup } from '@/components/PromotionPopup/PromotionPopup';
 
 import styles from './PromotionCard.module.css';
 
-interface IProps {
+export interface IPromotionCard {
   description: string;
   firstWords: string;
   header: string;
@@ -17,20 +17,13 @@ interface IProps {
   key: number;
 }
 
-export const PromotionCard = ({ firstWords, description, header, text, footer, alt, index }: IProps) => {
+export const PromotionCard = ({ firstWords, description, header, text, footer, alt, url }: IPromotionCard) => {
   const [open, setOpen] = useState(false);
 
   return (
     <li className={cn(styles.card, 'invisible-child')} data-child>
       {/* TODO: Сделать дату на картинке настраиваемой */}
-      <Image
-        src={`/promotions-image/promotions-${index + 1}.png`}
-        alt={alt}
-        width="0"
-        height="0"
-        sizes="100vw"
-        className={styles.img}
-      />
+      <Image src={url} alt={alt} width="0" height="0" sizes="100vw" className={styles.img} />
 
       <div className={styles.content}>
         <div className={styles.wrapper}>

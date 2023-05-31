@@ -32,6 +32,12 @@
 
 @media screen and (max-width: 768px) {
   .image {
-    object-position: -600px;
+    object-position: right;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .image {
+    object-position: -575px;
   }
 }
