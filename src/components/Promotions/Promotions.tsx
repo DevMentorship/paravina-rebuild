@@ -1,24 +1,28 @@
-import { PromotionCard } from '@/components/PromotionCard/PromotionCard';
-import { promotions } from '@/data/promotions';
+import { IPromotionCard, PromotionCard } from '@/components/PromotionCard/PromotionCard';
 import useElementOnScreen from '@/hooks/useElementOnScreen';
+import { urlFor } from '@/lib/client';
 
 import styles from './Promotions.module.css';
 
-export const Promotions = () => {
+interface IPromotionCards {
+  promotionCards: IPromotionCard[];
+}
+
+export const Promotions = ({ promotionCards }: IPromotionCards) => {
   const { ref } = useElementOnScreen();
   return (
     <section className="container" ref={ref}>
       <ul className={styles.promotions}>
-        {promotions.map(({ alt, firstWords, description, header, text, footer }, index) => (
+        {promotionCards.map((promotionCard, index) => (
           <PromotionCard
             key={index}
-            firstWords={firstWords}
-            description={description}
-            header={header}
-            text={text}
-            footer={footer}
-            alt={alt}
-            index={index}
+            url={urlFor(promotionCard).url()}
+            firstWords={promotionCard.firstWords}
+            description={promotionCard.description}
+            header={promotionCard.header}
+            text={promotionCard.text}
+            footer={promotionCard.footer}
+            alt={promotionCard.alt}
           />
         ))}
       </ul>
