@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,12 +21,6 @@ interface IHeaderProps {
 export const Header = ({ isVisible }: IHeaderProps) => {
   const [open, setOpen] = useState(false);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter') {
-      setOpen(!open);
-    }
-  };
-
   return (
     <header className={styles['header-wrapper']}>
       <div className={cn(isVisible && styles['header-visible'], styles[`header`])}>
@@ -46,7 +41,6 @@ export const Header = ({ isVisible }: IHeaderProps) => {
             'is-active': open,
           })}
           onClick={() => setOpen(!open)}
-          onKeyDown={handleKeyDown}
           role="button"
           tabIndex={0}
         >
