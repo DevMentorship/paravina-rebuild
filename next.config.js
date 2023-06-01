@@ -1,4 +1,4 @@
-const { Domain } = require('domain')
+const { Domain } = require('domain');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,6 +6,14 @@ const nextConfig = {
   images: {
     domains: ['cdn.sanity.io', 'res.cloudinary.com'],
   },
+};
+
+module.exports = {
+  // ... other options
+  cookieOptions: {
+    sameSite: 'none', // or 'strict' or 'lax'
+    secure: true,
+  }
 };
 
 module.exports = nextConfig;
