@@ -23,8 +23,8 @@ export const Header = ({ isVisible }: IHeaderProps) => (
         src={
           'https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685611696/Paravina-rebuild/header-logo_yb87e1.png'
         }
-        width={290}
-        height={77}
+        width={384}
+        height={110}
         alt="лого"
         className={cn(styles['header-logo'])}
       />

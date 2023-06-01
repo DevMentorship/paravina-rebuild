@@ -36,7 +36,7 @@ export const Hero = () => {
         src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685613614/Paravina-rebuild/hero-bg_je0zzs.jpg"
         alt=""
         width={1920}
-        height={1300}
+        height={1337}
       />
     </section>
   );
