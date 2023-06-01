@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Image from 'next/image';
+// import Link from 'next/link';
 import { useState } from 'react';
 
 import { PromotionPopup } from '@/components/PromotionPopup/PromotionPopup';
@@ -29,6 +30,9 @@ export const PromotionCard = ({ firstWords, description, header, text, footer, a
           <span className="paragraph primary-color">{firstWords}</span>
           <p className="paragraph">{description}</p>
         </div>
+
+        {/* <Link href={`/promotions/${encodeURIComponent(slug)}`}>dffd</Link> */}
+
         <button className={cn(styles.button, 'third-color')} onClick={() => setOpen(true)}>
           Подробнее
         </button>

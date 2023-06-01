@@ -65,7 +65,7 @@ export default function Home({ posts, faq, promotionCard }: IProps) {
 export const getStaticProps = async () => {
   const query = `{
     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
-    "faq": *[_type == "faq"], "promotionCard": *[_type == "promotionCard"]
+    "faq": *[_type == "faq"], "promotionCard": *[_type == "promotionCard"],
   }`;
   const result = await client.fetch(query);
 

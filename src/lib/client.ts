@@ -8,7 +8,7 @@ export const clientConfig = {
 };
 
 export const client = createClient({
-  projectId: clientConfig.projectId,
+  projectId: clientConfig?.projectId,
   dataset: clientConfig.dataset,
   apiVersion: '2023-04-04',
   token: process.env.SANITY_TOKEN,
