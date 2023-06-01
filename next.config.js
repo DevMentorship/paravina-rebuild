@@ -11,7 +11,7 @@ const nextConfig = {
 module.exports = {
   // ... other options
   cookieOptions: {
-    sameSite: 'none', // or 'strict' or 'lax'
+    sameSite: 'strict', // or 'strict' or 'lax'
     secure: true,
   }
 };
