@@ -18,7 +18,13 @@ interface IHeaderProps {
 }
 
 export const Header = ({ isVisible }: IHeaderProps) => {
-  const [nav, setNav] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      setOpen(!open);
+    }
+  };
 
   return (
     <header className={styles['header-wrapper']}>
@@ -26,7 +32,7 @@ export const Header = ({ isVisible }: IHeaderProps) => {
         <Image src={'header-logo.svg'} width={290} height={80} alt="лого" className={cn(styles['header-logo'])} />
         <nav
           className={cn(styles['header-nav'], {
-            [styles.active]: nav,
+            [styles.active]: open,
           })}
         >
           {pages.map(({ label, href }, index) => (
@@ -35,13 +41,19 @@ export const Header = ({ isVisible }: IHeaderProps) => {
             </Link>
           ))}
         </nav>
-        <button className={styles['mobile-btn']} onClick={() => setNav(!nav)}>
-          {nav ? (
-            <Image src="/close.png" width={64} height={64} alt="open btn" />
-          ) : (
-            <Image src="/mobile_btn.png" width={64} height={64} alt="close btn" />
-          )}
-        </button>
+        <div
+          className={cn('hamburger', {
+            'is-active': open,
+          })}
+          onClick={() => setOpen(!open)}
+          onKeyDown={handleKeyDown}
+          role="button"
+          tabIndex={0}
+        >
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+        </div>
       </div>
       {!isVisible && <Hero />}
     </header>

@@ -55,16 +55,6 @@
   margin-left: 80px;
 }
 
-.mobile-btn {
-  all: unset;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 2;
-  display: none;
-  cursor: pointer;
-}
-
 @media (max-width: 1000px) {
   .header {
     gap: 20px;
@@ -81,10 +71,6 @@
 }
 
 @media (max-width: 800px) {
-  .mobile-btn {
-    display: block;
-  }
-
   .header-nav {
     position: fixed;
     top: 0;
@@ -95,7 +81,7 @@
     flex-direction: column;
     gap: 70px;
     justify-content: center;
-    min-width: 100%;
+    width: 80%;
     height: 100vh;
     margin: 0;
     background-color: #c3c3c3;
@@ -110,3 +96,4 @@
     left: 0;
   }
 }
+
