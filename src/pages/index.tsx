@@ -29,9 +29,11 @@ interface IProps {
   total: number;
   faq: IFaq[];
   promotionCard: IPromotionCard[];
+  promotions: any;
 }
 
-export default function Home({ posts, faq, promotionCard }: IProps) {
+export default function Home({ posts, faq, promotionCard, promotions }: IProps) {
+  console.log(promotions);
   return (
     <>
       <Head>
@@ -66,6 +68,7 @@ export const getStaticProps = async () => {
   const query = `{
     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
     "faq": *[_type == "faq"], "promotionCard": *[_type == "promotionCard"],
+    "promotions": *[_type == "promotion"],
   }`;
   const result = await client.fetch(query);
 
@@ -77,5 +80,5 @@ export const getStaticProps = async () => {
   const faq = result.faq[0].faqItems;
   const promotionCard = result.promotionCard[0].promotionCard;
 
-  return { props: { posts, faq, promotionCard } };
+  return { props: { posts, faq, promotionCard, promotions: result.promotions } };
 };
