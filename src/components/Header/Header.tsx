@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
+import { KeyboardEvent } from 'react';
 import styles from '@/components/Header/Header.module.css';
 
 import { Hero } from '../Hero/Hero';
@@ -20,7 +20,7 @@ interface IHeaderProps {
 export const Header = ({ isVisible }: IHeaderProps) => {
   const [open, setOpen] = useState(false);
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
       setOpen(!open);
     }
