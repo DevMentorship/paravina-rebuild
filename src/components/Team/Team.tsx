@@ -67,12 +67,22 @@ export const Team = ({ teamImages }: ITeamProps) => (
           {/* TODO: fix arrow svg (vertical) */}
           <button className={cn(styles.prev, 'prev')}>
             <span className="visually-hidden">Prev Slide</span>
-            <Image src="/arrow.svg" alt="prev arrow" width={30} height={30} />
+            <Image
+              src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
+              alt="prev arrow"
+              width={30}
+              height={30}
+            />
           </button>
 
           <button className={cn(styles.next, 'next')}>
             <span className="visually-hidden">Next Slide</span>
-            <Image src="/arrow.svg" alt="next arrow" width={30} height={30} />
+            <Image
+              src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
+              alt="next arrow"
+              width={30}
+              height={30}
+            />
           </button>
         </div>
       </Swiper>

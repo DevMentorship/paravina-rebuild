@@ -13,7 +13,7 @@ module.exports = {
   cookieOptions: {
     sameSite: 'strict', // or 'strict' or 'lax'
     secure: true,
-  }
+  },
 };
 
 module.exports = nextConfig;
