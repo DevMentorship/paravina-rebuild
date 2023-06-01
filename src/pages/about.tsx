@@ -2,7 +2,7 @@ import { TypedObject } from '@portabletext/types';
 
 import { AboutHero } from '@/components/AboutHero/AboutHero';
 import { IReview, Reviews } from '@/components/Reviews/Reviews';
-import { Team } from '@/components/Team/Team';
+import { ITeamImages, Team } from '@/components/Team/Team';
 import { client } from '@/lib/client';
 
 export interface IAbout {
@@ -14,13 +14,14 @@ export interface IAbout {
 interface IProps {
   reviews: IReview[];
   about: IAbout;
+  team: ITeamImages[];
 }
 
-export default function About({ reviews, about }: IProps) {
+export default function About({ reviews, about, team }: IProps) {
   return (
     <>
       <AboutHero image={about.image} title={about.title} descr={about.descr} />
-      <Team />
+      <Team teamImages={team} />
       <Reviews reviews={reviews} />
     </>
   );
@@ -29,12 +30,14 @@ export default function About({ reviews, about }: IProps) {
 export const getStaticProps = async () => {
   const query = `{
     "review": *[_type == "review"],
-    "aboutData": *[_type == "aboutHero"]  {image, title, descr}
+    "aboutData": *[_type == "aboutHero"]  {image, title, descr},
+    "team": *[_type == "team"]
   }`;
   const result = await client.fetch(query);
 
   const reviews = result.review[0].reviews;
   const about = result.aboutData[0];
+  const team = result.team[0].teamImages;
 
-  return { props: { reviews, about } };
+  return { props: { reviews, about, team } };
 };

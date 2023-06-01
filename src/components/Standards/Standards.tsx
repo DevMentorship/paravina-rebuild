@@ -2,22 +2,21 @@ import cn from 'classnames';
 import Image from 'next/image';
 
 import useElementOnScreen from '@/hooks/useElementOnScreen';
+import { urlFor } from '@/lib/client';
 
 import styles from './Standards.module.css';
 
-export const Standards = () => {
-  const { ref } = useElementOnScreen();
+export interface IStandardImage {
+  text: string;
+  title: string;
+}
 
-  const cards = [
-    { title: 'Авторские методики', text: 'Профессиональное признание стоматологов- экспертов' },
-    { title: 'Дентальный микроскоп', text: 'Это новое качество в стоматологии XXI века' },
-    { title: 'Новое оборудование', text: 'А также лучшие доступные материалы и расходники' },
-    { title: 'Безопасность', text: 'Одноразовый инструментарий, стерилизация, ультрафиолет ' },
-    { title: 'Домашняя атмосфера', text: 'Всегда ждём гостей! Кофе тоже наливаем (без сахара)' },
-    { title: 'Цены не московские', text: 'А ещё скидки в честь открытия клиники!' },
-    { title: 'Экономия времени', text: 'Доступны все услуги — не нужно колесить по городу' },
-    { title: 'Гарантии клиники', text: 'На все работы даём официальную гарантию' },
-  ];
+interface IStandardProps {
+  standardImages: IStandardImage[];
+}
+
+export const Standards = ({ standardImages }: IStandardProps) => {
+  const { ref } = useElementOnScreen();
 
   return (
     <section className="container" ref={ref}>
@@ -30,17 +29,17 @@ export const Standards = () => {
       </p>
 
       <ul className={styles['cards-list']}>
-        {cards.map((card, index) => (
+        {standardImages.map((standardImage, index) => (
           <li key={index} className={cn(styles.card, 'invisible-child')} data-child>
             <Image
-              src={`/standards-image/standards-${index + 1}.jpg`}
-              alt={`${card.title}`}
+              src={urlFor(standardImage).url()}
+              alt={`${standardImage.title}`}
               width={100}
               height={100}
               className={styles.img}
             />
-            <h3 className={cn(styles['card-title'], 'secondary-color')}>{card.title}</h3>
-            <p className={styles.text}>{card.text}</p>
+            <h3 className={cn(styles['card-title'], 'secondary-color')}>{standardImage.title}</h3>
+            <p className={styles.text}>{standardImage.text}</p>
           </li>
         ))}
       </ul>
