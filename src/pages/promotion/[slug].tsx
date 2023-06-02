@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import type { TypedObject } from '@portabletext/types';
 import cn from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { IPromotionCard } from '@/components/PromotionCard/PromotionCard';
@@ -18,8 +19,14 @@ interface IPromotion {
 export default function Promotion({ promotion }: IPromotion) {
   return (
     <article className={styles.wrapper}>
-      <Link className="paragraph" href={'/promotions'}>
-        &larr; Назад
+      <Link className={cn(styles.back, 'paragraph')} href={'/promotions'}>
+        <Image
+          src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
+          alt="prev arrow"
+          width={30}
+          height={30}
+        />
+        Назад
       </Link>
       <div className={cn(styles.title, 'heading2')}>
         <PortableText value={promotion.title} />
@@ -29,7 +36,7 @@ export default function Promotion({ promotion }: IPromotion) {
       </div>
       <footer className={cn(styles.footer, 'paragraph')}>{promotion.footer}</footer>
       <Link className={cn(styles.backBtn, 'paragraph')} href={'/promotions'}>
-        Назад
+        Смотреть другие акции
       </Link>
     </article>
   );
