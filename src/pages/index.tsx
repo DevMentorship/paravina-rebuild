@@ -53,7 +53,7 @@ export default function Home({ posts, faq, promotions }: IProps) {
         ))}
       </section>
 
-      <Promotions promotion={promotions} />
+      <Promotions promotion={promotions} slug={''} />
       <Tabs />
       <Standards />
       <Gallery />

@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 0 40px 40px;
+}
+
+.title p {
+  font-weight: 700;
+}
+
+.title p strong {
+  color: #fac0aa;
+}
+
+.body {
+  margin-top: 40px;
+}
+
+.body ul {
+  margin: 15px 40px;
+}
+
+.footer {
+  margin-top: 40px;
+}
