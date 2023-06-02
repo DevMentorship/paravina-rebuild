@@ -3,20 +3,8 @@ import Link from 'next/link';
 
 import styles from '@/components/Footer/Footer.module.css';
 
-// Temporary hide pages
-// const pages = [
-//   { label: 'Акции', href: '/' },
-//   { label: 'Услуги', href: '/' },
-//   { label: 'О клинике', href: '/' },
-// ];
-
 export const Footer = () => (
   <footer className={styles.footer}>
-    {/* {pages.map(({ label, href }, index) => (
-        <Link href={href} key={index} className={styles.link}>
-          {label}
-        </Link>
-      ))} */}
     <section className={styles.container}>
       <div className={styles.additional}>
         <div className={styles.adress}>
@@ -46,10 +34,20 @@ export const Footer = () => (
       <div className={styles.subscribe}>
         <p>ПОДПИШИТЕСЬ</p>
         <Link href="/">
-          <Image src="/vk.svg" width="90" height="90" alt="VK" />
+          <Image
+            src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609950/Paravina-rebuild/vk_awkwtt.svg"
+            width="90"
+            height="90"
+            alt="VK"
+          />
         </Link>
         <Link href="/">
-          <Image src="/youtube.svg" width="90" height="90" alt="YouTub" />
+          <Image
+            src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609944/Paravina-rebuild/youtube_ta7dh0.svg"
+            width="90"
+            height="90"
+            alt="YouTub"
+          />
         </Link>
       </div>
     </section>
