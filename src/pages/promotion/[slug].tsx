@@ -1,39 +1,41 @@
-// import { client } from '@/lib/client';
+import { IPromotionCards } from '@/components/Promotions/Promotions';
+import { client } from '@/lib/client';
 
-// export default function Promotion({ promotion }) {
-//   console.log(promotion.slug.current);
-
-//   return (
-//     <>
-//       <h1>Promotion Page</h1>
-//       <p>{promotion.title}</p>
-//     </>
-//   );
+// interface IPromotion {
+//   promotion:
 // }
 
-// export async function getStaticPaths() {
-//   const query = `*[_type == "promotion"] {
-//       slug {
-//           current
-//       }
-//   }`;
+export default function Promotion({ promotion }: IPromotion) {
+  return (
+    <>
+      <p>{promotion.title}</p>
+    </>
+  );
+}
 
-//   const promotions = await client.fetch(query);
-//   const paths = promotions.map((promotion) => ({
-//     params: {
-//       slug: promotion.slug.current,
-//     },
-//   }));
+export async function getStaticPaths() {
+  const query = `*[_type == "promotion"] {
+      slug {
+          current
+      }
+  }`;
 
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//   };
-// }
+  const promotions = await client.fetch(query);
+  const paths = promotions.map((promotion: IPromotionCards) => ({
+    params: {
+      slug: promotion.slug.current,
+    },
+  }));
 
-// export const getStaticProps = async ({ params: { slug } }) => {
-//   const query = `*[_type == "promotion" && slug.current == '${slug}'][0]`;
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+}
 
-//   const promotion = await client.fetch(query);
-//   return { props: { promotion } };
-// };
+export const getStaticProps = async ({ params: { slug } }: IPromotionCards) => {
+  const query = `*[_type == "promotion" && slug.current == '${slug}'][0]`;
+
+  const promotion = await client.fetch(query);
+  return { props: { promotion } };
+};

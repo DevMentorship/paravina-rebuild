@@ -1,42 +1,36 @@
+import type { TypedObject } from '@portabletext/types';
 import cn from 'classnames';
 import Image from 'next/image';
-// import Link from 'next/link';
-import { useState } from 'react';
-
-import { PromotionPopup } from '@/components/PromotionPopup/PromotionPopup';
+import Link from 'next/link';
 
 import styles from './PromotionCard.module.css';
 
 export interface IPromotionCard {
-  description: string;
-  firstWords: string;
-  header: string;
-  text: string;
+  body: TypedObject;
   footer: string;
-  alt: string;
-  url: string;
+  slug: {
+    current: string;
+  };
+  title: string;
 }
 
-export const PromotionCard = ({ firstWords, description, header, text, footer, alt, url }: IPromotionCard) => {
-  const [open, setOpen] = useState(false);
+export const PromotionCard = ({ body, footer, slug, title }: IPromotionCard) => {
+  console.log();
 
   return (
     <li className={cn(styles.card, 'invisible-child')} data-child>
       {/* TODO: Сделать дату на картинке настраиваемой */}
-      <Image src={url} alt={alt} width="0" height="0" sizes="100vw" className={styles.img} />
+      {/* <Image src={} alt={} width="0" height="0" sizes="100vw" className={styles.img} /> */}
 
       <div className={styles.content}>
         <div className={styles.wrapper}>
-          <span className="paragraph primary-color">{firstWords}</span>
-          <p className="paragraph">{description}</p>
+          <span className="paragraph primary-color">{}</span>
+          <p className="paragraph">{title}</p>
         </div>
 
-        {/* <Link href={`/promotions/${encodeURIComponent(slug)}`}>dffd</Link> */}
-
-        <button className={cn(styles.button, 'third-color')} onClick={() => setOpen(true)}>
+        <Link className={cn(styles.button, 'third-color')} href={`/promotion/${encodeURIComponent(slug.current)}`}>
           Подробнее
-        </button>
-        <PromotionPopup active={open} toggle={setOpen} header={header} text={text} footer={footer} />
+        </Link>
       </div>
     </li>
   );

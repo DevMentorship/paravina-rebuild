@@ -28,12 +28,10 @@ interface IProps {
   posts: IPost[];
   total: number;
   faq: IFaq[];
-  promotionCard: IPromotionCard[];
-  promotions: any;
+  promotions: IPromotionCard[];
 }
 
-export default function Home({ posts, faq, promotionCard, promotions }: IProps) {
-  console.log(promotions);
+export default function Home({ posts, faq, promotions }: IProps) {
   return (
     <>
       <Head>
@@ -55,7 +53,7 @@ export default function Home({ posts, faq, promotionCard, promotions }: IProps) 
         ))}
       </section>
 
-      <Promotions promotionCards={promotionCard} />
+      <Promotions promotion={promotions} />
       <Tabs />
       <Standards />
       <Gallery />
@@ -67,7 +65,8 @@ export default function Home({ posts, faq, promotionCard, promotions }: IProps) 
 export const getStaticProps = async () => {
   const query = `{
     "posts": *[_type == "post"] | order(publishedAt desc)  {_id, publishedAt, title, body, slug},
-    "faq": *[_type == "faq"], "promotionCard": *[_type == "promotionCard"],
+    "faq": *[_type == "faq"], 
+    "promotionCard": *[_type == "promotionCard"],
     "promotions": *[_type == "promotion"],
   }`;
   const result = await client.fetch(query);
