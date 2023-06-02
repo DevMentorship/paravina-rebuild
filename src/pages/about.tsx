@@ -1,4 +1,5 @@
 import { TypedObject } from '@portabletext/types';
+import Head from 'next/head';
 
 import { AboutHero } from '@/components/AboutHero/AboutHero';
 import { IReview, Reviews } from '@/components/Reviews/Reviews';
@@ -20,6 +21,10 @@ interface IProps {
 export default function About({ reviews, about, team }: IProps) {
   return (
     <>
+      <Head>
+        <title>Паравина - О Клинике</title>
+      </Head>
+
       <AboutHero image={about.image} title={about.title} descr={about.descr} />
       <Team teamImages={team} />
       <Reviews reviews={reviews} />

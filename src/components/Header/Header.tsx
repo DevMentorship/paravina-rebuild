@@ -9,8 +9,9 @@ import styles from '@/components/Header/Header.module.css';
 import { Hero } from '../Hero/Hero';
 
 const pages = [
-  { label: 'Акции', href: '/' },
-  { label: 'Услуги', href: '/' },
+  { label: 'Акции', href: '/promotions' },
+  { label: 'Услуги', href: '/services' },
+  { label: 'Цены', href: '/price' },
   { label: 'О клинике', href: '/about' },
 ];
 
@@ -24,15 +25,17 @@ export const Header = ({ isVisible }: IHeaderProps) => {
   return (
     <header className={styles['header-wrapper']}>
       <div className={cn(isVisible && styles['header-visible'], styles[`header`])}>
-        <Image
-          src={
-            'https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685611696/Paravina-rebuild/header-logo_yb87e1.png'
-          }
-          width={384}
-          height={110}
-          alt="лого"
-          className={cn(styles['header-logo'])}
-        />
+        <Link href="/">
+          <Image
+            src={
+              'https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685611696/Paravina-rebuild/header-logo_yb87e1.png'
+            }
+            width={384}
+            height={110}
+            alt="лого"
+            className={cn(styles['header-logo'])}
+          />
+        </Link>
         <nav
           className={cn(styles['header-nav'], {
             [styles.active]: open,

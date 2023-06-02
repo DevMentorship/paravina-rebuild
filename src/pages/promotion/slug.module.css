@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 40px;
+}
+
+.back {
+  display: flex;
+}
+
+.back img {
+  height: 20px;
+  object-fit: contain;
+  transform: rotate(180deg);
+}
+
+.title p {
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.title p strong {
+  color: #fac0aa;
+}
+
+.body {
+  margin-top: 40px;
+}
+
+.body ul {
+  margin: 15px 40px;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+.backBtn {
+  display: inline-flex;
+  padding: 10px;
+  margin-top: 20px;
+  color: #ffffff;
+  background-color: #fac0aa;
+  border-radius: 5px;
+}
+
+.icon {
+  margin-right: 5px;
+  filter: brightness(5);
+  transform: scale(-1);
+}
