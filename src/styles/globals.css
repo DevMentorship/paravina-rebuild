@@ -179,8 +179,13 @@ a {
 }
 
 .hamburger {
+  position: relative;
+  z-index: 1;
   display: none;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 .hamburger .line {
@@ -188,7 +193,7 @@ a {
   width: 50px;
   height: 5px;
   margin: 8px auto;
-  background-color: #ecf0f1;
+  background-color: #000000;
   -webkit-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
