@@ -5,7 +5,6 @@ import { urlFor } from '@/lib/client';
 import styles from './Promotions.module.css';
 
 export interface IPromotionCards {
-  slug: string;
   promotion: IPromotionCard[];
 }
 
