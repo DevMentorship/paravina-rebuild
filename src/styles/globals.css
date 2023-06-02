@@ -17,8 +17,18 @@ body {
 body,
 button,
 a {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
   font-size: 1.8rem;
   line-height: 1.2;
   color: #4c5056;
@@ -104,7 +114,7 @@ a {
 
 .invisible-child {
   opacity: 0;
-  transition: transform ease-in 0.5s, opacity ease-in 0.8s;
+  transition: transform ease-in .5s, opacity ease-in .8s;
   transform: translateY(40%);
 }
 
@@ -169,13 +179,13 @@ a {
 }
 
 .hamburger {
+  position: relative;
+  z-index: 1;
   display: none;
+  cursor: pointer;
   background-color: transparent;
   border: none;
   outline: none;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;  
 }
 
 .hamburger .line {
@@ -184,9 +194,9 @@ a {
   height: 5px;
   margin: 8px auto;
   background-color: #000000;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .hamburger.is-active .line:nth-child(2) {

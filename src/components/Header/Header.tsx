@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+
 import styles from '@/components/Header/Header.module.css';
 
 import { Hero } from '../Hero/Hero';
@@ -45,6 +46,7 @@ export const Header = ({ isVisible }: IHeaderProps) => {
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
+          <span className="visually-hidden">Меню</span>
         </button>
       </div>
       {!isVisible && <Hero />}
