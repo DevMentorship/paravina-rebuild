@@ -3,7 +3,6 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { KeyboardEvent } from 'react';
 import styles from '@/components/Header/Header.module.css';
 
 import { Hero } from '../Hero/Hero';
@@ -36,18 +35,17 @@ export const Header = ({ isVisible }: IHeaderProps) => {
             </Link>
           ))}
         </nav>
-        <div
+        <button
           className={cn('hamburger', {
             'is-active': open,
           })}
           onClick={() => setOpen(!open)}
-          role="button"
           tabIndex={0}
         >
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
-        </div>
+        </button>
       </div>
       {!isVisible && <Hero />}
     </header>
