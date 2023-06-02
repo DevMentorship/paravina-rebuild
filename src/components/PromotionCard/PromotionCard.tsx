@@ -24,7 +24,7 @@ export const PromotionCard = ({ slug, title, mainImage, alt, dateImage, icon }: 
   <li className={cn(styles.card, 'invisible-child')} data-child>
     <div className={cn(styles.date, 'paragraph')}>
       {dateImage}
-      <Image src={icon} alt={''} width="60" height="60" />
+      <Image src={icon} alt={'icon'} width="60" height="60" />
     </div>
     <Image src={mainImage} alt={alt} width="0" height="0" sizes="100vw" className={styles.cardImg} />
 

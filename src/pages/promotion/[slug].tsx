@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import type { TypedObject } from '@portabletext/types';
 import cn from 'classnames';
+import Link from 'next/link';
 
 import { IPromotionCard } from '@/components/PromotionCard/PromotionCard';
 import { client } from '@/lib/client';
@@ -17,6 +18,9 @@ interface IPromotion {
 export default function Promotion({ promotion }: IPromotion) {
   return (
     <article className={styles.wrapper}>
+      <Link className="paragraph" href={'/promotions'}>
+        &larr; Назад
+      </Link>
       <div className={cn(styles.title, 'heading2')}>
         <PortableText value={promotion.title} />
       </div>
@@ -24,6 +28,9 @@ export default function Promotion({ promotion }: IPromotion) {
         <PortableText value={promotion.body} />
       </div>
       <footer className={cn(styles.footer, 'paragraph')}>{promotion.footer}</footer>
+      <Link className={cn(styles.backBtn, 'paragraph')} href={'/promotions'}>
+        Назад
+      </Link>
     </article>
   );
 }

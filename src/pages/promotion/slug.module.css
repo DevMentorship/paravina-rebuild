@@ -1,8 +1,9 @@
 .wrapper {
-  padding: 0 40px 40px;
+  padding: 40px;
 }
 
 .title p {
+  margin-top: 20px;
   font-weight: 700;
 }
 
@@ -20,4 +21,19 @@
 
 .footer {
   margin-top: 40px;
+}
+
+.backBtn {
+  display: inline-flex;
+  padding: 10px;
+  margin-top: 20px;
+  color: #ffffff;
+  background-color: #fac0aa;
+  border-radius: 5px;
+}
+
+.icon {
+  margin-right: 5px;
+  filter: brightness(5);
+  transform: scale(-1);
 }
