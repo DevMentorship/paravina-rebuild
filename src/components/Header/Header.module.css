@@ -45,6 +45,10 @@
   transform-origin: left;
 }
 
+.header-link.header-link-active::before {
+  transform: scaleX(1);
+}
+
 .header-nav {
   display: flex;
   gap: 60px;
