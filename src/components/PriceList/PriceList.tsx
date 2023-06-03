@@ -1,7 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
-
-import useElementOnScreen from '@/hooks/useElementOnScreen';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './PriceList.module.css';
 
@@ -15,25 +13,34 @@ export interface IPriceList {
 }
 
 export const PriceList = ({ price }: IPrice) => {
-  const [open, setOpen] = useState(false);
-  const { ref } = useElementOnScreen();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const contentEl = contentRef.current as HTMLDivElement;
+      setMaxHeight(contentEl.scrollHeight);
+    } else {
+      setMaxHeight(0);
+    }
+  }, [isOpen]);
 
   return (
-    <section className="container" ref={ref}>
-      <div className={cn(styles.prices, 'invisible-child')} data-child>
-        <h2 className={styles.title} data-child>
+    <section className="container">
+      <div className={cn(styles.prices, isOpen && styles.active)}>
+        <h2 className={styles.title}>
           <span>Общие работы</span>
-          <button className={styles.button} onClick={() => setOpen(!open)}>
-            {open ? <>-</> : <>+</>}
-          </button>
+          <button className={cn(styles.trigger)} onClick={() => setOpen(!isOpen)}></button>
         </h2>
-        {open &&
-          price?.map((elem, index) => (
+        <div className={styles.container} ref={contentRef} style={{ maxHeight }}>
+          {price?.map((elem, index) => (
             <p className={styles.list} key={index}>
               <span>{elem.title}</span>
               <span>{elem.description}</span>
             </p>
           ))}
+        </div>
       </div>
     </section>
   );

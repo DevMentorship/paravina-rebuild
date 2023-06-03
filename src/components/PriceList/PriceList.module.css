@@ -1,5 +1,6 @@
 .prices {
   padding: 40px;
+  overflow: hidden;
   color: #4c5056;
   background-color: #fac0aa;
   border-radius: 15px;
@@ -11,7 +12,6 @@
   justify-content: space-between;
   padding: 0 40px;
   font-size: 6rem;
-  line-height: 87px;
 }
 
 .button {
@@ -26,11 +26,10 @@
   gap: 300px;
   justify-content: space-between;
   padding: 40px;
+  overflow: hidden;
   font-size: 3rem;
   line-height: 58px;
   border-top: 1px dashed #4c5056;
-  transition: opacity 1s;
-  animation: fadeIn 1s;
 }
 
 @media screen and (max-width: 1200px) {
@@ -43,12 +42,31 @@
   border-bottom: 1px dashed #4c5056;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+.container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
 
-  to {
-    opacity: 1;
-  }
+.trigger {
+  display: flex;
+  align-items: center;
+  font-size: 7rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.trigger:focus-visible {
+  background-color: #f5f5f5;
+}
+
+.trigger::after {
+  margin-left: auto;
+  content: '+';
+  transition: transform .2s ease;
+}
+
+.active .trigger::after {
+  transform: rotate(45deg);
 }

@@ -28,7 +28,7 @@ export const FaqItem = ({ data }: IProps) => {
 
   return (
     <div className={cn(styles.wrapper, isOpen && styles.active)}>
-      <button className={cn(styles.trigger, 'heading4')} onClick={() => setOpen(!isOpen)}>
+      <button className={cn(styles.trigger, styles.active)} onClick={() => setOpen(!isOpen)}>
         {data.title}
       </button>
       <div className={styles.container} ref={contentRef} style={{ maxHeight }}>
