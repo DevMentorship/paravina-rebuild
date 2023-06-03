@@ -2,6 +2,7 @@
 import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import styles from '@/components/Header/Header.module.css';
@@ -21,6 +22,7 @@ interface IHeaderProps {
 
 export const Header = ({ isVisible }: IHeaderProps) => {
   const [open, setOpen] = useState(false);
+  const route = useRouter();
 
   return (
     <header className={styles['header-wrapper']}>
@@ -42,7 +44,11 @@ export const Header = ({ isVisible }: IHeaderProps) => {
           })}
         >
           {pages.map(({ label, href }, index) => (
-            <Link href={href} key={index} className={styles['header-link']}>
+            <Link
+              href={href}
+              key={index}
+              className={cn(styles['header-link'], href === route.asPath && styles['header-link-active'])}
+            >
               {label}
             </Link>
           ))}
