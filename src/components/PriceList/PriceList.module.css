@@ -6,7 +6,7 @@
   border-radius: 15px;
 }
 
-.title {
+.header {
   display: flex;
   gap: 100px;
   justify-content: space-between;

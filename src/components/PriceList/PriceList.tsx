@@ -3,16 +3,17 @@ import { useEffect, useRef, useState } from 'react';
 
 import styles from './PriceList.module.css';
 
-export interface IPrice {
-  price: IPriceList[];
+export interface IPrices {
+  prices: IPriceList[];
 }
 
 export interface IPriceList {
   title: string;
-  description: number;
+  service: string;
+  price: string;
 }
 
-export const PriceList = ({ price }: IPrice) => {
+export const PriceList = ({ prices }: IPrices) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState(0);
   const [isOpen, setOpen] = useState(false);
@@ -29,15 +30,15 @@ export const PriceList = ({ price }: IPrice) => {
   return (
     <section className="container">
       <div className={cn(styles.prices, isOpen && styles.active)}>
-        <h2 className={styles.title}>
+        <h2 className={styles.header}>
           <span>Общие работы</span>
           <button className={cn(styles.trigger)} onClick={() => setOpen(!isOpen)}></button>
         </h2>
         <div className={styles.container} ref={contentRef} style={{ maxHeight }}>
-          {price?.map((elem, index) => (
+          {prices?.map((price: IPriceList, index) => (
             <p className={styles.list} key={index}>
-              <span>{elem.title}</span>
-              <span>{elem.description}</span>
+              <span>{price.title}</span>
+              <span>{price.price}</span>
             </p>
           ))}
         </div>

@@ -1,16 +1,16 @@
 import Head from 'next/head';
 
-import { IPriceList, PriceList } from '@/components/PriceList/PriceList';
 import { IPromotionCard } from '@/components/PromotionCard/PromotionCard';
 import { Promotions } from '@/components/Promotions/Promotions';
 import { client } from '@/lib/client';
+import { IPriceList, PriceList } from '@/components/PriceList/PriceList';
 
 interface IProps {
   promotions: IPromotionCard[];
-  price: IPriceList[];
+  prices: IPriceList[];
 }
 
-export default function Home({ promotions, price }: IProps) {
+export default function Home({ promotions, prices }: IProps) {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ export default function Home({ promotions, price }: IProps) {
         Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
       </h2>
 
-      <PriceList price={price} />
+      <PriceList prices={prices} />
       <Promotions promotion={promotions} />
     </>
   );
@@ -31,10 +31,9 @@ export default function Home({ promotions, price }: IProps) {
 export const getStaticProps = async () => {
   const query = `{
     "promotions": *[_type == "promotion"],
-    "price": *[_type == "price"],
+    "prices": *[_type == "price"],
   }`;
 
-  const { promotions, price } = await client.fetch(query);
-
-  return { props: { promotions, price } };
+  const { promotions, prices } = await client.fetch(query);
+  return { props: { promotions, prices } };
 };
