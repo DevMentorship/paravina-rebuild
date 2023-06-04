@@ -1,13 +1,13 @@
 import Head from 'next/head';
 
-import { Faq, IFaq } from '@/components/Faq/Faq';
+import { Accordion, IAccordion } from '@/components/Accordion/Accordion';
 import { Gallery, IGalleryImages } from '@/components/Gallery/Gallery';
 import { IStandardImage, Standards } from '@/components/Standards/Standards';
 import { ITabImages, Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
 
 interface IProps {
-  faq: IFaq[];
+  faq: IAccordion[];
   standards: IStandardImage[];
   gallery: IGalleryImages[];
   stomatology: ITabImages[];
@@ -21,15 +21,10 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
         <title>Паравина</title>
       </Head>
 
-      <h1 className="visually-hidden">Стоматология Паравина</h1>
-      <h2 className="visually-hidden">
-        Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
-      </h2>
-
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />
-      <Faq items={faq} />
+      <Accordion items={faq} title="Часто задаваемые вопросы" />
     </>
   );
 }
