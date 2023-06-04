@@ -8,17 +8,19 @@ import styles from './Hero.module.css';
 
 export const Hero = () => {
   const { ref } = useElementOnScreen();
+  const width = 1920;
+  const height = 1337;
 
   return (
-    <section className={styles.hero} ref={ref}>
-      <div>
-        <h2 className={cn(styles['hero-title'])}>Доверьте свою улыбку профессионалам!</h2>
-        <p className={cn(styles['hero-desc'])}>
+    <section className={styles.hero} style={{ aspectRatio: width/height }}>
+      <div className='container' ref={ref}>
+        <h2 className={cn(styles.title, 'heading1')}><strong>Доверьте свою улыбку профессионалам!</strong></h2>
+        <p className={cn(styles.description, 'heading2')}>
           Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
         </p>
-        <div className={styles['hero-cta']}>
-          <button className={cn(styles['hero-cta-button'])}>Записаться</button>
-          <div className={styles['hero-cta-video']}>
+        <div className={styles.cta}>
+          <button className={cn(styles['cta-button'], 'heading3')}><strong>Записаться</strong></button>
+          <div className={styles['cta-video']}>
             <Link href="/" aria-label="Смотреть видео о нас">
               <Image
                 src="https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685609958/Paravina-rebuild/watch-video-icon_czvwxk.png"
@@ -27,17 +29,12 @@ export const Hero = () => {
                 height={100}
               />
             </Link>
-            <p>Смотреть видео о нас</p>
+            <p className='heading3'>Смотреть видео о нас</p>
           </div>
         </div>
       </div>
-      <Image
-        className={styles['hero-background']}
-        src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685613614/Paravina-rebuild/hero-bg_je0zzs.jpg"
-        alt=""
-        width={1920}
-        height={1337}
-      />
+      <div className={styles.image} style={{ backgroundImage: "url(https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685613614/Paravina-rebuild/hero-bg_je0zzs.jpg)" }}>
+      </div>
     </section>
   );
 };
