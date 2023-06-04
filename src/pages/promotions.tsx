@@ -15,11 +15,6 @@ export default function Home({ promotions }: IProps) {
         <title>Паравина - Акции</title>
       </Head>
 
-      <h1 className="visually-hidden">Стоматология Паравина</h1>
-      <h2 className="visually-hidden">
-        Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
-      </h2>
-
       <Promotions promotion={promotions} />
     </>
   );

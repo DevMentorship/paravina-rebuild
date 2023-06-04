@@ -31,10 +31,14 @@
   transform: rotate(45deg);
 }
 
-.container {
+.content {
   max-height: 0;
   overflow: hidden;
   transition: max-height .3s ease;
+}
+
+.content table {
+  width: 100%;
 }
 
 .description {

@@ -15,8 +15,10 @@ export const Page = ({ children }: { children?: ReactNode }) => {
     <>
       <Header isVisible={route.asPath !== '/'} />
       <main>
-        <h1 className="visually-hidden">Unie espresso bar - Menu</h1>
-        <h2 className="visually-hidden">Первый эспрессо бар в Самаре</h2>
+        <h1 className="visually-hidden">Стоматология Паравина</h1>
+        <h2 className="visually-hidden">
+          Авторская клиника эстетической стоматологии и косметологии Екатерины Паравиной в городе Самара.
+        </h2>
         {children}
       </main>
       <Footer />

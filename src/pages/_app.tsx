@@ -22,17 +22,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="Стоматология Паравина" property="og:image:alt" />
         <meta
           property="og:title"
-          content="Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной."
+          content="Авторская клиника эстетической стоматологии и косметологии Екатерины Паравиной в городе Самара."
         />
         <meta
           property="og:description"
-          content="Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной."
+          content="Авторская клиника эстетической стоматологии и косметологии Екатерины Паравиной в городе Самара."
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="627" />
         <meta content="Доктор Паравина" property="og:site_name"></meta>
         <meta
-          content="Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной."
+          content="Авторская клиника эстетической стоматологии и косметологии Екатерины Паравиной в городе Самара."
           name="description"
         />
         <meta content="#110c11" name="msapplication-TileColor" />
