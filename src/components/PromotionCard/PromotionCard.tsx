@@ -26,7 +26,7 @@ export const PromotionCard = ({ slug, title, mainImage, alt, dateImage, icon }: 
       {dateImage}
       <Image src={icon} alt={'icon'} width="60" height="60" />
     </div>
-    <Image src={mainImage} alt={alt} width="0" height="0" sizes="100vw" className={styles.cardImg} />
+    <Image src={mainImage} alt={alt} width="0" height="0" sizes="100vw" className={styles.img} />
 
     <div className={styles.content}>
       <div className={styles.wrapper}>
