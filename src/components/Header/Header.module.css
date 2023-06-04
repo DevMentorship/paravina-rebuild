@@ -10,8 +10,13 @@
   padding: 30px 50px 40px;
 }
 
+.header > a {
+  flex-shrink: 0;
+}
+
 .header-logo {
   filter: brightness(3);
+  object-fit: contain;
 }
 
 .header-visible {
@@ -21,7 +26,6 @@
 
 .header-link {
   position: relative;
-  font-size: 35px;
   color: #ffffff;
   text-decoration: none;
 }
@@ -69,11 +73,11 @@
   }
 
   .header-logo {
-    width: 200px;
+    width: 250px;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .header-nav {
     position: fixed;
     top: 0;
@@ -89,10 +93,6 @@
     margin: 0;
     background-color: #c3c3c3;
     transition: left 1s;
-  }
-
-  .header-link {
-    font-size: 5rem;
   }
 
   .active {

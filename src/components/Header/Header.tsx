@@ -47,7 +47,7 @@ export const Header = ({ isVisible }: IHeaderProps) => {
             <Link
               href={href}
               key={index}
-              className={cn(styles['header-link'], href === route.asPath && styles['header-link-active'])}
+              className={cn(styles['header-link'], 'heading2', href === route.asPath && styles['header-link-active'])}
             >
               {label}
             </Link>
