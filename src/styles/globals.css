@@ -74,6 +74,14 @@ a {
   color: #ffffff;
 }
 
+.background-base {
+  background: #ffffff;
+}
+
+.background-accent-1 {
+  background: #fac0aa;
+}
+
 .heading1 {
   font-size: 3.6rem;
   line-height: 1.2;
