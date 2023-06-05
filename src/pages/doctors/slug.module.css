@@ -25,10 +25,6 @@
   margin-top: 40px;
 }
 
-.body ul {
-  margin: 15px 40px;
-}
-
 .footer {
   margin-top: 40px;
 }
@@ -42,8 +38,3 @@
   border-radius: 5px;
 }
 
-.icon {
-  margin-right: 5px;
-  filter: brightness(5);
-  transform: scale(-1);
-}
