@@ -1,9 +1,13 @@
 import cn from 'classnames';
 import Image from 'next/image';
+import { useState } from 'react';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import useElementOnScreen from '@/hooks/useElementOnScreen';
 import { urlFor } from '@/lib/client';
 
+import { GalleryPopup } from '../GalleryPopup/GalleryPopup';
 import styles from './Gallery.module.css';
 
 export interface IGalleryImages {
@@ -16,6 +20,23 @@ interface IGalleryProps {
 
 export const Gallery = ({ galleryImages }: IGalleryProps) => {
   const { ref } = useElementOnScreen();
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<IGalleryImages | null>(null);
+
+  const openPopup = () => {
+    setIsOpenPopup(true);
+    document.documentElement.style.overflow = 'hidden';
+  };
+
+  const closePopup = () => {
+    setIsOpenPopup(false);
+    document.documentElement.style.overflow = '';
+  };
+
+  const handleImageClick = (galleryImage: IGalleryImages | null) => {
+    setSelectedImage(galleryImage);
+    openPopup();
+  };
 
   return (
     <section className="container">
@@ -26,6 +47,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
       <div className={styles.gallery} ref={ref}>
         {galleryImages.map((galleryImage, idx) => (
           <Image
+            onClick={() => handleImageClick(galleryImage)}
             key={idx}
             src={urlFor(galleryImage).url()}
             alt={`${galleryImage.alt}`}
@@ -36,6 +58,64 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
           />
         ))}
       </div>
+
+      <GalleryPopup isOpen={isOpenPopup} isClose={closePopup} selectedImage={selectedImage} />
+
+      <Swiper
+        className={styles.swiperSlider}
+        modules={[Navigation]}
+        navigation={{
+          nextEl: '.next',
+          prevEl: '.prev',
+        }}
+        spaceBetween={40}
+        loop={true}
+        slidesPerView={1}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          1200: {
+            slidesPerView: 3,
+          },
+        }}
+      >
+        {galleryImages.map((galleryImage, index) => (
+          <SwiperSlide key={index}>
+            <div className={styles.item}>
+              <Image
+                width={360}
+                height={340}
+                src={urlFor(galleryImage).url()}
+                alt={galleryImage.alt}
+                className={styles.img}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+        <div className={styles.arrows}>
+          {/* TODO: fix arrow svg (vertical) */}
+          <button className={cn(styles.prev, 'prev')}>
+            <span className="visually-hidden">Prev Slide</span>
+            <Image
+              src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
+              alt="prev arrow"
+              width={30}
+              height={30}
+            />
+          </button>
+
+          <button className={cn(styles.next, 'next')}>
+            <span className="visually-hidden">Next Slide</span>
+            <Image
+              src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
+              alt="next arrow"
+              width={30}
+              height={30}
+            />
+          </button>
+        </div>
+      </Swiper>
     </section>
   );
 };
