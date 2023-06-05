@@ -16,6 +16,7 @@ enum errMessage {
 
 interface IPopupProps {
   popupRef: React.RefObject<HTMLDialogElement>;
+  closeModal: (ref: HTMLDialogElement) => void;
 }
 
 type IFormFields = {
@@ -38,14 +39,14 @@ const defaultFormFields = {
   agreement: false,
 };
 
-export const Popup = ({ popupRef }: IPopupProps) => {
+export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [submitStatus, setSubmitStatus] = useState(defaultSubmitStatus);
   const { name, phone, note, agreement } = formFields;
 
   popupRef.current?.addEventListener('click', (e) => {
     if (e.target instanceof HTMLDialogElement && !e.target.closest('form')) {
-      e.target.close();
+      closeModal(e.target);
     }
   });
 
@@ -110,7 +111,7 @@ export const Popup = ({ popupRef }: IPopupProps) => {
       }
       setTimeout(() => {
         setSubmitStatus({ ...submitStatus, status: '' });
-        popupRef.current?.close();
+        closeModal(popupRef.current as HTMLDialogElement)
       }, 6000);
     }
 
@@ -128,7 +129,7 @@ export const Popup = ({ popupRef }: IPopupProps) => {
     <dialog className={cn(styles.popup)} ref={popupRef}>
       <button
         className={cn(styles['popup-close'])}
-        onClick={() => popupRef.current?.close()}
+        onClick={(e) => closeModal(popupRef.current as HTMLDialogElement)}
         formMethod="dialog"
         type="button"
       >

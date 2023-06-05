@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 
+import { useScrollBlock } from '../../hooks/useScrollBlock';
 import useElementOnScreen from '@/hooks/useElementOnScreen';
 
 import { Popup } from '../Popup/Popup';
@@ -14,6 +15,27 @@ export const Hero = () => {
   const width = 1920;
   const height = 1337;
 
+  const [blockScroll, allowScroll] = useScrollBlock();
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (event.code === 'Escape') {
+      allowScroll();
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  }
+
+  const openModal = (ref: HTMLDialogElement) => {
+    ref.showModal();
+    blockScroll();
+    document.addEventListener('keydown', handleKeyDown);
+  }
+
+  const closeModal = (ref: HTMLDialogElement) => {
+    document.removeEventListener('keydown', handleKeyDown);
+    allowScroll();
+    ref.close();
+  };
+
   return (
     <section className={styles.hero} style={{ aspectRatio: width / height }}>
       <div className="container" ref={ref}>
@@ -24,7 +46,7 @@ export const Hero = () => {
           Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
         </p>
         <div className={styles.cta}>
-          <button className={cn(styles['cta-button'], 'heading3')} onClick={() => popupRef.current?.showModal()}>
+          <button className={cn(styles['cta-button'], 'heading3')} onClick={() => openModal(popupRef.current as HTMLDialogElement)}>
             <strong>Записаться</strong>
           </button>
           <div className={styles['cta-video']}>
@@ -47,7 +69,7 @@ export const Hero = () => {
             'url(https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685613614/Paravina-rebuild/hero-bg_je0zzs.jpg)',
         }}
       ></div>
-      <Popup popupRef={popupRef} />
+      <Popup popupRef={popupRef} closeModal={closeModal} />
     </section>
   );
 };
