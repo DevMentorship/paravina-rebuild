@@ -15,7 +15,7 @@ interface IDoctorProps {
 export default function Doctor({ doctor }: IDoctorProps) {
   return (
     <article className={styles.wrapper}>
-      <Link className={cn(styles['back'], 'paragraph')} href={'/about'}>
+      <Link className={cn(styles.back, 'paragraph')} href={'/about'}>
         <Image
           src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
           alt="назад"
