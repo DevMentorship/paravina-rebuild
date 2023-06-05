@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import { AboutHero } from '@/components/AboutHero/AboutHero';
 import { IReview, Reviews } from '@/components/Reviews/Reviews';
-import { IDoctorAbout, Team } from '@/components/Team/Team';
+import { IDoctor, Team } from '@/components/Team/Team';
 import { client } from '@/lib/client';
 
 export interface IAbout {
@@ -15,7 +15,7 @@ export interface IAbout {
 interface IProps {
   reviews: IReview[];
   about: IAbout;
-  doctors: IDoctorAbout[];
+  doctors: IDoctor[];
 }
 
 export default function About({ reviews, about, doctors }: IProps) {
