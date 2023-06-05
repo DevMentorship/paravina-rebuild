@@ -7,7 +7,6 @@ dialog.popup {
   background-color: #f5f5f5;
   color: #4c5056;
   border: none;
-
 }
 
 dialog.popup::backdrop {
@@ -103,10 +102,6 @@ dialog.popup::backdrop {
   align-items: center;
 }
 
-@keyframes FadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 @media screen and (max-width: 425px) {
   dialog.popup {
     width: 100%;
