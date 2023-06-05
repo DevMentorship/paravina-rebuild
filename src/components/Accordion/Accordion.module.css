@@ -2,7 +2,18 @@
   text-align: center;
 }
 
+.btn {
+  text-align: center;
+  border: none;
+}
+
 .accordion {
   width: 100%;
   margin: 40px auto;
+}
+
+.invisible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
 }

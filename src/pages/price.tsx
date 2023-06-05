@@ -15,7 +15,7 @@ export default function Home({ prices }: IProps) {
       </Head>
 
       {prices.map((price, index) => (
-        <Accordion key={index} items={price.items} title={price.title} />
+        <Accordion key={index} items={price.items} title={price.title} isVisible={false} />
       ))}
     </>
   );
