@@ -9,7 +9,7 @@ import { urlFor } from '@/lib/client';
 
 import styles from './Team.module.css';
 
-export interface IDoctorAbout {
+export interface IDoctor {
   doctorImage: string;
   name: string;
   role: string;
@@ -21,7 +21,7 @@ export interface IDoctorAbout {
 }
 
 export interface IDoctors {
-  doctors: IDoctorAbout[];
+  doctors: IDoctor[];
 }
 
 export const Team = ({ doctors }: IDoctors) => (

@@ -3,22 +3,22 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IDoctorAbout } from '@/components/Team/Team';
+import { IDoctor } from '@/components/Team/Team';
 import { client } from '@/lib/client';
 
 import styles from './slug.module.css';
 
-export interface IDoctor {
-  doctor: IDoctorAbout;
+interface IDoctorProps {
+  doctor: IDoctor;
 }
 
-export default function Doctor({ doctor }: IDoctor) {
+export default function Doctor({ doctor }: IDoctorProps) {
   return (
     <article className={styles.wrapper}>
-      <Link className={cn(styles.back, 'paragraph')} href={'/about'}>
+      <Link className={cn(styles['back'], 'paragraph')} href={'/about'}>
         <Image
           src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
-          alt="prev arrow"
+          alt="назад"
           width={30}
           height={30}
         />
@@ -39,7 +39,7 @@ export async function getStaticPaths() {
       }
   }`;
 
-  const doctors: IDoctorAbout[] = await client.fetch(query);
+  const doctors: IDoctor[] = await client.fetch(query);
   const paths = doctors.map((doctor) => ({
     params: {
       slug: doctor.slug.current,
@@ -55,6 +55,6 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
   const query = `*[_type == "doctor" && slug.current == '${params.slug}'][0]`;
 
-  const doctor: IDoctorAbout = await client.fetch(query);
+  const doctor: IDoctor = await client.fetch(query);
   return { props: { doctor } };
 };
