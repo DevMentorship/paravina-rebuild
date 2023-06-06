@@ -13,6 +13,7 @@ const pages = [
   { label: 'Акции', href: '/promotions' },
   { label: 'Услуги', href: '/services' },
   { label: 'Цены', href: '/price' },
+  { label: 'Позвонить', href: '/call' },
   { label: 'О клинике', href: '/about' },
 ];
 
