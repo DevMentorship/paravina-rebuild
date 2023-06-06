@@ -31,7 +31,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
             alt={`${galleryImage.alt}`}
             width={270}
             height={idx == 1 ? 400 : 190}
-            className={cn(idx == 1 ? styles.img__big : styles.img, 'invisible-child')}
+            className={cn(idx == 1 ? styles.img__big : styles.img, 'invisible-child', 'start-animation-side-left')}
             data-child
           />
         ))}
