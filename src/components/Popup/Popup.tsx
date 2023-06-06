@@ -8,8 +8,8 @@ import styles from './Popup.module.css';
 enum errMessage {
   name = 'Имя не может содержать цифры',
   shortName = 'Имя не может быть короче 2 символов',
-  phone = 'Введите номер телефона в формате 8 999 111 1111',
-  note = 'Опишите вашу проблему',
+  phone = 'Введите номер телефона в формате 7 999 111 1111',
+  note = 'Максимальная длина примечания 300 символов',
   agreement = 'Примите соглашение, пожалуйста',
   fetchErr = 'Что-то пошло не так. Попробуйте позже',
 }
@@ -51,13 +51,15 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setSubmitStatus({ ...submitStatus, err: '' });
+
     const { name, value } = event.target;
     if (name === 'agreement') {
       setFormFields({ ...formFields, agreement: !agreement });
       return;
     }
     if (name === 'phone') {
-      const phone = value.replace(/\D/g, '');
+      const phone = value.replace(/[^0-9+\-\s()]/g, '');
       setFormFields({ ...formFields, [name]: phone });
       return;
     }
@@ -71,7 +73,7 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const randomNumber = Math.random();
-        if (randomNumber < 0.1) {
+        if (randomNumber < 0.5) {
           resolve('200');
         } else {
           reject(new Error('400'));
@@ -90,11 +92,12 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
       setSubmitStatus({ ...submitStatus, err: errMessage.shortName });
       return;
     }
-    if (phone.length !== (10 || 11)) {
+    const phoneLength = phone.replace(/\D/g, '').length;
+    if (phoneLength < 10 || phoneLength > 11) {
       setSubmitStatus({ ...submitStatus, err: errMessage.phone });
       return;
     }
-    if (!note) {
+    if (note.length > 300) {
       setSubmitStatus({ ...submitStatus, err: errMessage.note });
       return;
     }
@@ -111,7 +114,7 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
       }
       setTimeout(() => {
         setSubmitStatus({ ...submitStatus, status: '' });
-        closeModal(popupRef.current as HTMLDialogElement)
+        closeModal(popupRef.current as HTMLDialogElement);
       }, 6000);
     }
 
@@ -124,6 +127,22 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
       });
     return;
   };
+
+  function getNoun(number: number, word: string) {
+    let n = Math.abs(number);
+    n %= 100;
+    if (n >= 5 && n <= 20) {
+      return word + 'ов';
+    }
+    n %= 10;
+    if (n === 1) {
+      return word;
+    }
+    if (n >= 2 && n <= 4) {
+      return word + 'а';
+    }
+    return word + 'ов';
+  }
 
   return (
     <dialog className={cn(styles.popup)} ref={popupRef}>
@@ -141,12 +160,23 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
           <h2 className="heading2">Связаться с нами</h2>
           <input required placeholder="Имя" name="name" type="text" value={name} onChange={handleChange} />
           <input required placeholder="Телефон" name="phone" type="text" value={phone} onChange={handleChange} />
-          <textarea required placeholder="Примечание" name="note" value={note} onChange={handleChange} />
+          <textarea placeholder="Примечание" name="note" value={note} onChange={handleChange} />
+          {note.length >= 250 && note.length <= 300 &&(
+            <span className={cn(styles['popup-note-notification'])}>
+              Осталось&nbsp;{300 - note.length}&nbsp;{getNoun(300 - note.length, 'символ')}
+            </span>
+          )}
+          {note.length >= 301 && (
+            <span className={cn(styles['popup-note-notification'], styles.warning) }>
+              Вы превысили лимит на&nbsp;{note.length - 300}&nbsp;{getNoun(note.length, 'символ')}
+            </span>
+          )}
           <div className={cn(styles['popup-submit'])}>
             {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
             <label>
               <input required type="checkbox" name="agreement" checked={agreement} onChange={handleChange} />
-              <a href="/agreement">Согласие с условиями</a>
+              <span>Согласие с&nbsp;</span>
+              <a href="/agreement">условиями</a>
             </label>
             <button type="submit">Отправить</button>
           </div>
