@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { urlFor } from '@/lib/client';
 
+import { Button } from '../Button/Button';
 import styles from './Team.module.css';
 
 export interface ITeamImages {
@@ -59,7 +60,9 @@ export const Team = ({ teamImages }: ITeamProps) => (
                 <div className={styles.name}>{teamImage.name}</div>
                 <div className={styles.role}>{teamImage.role}</div>
               </div>
-              <button className={styles.btn}>О докторе</button>
+              <Button className={styles.btn} type="primary">
+                О докторе
+              </Button>
             </div>
           </SwiperSlide>
         ))}

@@ -32,7 +32,6 @@ export const PromotionCard = ({ slug, title, mainImage, alt, dateImage, icon }: 
       <div className={styles.wrapper}>
         <PortableText value={title} />
       </div>
-
       <Link className={cn(styles.button, 'third-color')} href={`/promotion/${encodeURIComponent(slug.current)}`}>
         Подробнее
       </Link>
