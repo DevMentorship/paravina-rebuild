@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { urlFor } from '@/lib/client';
 
@@ -14,6 +14,14 @@ export interface IGalleryPopup {
 }
 
 export const GalleryPopup = ({ isOpen, isClose, selectedImage }: IGalleryPopup) => {
+  const closeButtonFocus = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      closeButtonFocus.current?.focus();
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
@@ -31,7 +39,7 @@ export const GalleryPopup = ({ isOpen, isClose, selectedImage }: IGalleryPopup) 
       {selectedImage && (
         <div className={styles.overlay} onClick={isClose} role="button" tabIndex={0} onKeyDown={isClose}>
           <div className={styles.content}>
-            <button className={styles.closeBtn} onClick={isClose}>
+            <button className={styles.close} ref={closeButtonFocus} onClick={isClose}>
               &times;
             </button>
             <Image

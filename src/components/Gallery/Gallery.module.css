@@ -13,11 +13,11 @@
   margin-bottom: 150px;
 }
 
-.img__big {
+.imgWide {
   grid-row-start: span 3;
 }
 
-.swiperSlider {
+.swiper {
   display: none;
 }
 
@@ -63,7 +63,7 @@
     display: none;
   }
 
-  .swiperSlider {
+  .swiper {
     display: block;
   }
 

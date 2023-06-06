@@ -53,7 +53,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
             alt={`${galleryImage.alt}`}
             width={270}
             height={idx == 1 ? 400 : 190}
-            className={cn(idx == 1 ? styles.img__big : styles.img, 'invisible-child')}
+            className={cn(idx == 1 ? styles.imgWide : styles.img, 'invisible-child')}
             data-child
           />
         ))}
@@ -62,7 +62,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
       <GalleryPopup isOpen={isOpenPopup} isClose={closePopup} selectedImage={selectedImage} />
 
       <Swiper
-        className={styles.swiperSlider}
+        className={styles.swiper}
         modules={[Navigation]}
         navigation={{
           nextEl: '.next',
@@ -94,12 +94,11 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
           </SwiperSlide>
         ))}
         <div className={styles.arrows}>
-          {/* TODO: fix arrow svg (vertical) */}
           <button className={cn(styles.prev, 'prev')}>
             <span className="visually-hidden">Prev Slide</span>
             <Image
               src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
-              alt="prev arrow"
+              alt="Кнопка предыдущий слайд"
               width={30}
               height={30}
             />
@@ -109,7 +108,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
             <span className="visually-hidden">Next Slide</span>
             <Image
               src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609956/Paravina-rebuild/arrow_wy5l6k.svg"
-              alt="next arrow"
+              alt="Кнопка следующий слайд"
               width={30}
               height={30}
             />
