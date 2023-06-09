@@ -1,5 +1,7 @@
+import type { TypedObject } from '@portabletext/types';
 import cn from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -7,16 +9,22 @@ import { urlFor } from '@/lib/client';
 
 import styles from './Team.module.css';
 
-export interface ITeamImages {
+export interface IDoctor {
+  doctorImage: string;
   name: string;
   role: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  body: TypedObject;
 }
 
-interface ITeamProps {
-  teamImages: ITeamImages[];
+export interface IDoctors {
+  doctors: IDoctor[];
 }
 
-export const Team = ({ teamImages }: ITeamProps) => (
+export const Team = ({ doctors }: IDoctors) => (
   <section className={`${styles.team}`}>
     <div className="container">
       <h2 className={styles.title}>
@@ -45,21 +53,23 @@ export const Team = ({ teamImages }: ITeamProps) => (
           },
         }}
       >
-        {teamImages.map((teamImage, index) => (
+        {doctors.map((doctor, index) => (
           <SwiperSlide key={index}>
             <div className={styles.item}>
               <Image
                 width={360}
                 height={340}
-                src={urlFor(teamImage).url()}
-                alt={teamImage.name}
+                src={urlFor(doctor.doctorImage).url()}
+                alt={doctor.name}
                 className={styles.img}
               />
               <div className={styles.content}>
-                <div className={styles.name}>{teamImage.name}</div>
-                <div className={styles.role}>{teamImage.role}</div>
+                <div className={styles.name}>{doctor.name}</div>
+                <div className={styles.role}>{doctor.role}</div>
               </div>
-              <button className={styles.btn}>О докторе</button>
+              <Link href={`/doctors/${encodeURIComponent(doctor.slug.current)}`} className={styles.btn}>
+                О докторе
+              </Link>
             </div>
           </SwiperSlide>
         ))}
