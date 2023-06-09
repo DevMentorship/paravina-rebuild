@@ -39,29 +39,12 @@
   width: 100%;
 }
 
-.popup-close {
-  z-index: 1;
-  border: none;
-  background-color: transparent;
-  color: red;
-  font-size: 1.8rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-  padding: 20px;
-}
-
 .popup > form > input,
 .popup > form > textarea {
   padding: 6px;
   font-size: 1.5rem;
 }
 
-.popup > form > input:focus-visible,
-.popup > form > textarea:focus-visible {
-  border: 2px solid #4c5056;
-}
 .popup > form > input[name='name'] {
   text-transform: capitalize;
 }
@@ -88,24 +71,29 @@ span.popup-note-notification {
 }
 
 .popup-submit {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 14px;
 }
 
-.popup-submit > label > span {
+.popup-info {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+
+}
+
+.popup label > span {
   margin-left: 8px;
   font-size: 1.5rem;
 }
 
-.popup-submit > label > a {
+.popup label > a {
   font-size: 1.5rem;
   text-decoration: underline;
 }
 
-.popup-submit > label > a:hover {
+.popup label > a:hover {
   color: blue;
 }
 
@@ -117,20 +105,11 @@ span.popup-note-notification {
   border: 0;
   border-radius: 15px;
   font-weight: bold;
-  transform: translate(-5px, -5px);
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
-}
-.popup-submit > button:active {
-  transform: translate(-1px, -1px);
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .popup-err {
   color: red;
-  position: absolute;
-  top: -24px;
   font-size: 1.3rem;
-  padding-left: 10px;
 }
 
 .popup-message {
@@ -142,8 +121,29 @@ span.popup-note-notification {
   align-items: center;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 680px) {
   .popup {
     width: 100%;
   }
+  .popup-info {
+    position: relative;
+    display: block;
+    text-align: start;
+    padding-bottom: 18px;
+  }
+  .popup-info > .popup-err {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+}
+@media screen and (max-width: 420px) {
+  .popup > form {
+    padding: 20px;
+  }
+
+  .popup-info {
+    padding-bottom: 34px;
+  }
+  
 }

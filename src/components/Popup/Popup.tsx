@@ -8,7 +8,7 @@ import styles from './Popup.module.css';
 enum errMessage {
   name = 'Имя не может содержать цифры',
   shortName = 'Имя не может быть короче 2 символов',
-  phone = 'Введите номер телефона в формате 7 999 111 1111',
+  phone = 'Введите номер телефона в формате 7-999-111-1111',
   note = 'Максимальная длина примечания 300 символов',
   agreement = 'Примите соглашение, пожалуйста',
   fetchErr = 'Что-то пошло не так. Попробуйте позже',
@@ -147,15 +147,6 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
         aria-label="Закрыть модальное окно"
       ></button>
       <div className={cn(styles.popup, modalIsOpened && styles['popup-opened'])} ref={popupRef}>
-        <button
-          className={cn(styles['popup-close'])}
-          onClick={() => setModalIsOpened(false)}
-          formMethod="dialog"
-          type="button"
-          aria-label="Закрыть модальное окно"
-        >
-          &#x2716;
-        </button>
         {submitStatus.isLoading && <Spinner />}
         {!submitStatus.isLoading && submitStatus.status === '' && (
           <form onSubmit={handleSubmit}>
@@ -173,13 +164,24 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
                 Вы превысили лимит на&nbsp;{note.length - 300}&nbsp;{getNoun(note.length, 'символ')}
               </span>
             )}
-            <div className={cn(styles['popup-submit'])}>
-              {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
+            <div className={cn(styles['popup-info'])}>
               <label>
                 <input required type="checkbox" name="agreement" checked={agreement} onChange={handleChange} />
                 <span>Согласие с&nbsp;</span>
                 <a href="/agreement">условиями</a>
               </label>
+              {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
+            </div>
+            <div className={cn(styles['popup-submit'])}>
+              <button
+                onClick={() => setModalIsOpened(false)}
+                formMethod="dialog"
+                type="button"
+                aria-label="Закрыть модальное окно"
+              >
+                Закрыть
+              </button>
+
               <button type="submit">Отправить</button>
             </div>
           </form>
