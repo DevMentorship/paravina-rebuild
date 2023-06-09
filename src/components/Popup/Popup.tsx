@@ -1,7 +1,7 @@
 import cn from 'classnames';
+import Image from 'next/image';
 import { useState } from 'react';
 
-import Image from 'next/image';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Popup.module.css';
 
@@ -15,8 +15,9 @@ enum errMessage {
 }
 
 interface IPopupProps {
-  popupRef: React.RefObject<HTMLDialogElement>;
-  closeModal: (ref: HTMLDialogElement) => void;
+  popupRef: React.RefObject<HTMLDivElement>;
+  modalIsOpened: boolean;
+  setModalIsOpened: (state: boolean) => void;
 }
 
 type IFormFields = {
@@ -39,16 +40,16 @@ const defaultFormFields = {
   agreement: false,
 };
 
-export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
+export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [submitStatus, setSubmitStatus] = useState(defaultSubmitStatus);
   const { name, phone, note, agreement } = formFields;
 
-  popupRef.current?.addEventListener('click', (e) => {
-    if (e.target instanceof HTMLDialogElement && !e.target.closest('form')) {
-      closeModal(e.target);
-    }
-  });
+  // popupRef.current?.addEventListener('click', (e) => {
+  //   if (e.target instanceof HTMLDialogElement && !e.target.closest('form')) {
+  //     closeModal(e.target);
+  //   }
+  // });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSubmitStatus({ ...submitStatus, err: '' });
@@ -114,7 +115,7 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
       }
       setTimeout(() => {
         setSubmitStatus({ ...submitStatus, status: '' });
-        closeModal(popupRef.current as HTMLDialogElement);
+        setModalIsOpened(false);
       }, 6000);
     }
 
@@ -145,55 +146,61 @@ export const Popup = ({ popupRef, closeModal }: IPopupProps) => {
   }
 
   return (
-    <dialog className={cn(styles.popup)} ref={popupRef}>
+    <>
       <button
-        className={cn(styles['popup-close'])}
-        onClick={(e) => closeModal(popupRef.current as HTMLDialogElement)}
-        formMethod="dialog"
-        type="button"
-      >
-        &#x2716;
-      </button>
-      {submitStatus.isLoading && <Spinner />}
-      {!submitStatus.isLoading && submitStatus.status === '' && (
-        <form onSubmit={handleSubmit}>
-          <h2 className="heading2">Связаться с нами</h2>
-          <input required placeholder="Имя" name="name" type="text" value={name} onChange={handleChange} />
-          <input required placeholder="Телефон" name="phone" type="text" value={phone} onChange={handleChange} />
-          <textarea placeholder="Примечание" name="note" value={note} onChange={handleChange} />
-          {note.length >= 250 && note.length <= 300 &&(
-            <span className={cn(styles['popup-note-notification'])}>
-              Осталось&nbsp;{300 - note.length}&nbsp;{getNoun(300 - note.length, 'символ')}
-            </span>
-          )}
-          {note.length >= 301 && (
-            <span className={cn(styles['popup-note-notification'], styles.warning) }>
-              Вы превысили лимит на&nbsp;{note.length - 300}&nbsp;{getNoun(note.length, 'символ')}
-            </span>
-          )}
-          <div className={cn(styles['popup-submit'])}>
-            {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
-            <label>
-              <input required type="checkbox" name="agreement" checked={agreement} onChange={handleChange} />
-              <span>Согласие с&nbsp;</span>
-              <a href="/agreement">условиями</a>
-            </label>
-            <button type="submit">Отправить</button>
+        className={cn(styles['popup-bg'], modalIsOpened && styles['popup-opened'])}
+        onClick={() => setModalIsOpened(false)}
+      ></button>
+      <div className={cn(styles.popup, modalIsOpened && styles['popup-opened'])} ref={popupRef}>
+        <button
+          className={cn(styles['popup-close'])}
+          onClick={() => setModalIsOpened(false)}
+          formMethod="dialog"
+          type="button"
+        >
+          &#x2716;
+        </button>
+        {submitStatus.isLoading && <Spinner />}
+        {!submitStatus.isLoading && submitStatus.status === '' && (
+          <form onSubmit={handleSubmit}>
+            <h2 className="heading2">Связаться с нами</h2>
+            <input required placeholder="Имя" name="name" type="text" value={name} onChange={handleChange} />
+            <input required placeholder="Телефон" name="phone" type="text" value={phone} onChange={handleChange} />
+            <textarea placeholder="Примечание" name="note" value={note} onChange={handleChange} />
+            {note.length >= 250 && note.length <= 300 && (
+              <span className={cn(styles['popup-note-notification'])}>
+                Осталось&nbsp;{300 - note.length}&nbsp;{getNoun(300 - note.length, 'символ')}
+              </span>
+            )}
+            {note.length >= 301 && (
+              <span className={cn(styles['popup-note-notification'], styles.warning)}>
+                Вы превысили лимит на&nbsp;{note.length - 300}&nbsp;{getNoun(note.length, 'символ')}
+              </span>
+            )}
+            <div className={cn(styles['popup-submit'])}>
+              {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
+              <label>
+                <input required type="checkbox" name="agreement" checked={agreement} onChange={handleChange} />
+                <span>Согласие с&nbsp;</span>
+                <a href="/agreement">условиями</a>
+              </label>
+              <button type="submit">Отправить</button>
+            </div>
+          </form>
+        )}
+        {submitStatus.status === '200' && (
+          <div className={cn(styles['popup-message'])}>
+            <Image src={'/assets/done.svg'} alt="Success" width={50} height={50} />
+            <h2>Успешно</h2>
           </div>
-        </form>
-      )}
-      {submitStatus.status === '200' && (
-        <div className={cn(styles['popup-message'])}>
-          <Image src={'/assets/done.svg'} alt="Success" width={50} height={50} />
-          <h2>Успешно</h2>
-        </div>
-      )}
-      {submitStatus.status === '400' && (
-        <div className={cn(styles['popup-message'])}>
-          <Image src={'/assets/error.svg'} alt="Fail" width={50} height={50} />
-          <h2>{errMessage.fetchErr}</h2>
-        </div>
-      )}
-    </dialog>
+        )}
+        {submitStatus.status === '400' && (
+          <div className={cn(styles['popup-message'])}>
+            <Image src={'/assets/error.svg'} alt="Fail" width={50} height={50} />
+            <h2>{errMessage.fetchErr}</h2>
+          </div>
+        )}
+      </div>
+    </>
   );
 };

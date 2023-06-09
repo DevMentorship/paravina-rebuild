@@ -1,17 +1,32 @@
-dialog.popup {
+.popup {
+  display: none;
   width: 680px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
   background-color: #f5f5f5;
   color: #4c5056;
   border: none;
   border-radius: 15px;
 }
 
-dialog.popup::backdrop {
+.popup-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  border: none;
+  backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup-opened {
+  display: initial;
 }
 
 .popup > form {
@@ -20,7 +35,7 @@ dialog.popup::backdrop {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap:18px;
+  gap: 18px;
   width: 100%;
 }
 
@@ -37,17 +52,17 @@ dialog.popup::backdrop {
   padding: 20px;
 }
 
-.popup > form > input, 
+.popup > form > input,
 .popup > form > textarea {
   padding: 6px;
   font-size: 1.5rem;
 }
 
-.popup > form > input:focus-visible, 
+.popup > form > input:focus-visible,
 .popup > form > textarea:focus-visible {
   border: 2px solid #4c5056;
 }
-.popup > form > input[name="name"] {
+.popup > form > input[name='name'] {
   text-transform: capitalize;
 }
 
@@ -103,15 +118,15 @@ span.popup-note-notification {
   border-radius: 15px;
   font-weight: bold;
   transform: translate(-5px, -5px);
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.6); 
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
 .popup-submit > button:active {
   transform: translate(-1px, -1px);
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.6); 
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .popup-err {
-  color:red;
+  color: red;
   position: absolute;
   top: -24px;
   font-size: 1.3rem;
@@ -128,7 +143,7 @@ span.popup-note-notification {
 }
 
 @media screen and (max-width: 425px) {
-  dialog.popup {
+  .popup {
     width: 100%;
   }
 }
