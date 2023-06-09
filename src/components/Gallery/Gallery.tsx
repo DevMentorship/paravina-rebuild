@@ -84,8 +84,8 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
           <SwiperSlide key={index}>
             <div className={styles.item}>
               <Image
-                width={360}
-                height={340}
+                width={320}
+                height={380}
                 src={urlFor(galleryImage).url()}
                 alt={galleryImage.alt}
                 className={styles.img}
