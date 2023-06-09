@@ -13,7 +13,6 @@ const pages = [
   { label: 'Акции', href: '/promotions' },
   { label: 'Услуги', href: '/services' },
   { label: 'Цены', href: '/price' },
-  { label: 'Позвонить', href: '/call' },
   { label: 'О клинике', href: '/about' },
 ];
 
@@ -53,6 +52,11 @@ export const Header = ({ isVisible }: IHeaderProps) => {
               {label}
             </Link>
           ))}
+          <button>
+            <Link href="tel:1300555992" className={cn(styles['header-link'], 'heading2')}>
+              Позвонить
+            </Link>
+          </button>
         </nav>
         <button
           className={cn('hamburger', {

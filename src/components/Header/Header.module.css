@@ -28,6 +28,7 @@
   position: relative;
   color: #ffffff;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .header-link::before {
@@ -119,11 +120,5 @@
 @media (max-width: 800px) {
   .header-logo {
     width: 350px;
-  }
-}
-
-@media (max-width: 800px) {
-  .header-logo {
-    width: 250px;
   }
 }
