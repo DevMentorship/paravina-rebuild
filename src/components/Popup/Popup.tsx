@@ -45,12 +45,6 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
   const [submitStatus, setSubmitStatus] = useState(defaultSubmitStatus);
   const { name, phone, note, agreement } = formFields;
 
-  // popupRef.current?.addEventListener('click', (e) => {
-  //   if (e.target instanceof HTMLDialogElement && !e.target.closest('form')) {
-  //     closeModal(e.target);
-  //   }
-  // });
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSubmitStatus({ ...submitStatus, err: '' });
 
@@ -150,6 +144,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
       <button
         className={cn(styles['popup-bg'], modalIsOpened && styles['popup-opened'])}
         onClick={() => setModalIsOpened(false)}
+        aria-label="Закрыть модальное окно"
       ></button>
       <div className={cn(styles.popup, modalIsOpened && styles['popup-opened'])} ref={popupRef}>
         <button
@@ -157,6 +152,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
           onClick={() => setModalIsOpened(false)}
           formMethod="dialog"
           type="button"
+          aria-label="Закрыть модальное окно"
         >
           &#x2716;
         </button>
