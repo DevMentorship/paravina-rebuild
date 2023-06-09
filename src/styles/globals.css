@@ -34,6 +34,11 @@ a {
   color: #4c5056;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -252,7 +257,7 @@ a {
   transform: translateY(-13px) rotate(-45deg);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .hamburger {
     display: block;
     margin-top: 20px;
