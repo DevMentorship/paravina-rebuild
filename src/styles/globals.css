@@ -123,7 +123,22 @@ a {
 .invisible-child {
   opacity: 0;
   transition: transform ease-in .5s, opacity ease-in .8s;
+}
+
+.start-animation-top-down {
   transform: translateY(40%);
+}
+
+.start-animation-near-far {
+  transform: translateZ(-1000px);
+}
+
+.start-animation-side-left {
+  transform: translateX(-40%);
+}
+
+.start-animation-scale {
+  transform: scale(1.1);
 }
 
 .invisible-child:nth-child(1) {
@@ -158,8 +173,20 @@ a {
   transition-delay: 1500ms;
 }
 
-.slide-in {
+.end-animation-top-down {
   transform: translateY(0);
+}
+
+.end-animation-near-far {
+  transform: translateZ(0);
+}
+
+.end-animation-side-left {
+  transform: translateX(0);
+}
+
+.end-animation-scale {
+  transform: scale(1);
 }
 
 .fade-in {

@@ -32,7 +32,7 @@ export const Standards = ({ standardImages }: IStandardProps) => {
 
           <ul className={styles['cards-list']}>
             {standardImages.map((standardImage, index) => (
-              <li key={index} className={cn(styles.card, 'invisible-child')} data-child>
+              <li key={index} className={cn(styles.card, 'invisible-child', 'start-animation-side-left')} data-child>
                 <Image
                   src={urlFor(standardImage).url()}
                   alt={`${standardImage.title}`}
