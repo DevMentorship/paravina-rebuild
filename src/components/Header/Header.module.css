@@ -84,7 +84,7 @@
     right: 0;
     bottom: 0;
     left: -100%;
-    z-index: 1;
+    z-index: 2;
     flex-direction: column;
     gap: 70px;
     justify-content: center;

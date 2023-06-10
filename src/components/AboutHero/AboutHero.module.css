@@ -28,8 +28,22 @@
   background-size: cover;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
   .image {
+    background-position: top right;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    align-items: flex-end;
+    min-height: 700px;
+    padding-bottom: 50px;
+  }
+
+  .image {
+    min-width: 100%;
+    background-position: 80% center;
     object-position: right;
   }
 }
