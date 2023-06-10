@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import useElementOnScreen from '@/hooks/useElementOnScreen';
 
+import { Button } from '../Button/Button';
 import styles from './Hero.module.css';
 
 export const Hero = () => {
@@ -21,9 +22,9 @@ export const Hero = () => {
           Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
         </p>
         <div className={styles.cta}>
-          <button className={cn(styles['cta-button'], 'heading3')}>
+          <Button className={cn(styles['cta-button'], 'heading3')}>
             <strong>Записаться</strong>
-          </button>
+          </Button>
           <div className={styles['cta-video']}>
             <Link href="/" aria-label="Смотреть видео о нас">
               <Image

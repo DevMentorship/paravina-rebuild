@@ -29,7 +29,7 @@ const useElementOnScreen = () => {
   useEffect(() => {
     if (isIntersecting && ref.current) {
       ref.current.querySelectorAll<HTMLElement>('[data-child]').forEach((block) => {
-        block.classList.add('slide-in', 'fade-in');
+        block.classList.add('end-animation-top-down', 'fade-in');
       });
     }
   }, [isIntersecting]);
