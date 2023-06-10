@@ -1,0 +1,18 @@
+.wrapper {
+  padding: 40px;
+}
+
+.back {
+  display: flex;
+}
+
+.back img {
+  height: 20px;
+  object-fit: contain;
+  transform: rotate(180deg);
+}
+
+.body {
+  margin-top: 40px;
+}
+

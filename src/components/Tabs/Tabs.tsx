@@ -53,7 +53,7 @@ export const Tabs = ({ tabImages }: ITabProps) => {
       </div>
       <div className={styles.items} ref={ref}>
         {tabImages[selectedCategory].map((tabImage, index) => (
-          <div key={index} className={cn(styles.item, 'invisible-child')} data-child>
+          <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
             <Image src={urlFor(tabImage).url()} alt={tabImage.title} className={styles.img} width={100} height={100} />
             <h3 className={cn(styles.title, 'heading4')}>{tabImage.title}</h3>
             <p className={styles.description}>{tabImage.description}</p>
