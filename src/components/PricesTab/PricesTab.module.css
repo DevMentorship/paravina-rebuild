@@ -12,6 +12,7 @@
 
 .triggers {
   display: flex;
+  background-color: #ffffff;
   border: 1px #fac0aa solid;
   border-radius: 12px;
 }
@@ -19,7 +20,6 @@
 .trigger {
   padding: 20px;
   cursor: pointer;
-  border: none;
 }
 
 .trigger--active {

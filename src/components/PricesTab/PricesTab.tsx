@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Accordion, IAccordion } from '../Accordion/Accordion';
 import styles from './PricesTab.module.css';
+import Link from 'next/link';
 
 interface IPricesTabProps {
   prices: IAccordion[];
@@ -17,13 +18,14 @@ export const PricesTab = ({ prices }: IPricesTabProps) => {
         <div className={styles['triggers-wrapper']}>
           <div className={styles.triggers}>
             {prices.map((price, index) => (
-              <button
+              <Link
+                href=" "
                 key={index}
                 className={cn(styles.trigger, selectedCategory === price.title && styles['trigger--active'])}
                 onClick={() => setSelectedCategory(price.title)}
               >
                 {price.title}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
