@@ -10,10 +10,11 @@
   gap: 20px;
   place-items: center;
   justify-content: space-around;
+  align-items: unset;
   margin-bottom: 150px;
 }
 
-.imgWide {
+.img-wide {
   grid-row-start: span 3;
 }
 
@@ -33,14 +34,31 @@
   max-width: 100%;
   margin: 0 auto;
   transition: .3s;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 580px) {
+  .img,
+  .img-wide {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .img:hover,
-.imgWide:hover {
+.img-wide:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, .24) 0 3px 8px;
   transition: .3s;
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 580px) {
+  .img:hover,
+  .img-wide:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .arrows {

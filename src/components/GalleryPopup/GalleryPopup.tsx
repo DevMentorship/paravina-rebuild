@@ -37,7 +37,8 @@ export const GalleryPopup = ({ isOpen, isClose, selectedImage }: IGalleryPopup) 
   return (
     <div className={cn(styles.popup, { [styles.open]: isOpen })}>
       {selectedImage && (
-        <div className={styles.overlay} onClick={isClose} role="button" tabIndex={0} onKeyDown={isClose}>
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div className={styles.overlay} onClick={isClose}>
           <div className={styles.content}>
             <button className={styles.close} ref={closeButtonFocus} onClick={isClose}>
               &times;
