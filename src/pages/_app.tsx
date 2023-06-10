@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { YandexMetricaProvider } from 'next-yandex-metrica';
 
 import { Page } from '@/components/Page';
 
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'paravina.site'}` +
     (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
+  const YandexMetricaID = +process.env.NEXT_PUBLIC_YM_ID;
 
   return (
     <>
@@ -41,7 +43,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="canonical" href={canonicalUrl} />
       </Head>
       <Page>
-        <Component {...pageProps} />
+        <YandexMetricaProvider
+          tagID={YandexMetricaID}
+          initParameters={{ clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true }}
+        >
+          <Component {...pageProps} />
+        </YandexMetricaProvider>
       </Page>
     </>
   );
