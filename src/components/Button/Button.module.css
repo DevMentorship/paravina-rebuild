@@ -2,12 +2,9 @@
   padding: 20px;
   color: #ffffff;
   cursor: pointer;
+  background-color: #fac0aa;
   border: 0;
   border-radius: 15px;
-}
-
-.primary {
-  background-color: #fac0aa;
 }
 
 .secondary {

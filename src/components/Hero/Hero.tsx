@@ -22,7 +22,7 @@ export const Hero = () => {
           Представляем первую в Самаре авторскую клинику эстетической стоматологии и косметологии Екатерины Паравиной.
         </p>
         <div className={styles.cta}>
-          <Button className={cn(styles['cta-button'], 'heading3')} type="primary">
+          <Button className={cn(styles['cta-button'], 'heading3')}>
             <strong>Записаться</strong>
           </Button>
           <div className={styles['cta-video']}>
