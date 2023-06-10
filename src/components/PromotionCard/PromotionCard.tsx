@@ -21,7 +21,7 @@ export interface IPromotionCard {
 }
 
 export const PromotionCard = ({ slug, title, mainImage, alt, dateImage, icon }: IPromotionCard) => (
-  <li className={cn(styles.card, 'invisible-child')} data-child>
+  <li className={cn(styles.card, 'invisible-child', 'start-animation-side-left')} data-child>
     <div className={cn(styles.date, 'paragraph')}>
       {dateImage}
       <Image src={icon} alt={'icon'} width="60" height="60" />
