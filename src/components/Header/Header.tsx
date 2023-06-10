@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import styles from '@/components/Header/Header.module.css';
 
+import { Button } from '../Button/Button';
 import { Hero } from '../Hero/Hero';
 
 const pages = [
@@ -52,11 +53,11 @@ export const Header = ({ isVisible }: IHeaderProps) => {
               {label}
             </Link>
           ))}
-          <button>
+          <Button>
             <Link href="tel:1300555992" className={cn(styles['header-link'], 'heading2')}>
               Позвонить
             </Link>
-          </button>
+          </Button>
         </nav>
         <button
           className={cn('hamburger', {
