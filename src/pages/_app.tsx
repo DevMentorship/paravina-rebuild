@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'paravina.site'}` +
     (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
-  const YandexMetricaID = process.env.NEXT_PUBLIC_YM_ID && +process.env.NEXT_PUBLIC_YM_ID;
+  const YandexMetricaID: number = (process.env.NEXT_PUBLIC_YM_ID && +process.env.NEXT_PUBLIC_YM_ID) || 0;
 
   return (
     <>
