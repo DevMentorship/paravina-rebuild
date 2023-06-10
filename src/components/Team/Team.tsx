@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { urlFor } from '@/lib/client';
 
+import { Button } from '../Button/Button';
 import styles from './Team.module.css';
 
 export interface IDoctor {
@@ -67,9 +68,9 @@ export const Team = ({ doctors }: IDoctors) => (
                 <div className={styles.name}>{doctor.name}</div>
                 <div className={styles.role}>{doctor.role}</div>
               </div>
-              <Link href={`/doctors/${encodeURIComponent(doctor.slug.current)}`} className={styles.btn}>
+              <Button className={styles.btn} >
                 О докторе
-              </Link>
+              </Button>
             </div>
           </SwiperSlide>
         ))}
