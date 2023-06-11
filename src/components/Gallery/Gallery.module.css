@@ -9,8 +9,8 @@
   grid-auto-flow: row;
   gap: 20px;
   place-items: center;
-  justify-content: space-around;
   align-items: unset;
+  justify-content: space-around;
   margin-bottom: 150px;
 }
 
@@ -56,8 +56,8 @@
 @media screen and (max-width: 580px) {
   .img:hover,
   .img-wide:hover {
-    transform: none;
     box-shadow: none;
+    transform: none;
   }
 }
 
