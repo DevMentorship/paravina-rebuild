@@ -15,7 +15,7 @@ export interface IAccordionItem {
 
 interface IProps {
   data: IAccordionItem;
-  tabIndex?: number | undefined;
+  tabIndex?: number;
 }
 
 export const AccordionItem = ({ data: { title, content, subItems }, tabIndex }: IProps) => {
