@@ -1,29 +1,29 @@
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 .triggers-wrapper {
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
   margin-bottom: 50px;
 }
 
 .triggers {
   display: flex;
+  min-width: 100%;
+  overflow-x: auto;
   background-color: #ffffff;
   border: 1px #fac0aa solid;
   border-radius: 12px;
 }
 
 .trigger {
+  min-width: 200px;
   padding: 20px;
+  text-align: center;
   cursor: pointer;
 }
 
 .trigger--active {
+  min-width: 200px;
   color: #ffffff;
+  text-align: center;
   background-color: #fac0aa;
   border-radius: 12px;
 }
@@ -59,5 +59,17 @@
 
 .description {
   margin-top: 5px;
+}
+
+@media (max-width: 500px) {
+  .triggers {
+    flex-wrap: wrap;
+    overflow-x: none;
+  }
+
+  .trigger, .trigger--active {
+    min-width: 100%;
+    word-wrap: break-word;
+  }
 }
 

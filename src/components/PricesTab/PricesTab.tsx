@@ -1,9 +1,9 @@
 import cn from 'classnames';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { Accordion, IAccordion } from '../Accordion/Accordion';
 import styles from './PricesTab.module.css';
-import Link from 'next/link';
 
 interface IPricesTabProps {
   prices: IAccordion[];
@@ -11,7 +11,6 @@ interface IPricesTabProps {
 
 export const PricesTab = ({ prices }: IPricesTabProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Детская стоматология');
-
   return (
     <section className="container">
       <div className={styles.wrapper}>
@@ -22,7 +21,10 @@ export const PricesTab = ({ prices }: IPricesTabProps) => {
                 href=" "
                 key={index}
                 className={cn(styles.trigger, selectedCategory === price.title && styles['trigger--active'])}
-                onClick={() => setSelectedCategory(price.title)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory(price.title);
+                }}
               >
                 {price.title}
               </Link>
@@ -36,7 +38,7 @@ export const PricesTab = ({ prices }: IPricesTabProps) => {
             key={index}
             items={price.items}
             title={price.title}
-            className={cn(styles['item-invisible'], price.title !== selectedCategory && styles['item-visible'])}
+            className={cn(styles['item-invisible'], price.title == selectedCategory && styles['item-visible'])}
           />
         ))}
       </div>
