@@ -13,7 +13,11 @@ export default function App({ Component, pageProps }: AppProps) {
     `https://${process.env.NEXT_PUBLIC_CANONICAL_DOMAIN || 'paravina.site'}` +
     (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
+
   const YandexMetricaID: number = (process.env.NEXT_PUBLIC_YM_ID && +process.env.NEXT_PUBLIC_YM_ID) || 0;
+  if (YandexMetricaID === 0) {
+    throw new Error(`Could not reach environment variable YM_ID: ${process.env.NEXT_PUBLIC_YM_ID}`);
+  }
 
   return (
     <>
@@ -43,12 +47,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="canonical" href={canonicalUrl} />
       </Head>
       <Page>
-        <YandexMetricaProvider
-          tagID={YandexMetricaID}
-          initParameters={{ clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true }}
-        >
+        {YandexMetricaID === 0 ? (
           <Component {...pageProps} />
-        </YandexMetricaProvider>
+        ) : (
+          <YandexMetricaProvider
+            tagID={YandexMetricaID}
+            initParameters={{ clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true }}
+          >
+            <Component {...pageProps} />
+          </YandexMetricaProvider>
+        )}
       </Page>
     </>
   );
