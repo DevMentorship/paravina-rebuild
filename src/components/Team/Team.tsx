@@ -26,8 +26,16 @@ export interface IDoctors {
   doctors: IDoctor[];
 }
 
+interface IPopupState {
+  open: boolean;
+  doctor: string;
+}
+
 export const Team = ({ doctors }: IDoctors) => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<IPopupState>({
+    open: false,
+    doctor: '',
+  });
 
   return (
     <section className={`${styles.team}`}>
@@ -80,7 +88,7 @@ export const Team = ({ doctors }: IDoctors) => {
                   >
                     О докторе
                   </Button>
-                  <Button className={styles.btn} onClick={() => setIsClicked(true)}>
+                  <Button className={styles.btn} onClick={() => setIsClicked({ open: true, doctor: doctor.name })}>
                     Записаться
                   </Button>
                 </div>
@@ -111,7 +119,7 @@ export const Team = ({ doctors }: IDoctors) => {
           </div>
         </Swiper>
       </div>
-      <TeamPopup isOpen={isClicked} onClose={setIsClicked} />
+      <TeamPopup isOpen={isClicked} onClose={setIsClicked} doctors={doctors} />
     </section>
   );
 };

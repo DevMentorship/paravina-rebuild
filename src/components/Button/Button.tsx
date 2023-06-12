@@ -10,12 +10,17 @@ interface IButton {
   className?: string;
   href?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
+  onSubmit?: ReactEventHandler<HTMLButtonElement>;
 }
 
-export const Button = ({ children, type, className, href, onClick }: IButton) => (
+export const Button = ({ children, type, className, href, onClick, onSubmit }: IButton) => (
   <>
     {!href ? (
-      <button onClick={onClick} className={cn(styles.button, type === 'secondary' && styles.secondary, className)}>
+      <button
+        onClick={onClick}
+        onSubmit={onSubmit}
+        className={cn(styles.button, type === 'secondary' && styles.secondary, className)}
+      >
         {children}
       </button>
     ) : (

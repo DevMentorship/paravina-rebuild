@@ -1,14 +1,27 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import cn from 'classnames';
-import Image from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '../Button/Button';
+import { IDoctor } from '../Team/Team';
 import styles from './TeamPopup.module.css';
 
 interface IPopupProps {
-  isOpen: boolean;
-  onClose: Dispatch<SetStateAction<boolean>>;
+  isOpen: {
+    open: boolean;
+    doctor: string;
+  };
+  onClose: Dispatch<
+    SetStateAction<{
+      open: boolean;
+      doctor: string;
+    }>
+  >;
+  doctors: IDoctor[];
 }
 
 interface IPopupForm {
@@ -18,8 +31,7 @@ interface IPopupForm {
   note: string;
 }
 
-export const TeamPopup = (props: IPopupProps) => {
-  const { isOpen, onClose } = props;
+export const TeamPopup = ({ isOpen, onClose, doctors }: IPopupProps) => {
   const {
     register,
     control,
@@ -32,8 +44,20 @@ export const TeamPopup = (props: IPopupProps) => {
   };
 
   return (
-    <div className={cn(styles['popup-wrapper'], isOpen && styles['popup-active'])}>
-      <form className={cn(styles['popup'])} onSubmit={handleSubmit(onSubmit)}>
+    <div
+      onClick={(e) => {
+        e.preventDefault();
+        onClose({ open: false, doctor: '' });
+      }}
+      className={cn(styles['popup-wrapper'], isOpen.open && styles['popup-active'])}
+    >
+      <form
+        onClick={(e) => {
+          e.stopPropagation(); // prevent event bubbling
+        }}
+        className={cn(styles['popup'])}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h3 className={styles['popup-title']}>Запишитесь на прием!</h3>
         <div>
           {errors.name && errors.name.message}
@@ -57,35 +81,32 @@ export const TeamPopup = (props: IPopupProps) => {
           {errors.doctor && errors.doctor.message}
           <select
             {...register('doctor', { required: { value: true, message: 'Выберите специалиста' } })}
-            className={styles['popup-input']}
-            placeholder=""
+            className={styles['popup-select']}
           >
-            <option value="">Выберите специалиста</option>
-            <option value="Артур Радзевич">Артур Радзевич</option>
-            <option value="Надежда Музыка">Надежда Музыка</option>
-            <option value="Екатерина Паравина">Екатерина Паравина</option>
-            <option value="Жале Султанова">Жале Султанова</option>
-            <option value="Татьяна Шафикова">Татяна Шафикова</option>
-            <option value="Александр Кузнецов">Александр Кузнецов</option>
-            <option value="Светлана Старостина">Светлана Старостина</option>
-            <option value="Анастасия Антонова">Анастасия Антонова</option>
+            {doctors.map((doctor, index) => (
+              <option selected={doctor.name === isOpen.doctor ? true : false} key={index} value={doctor.name}>
+                {doctor.name}
+              </option>
+            ))}
           </select>
         </div>
         <div>
           {errors.note && errors.note.message}
-          <textarea {...register('note')} className={styles['popup-input']} placeholder="Примечание" />
+          <textarea {...register('note')} className={styles['popup-note']} placeholder="Примечание" />
         </div>
-        <Button>Записаться</Button>
-        <Image
-          src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1686488243/Paravina-rebuild/Group_23_1_kyzza2.svg"
-          alt={''}
-          width={'20'}
-          height={'20'}
-          className={styles['popup-close']}
-          onClick={() => {
-            onClose(false);
-          }}
-        />
+        <div className={styles['btn-wrapper']}>
+          <Button className={styles.btn}>Записаться</Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              onClose({ open: false, doctor: '' });
+            }}
+            className={styles.btn}
+            type="secondary"
+          >
+            Назад
+          </Button>
+        </div>
       </form>
     </div>
   );
