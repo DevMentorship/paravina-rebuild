@@ -12,7 +12,6 @@ import { Button } from '../Button/Button';
 const pages = [
   { label: 'Главная', href: '/' },
   { label: 'Акции', href: '/promotions' },
-  { label: 'Услуги', href: '/services' },
   { label: 'Цены', href: '/price' },
   { label: 'О клинике', href: '/about' },
 ];

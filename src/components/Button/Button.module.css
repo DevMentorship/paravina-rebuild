@@ -11,6 +11,7 @@
   border: 0;
   border-radius: 15px;
   transition: background .3s ease-in-out;
+  white-space: nowrap;
 }
 
 .button:hover {
