@@ -16,8 +16,8 @@
 
 .img-wide {
   grid-row-start: span 3;
-  border-radius: 15px;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .swiper {
@@ -35,10 +35,10 @@
   display: block;
   max-width: 100%;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
   transition: .3s;
   object-fit: cover;
-  border-radius: 15px;
-  overflow: hidden;
 }
 
 @media screen and (max-width: 580px) {

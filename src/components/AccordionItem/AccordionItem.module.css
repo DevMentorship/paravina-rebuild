@@ -8,11 +8,11 @@
   justify-content: space-between;
   width: 100%;
   padding: 20px 10px;
+  text-align: left;
   cursor: pointer;
   background-color: transparent;
   border: none;
   border-bottom: 2px dashed #949596;
-  text-align: left;
 }
 
 .trigger:focus-visible {

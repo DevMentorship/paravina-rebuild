@@ -82,9 +82,9 @@
   .trigger,
   .trigger--active {
     min-width: 100%;
+    padding: 10px 20px;
     word-wrap: break-word;
     border-radius: 0;
-    padding: 10px 20px;
   }
 
   .trigger:hover {

@@ -37,10 +37,10 @@
 @media screen and (max-width: 768px) {
   .about {
     align-items: flex-end;
-    padding-bottom: 50px;
     height: calc(var(--screen-height, 100vh));
     min-height: inherit;
-}
+    padding-bottom: 50px;
+  }
 
   .image {
     min-width: 100%;

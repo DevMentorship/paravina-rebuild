@@ -22,8 +22,8 @@
 }
 
 .img {
-  border-radius: 15px;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 @media screen and (max-width: 580px) {

@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  max-height: calc(var(--screen-height, 100vh));
   width: 100%;
+  max-height: calc(var(--screen-height, 100vh));
   overflow: hidden;
   color: #ffffff;
 }
