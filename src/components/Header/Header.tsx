@@ -3,31 +3,36 @@ import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from '@/components/Header/Header.module.css';
 
 import { Button } from '../Button/Button';
-import { Hero } from '../Hero/Hero';
 
 const pages = [
+  { label: 'Главная', href: '/' },
   { label: 'Акции', href: '/promotions' },
   { label: 'Услуги', href: '/services' },
   { label: 'Цены', href: '/price' },
   { label: 'О клинике', href: '/about' },
 ];
 
-interface IHeaderProps {
+interface IProps {
   isVisible: boolean;
 }
 
-export const Header = ({ isVisible }: IHeaderProps) => {
+export const Header = ({ isVisible }: IProps) => {
   const [open, setOpen] = useState(false);
   const route = useRouter();
+  const { asPath } = route;
+
+  useEffect(() => {
+    setOpen(false);
+  }, [asPath]);
 
   return (
-    <header className={styles['header-wrapper']}>
-      <div className={cn(isVisible && styles['header-visible'], styles[`header`])}>
+    <header className={cn(isVisible && styles['header-visible'], styles['header-wrapper'])}>
+      <div className={styles.header}>
         <Link href="/">
           <Image
             src={
@@ -39,40 +44,34 @@ export const Header = ({ isVisible }: IHeaderProps) => {
             className={cn(styles['header-logo'])}
           />
         </Link>
-        <nav
-          className={cn(styles['header-nav'], {
-            [styles.active]: open,
-          })}
-        >
+        <nav className={cn(styles.nav, open && styles.active)}>
           {pages.map(({ label, href }, index) => (
             <Link
               href={href}
               key={index}
-              className={cn(styles['header-link'], 'heading2', href === route.asPath && styles['header-link-active'])}
+              className={cn(styles['header-link'], 'heading2', href === asPath && styles['header-link-active'])}
             >
               {label}
             </Link>
           ))}
-          <Button>
-            <Link href="tel:1300555992" className={cn(styles['header-link'], 'heading2')}>
-              Позвонить
-            </Link>
+          <Button href="tel:+79276922501" className={cn(styles['phone-mobile'], 'heading2')}>
+            <strong>+7 (927) 692-25-01</strong>
           </Button>
         </nav>
+        <Button href="tel:+79276922501" className={cn(styles.phone, 'heading2')}>
+          <strong>+7 (927) 692-25-01</strong>
+        </Button>
         <button
-          className={cn('hamburger', {
-            'is-active': open,
-          })}
+          className={cn(styles.hamburger, open && styles['is-active'])}
           onClick={() => setOpen(!open)}
           tabIndex={0}
         >
-          <span className="line"></span>
-          <span className="line"></span>
-          <span className="line"></span>
+          <span className={styles.line}></span>
+          <span className={styles.line}></span>
+          <span className={styles.line}></span>
           <span className="visually-hidden">Меню</span>
         </button>
       </div>
-      {!isVisible && <Hero />}
     </header>
   );
 };

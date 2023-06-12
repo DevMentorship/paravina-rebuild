@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import { Accordion, IAccordion } from '@/components/Accordion/Accordion';
 import { Gallery, IGalleryImages } from '@/components/Gallery/Gallery';
+import { Hero } from '@/components/Hero/Hero';
 import { IStandardImage, Standards } from '@/components/Standards/Standards';
 import { ITabImages, Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
@@ -21,6 +22,7 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
         <title>Паравина</title>
       </Head>
 
+      <Hero />
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />

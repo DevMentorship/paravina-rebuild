@@ -53,13 +53,14 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
             alt={`${galleryImage.alt}`}
             width={270}
             height={idx == 1 ? 400 : 190}
-            className={cn(idx == 1 ? styles['img-wide'] : styles.img, 'invisible-child')}
+            className={cn(idx == 1 ? styles['img-wide'] : styles.img, 'invisible-child', 'start-animation-down-top')}
             data-child
           />
         ))}
       </div>
 
-      <GalleryPopup isOpen={isOpenPopup} isClose={closePopup} selectedImage={selectedImage} />
+      {/* Temporary hide modals */}
+      {/* <GalleryPopup isOpen={isOpenPopup} isClose={closePopup} selectedImage={selectedImage} /> */}
 
       <Swiper
         className={styles.swiper}

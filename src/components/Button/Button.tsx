@@ -19,12 +19,12 @@ export const Button = ({ children, type, className, href, onClick, onSubmit }: I
       <button
         onClick={onClick}
         onSubmit={onSubmit}
-        className={cn(styles.button, type === 'secondary' && styles.secondary, className)}
+        className={cn(styles.button, 'heading3', type === 'secondary' && styles.secondary, className)}
       >
         {children}
       </button>
     ) : (
-      <Link href={href} className={cn(styles.button, type === 'link' && styles.link, className)}>
+      <Link href={href} className={cn(styles.button, 'heading3', type === 'secondary' && styles.secondary, className)}>
         {children}
       </Link>
     )}

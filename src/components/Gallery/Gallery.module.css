@@ -45,13 +45,13 @@
   }
 }
 
-.img:hover,
+/* .img:hover,
 .img-wide:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, .24) 0 3px 8px;
   transition: .3s;
   transform: scale(1.05);
-}
+} */
 
 @media screen and (max-width: 580px) {
   .img:hover,

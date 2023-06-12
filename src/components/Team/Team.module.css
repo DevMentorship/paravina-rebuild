@@ -44,6 +44,8 @@
   height: 540px;
   padding-bottom: 20px;
   background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .img {
@@ -53,7 +55,7 @@
 }
 
 .content {
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .name {
@@ -72,14 +74,12 @@
 .btn-wrapper {
   display: flex;
   justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .btn {
-  max-width: 140px;
-  max-height: 50px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
+  width: 100%;
 }
 
 .arrows {

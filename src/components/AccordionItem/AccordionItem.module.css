@@ -5,12 +5,14 @@
 .trigger {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 20px 10px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   border-bottom: 2px dashed #949596;
+  text-align: left;
 }
 
 .trigger:focus-visible {
@@ -22,7 +24,7 @@
 }
 
 .trigger::after {
-  margin-left: auto;
+  margin-left: 10px;
   content: '+';
   transition: transform .2s ease;
 }
