@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
-import { Accordion, IAccordion } from '@/components/Accordion/Accordion';
+import { IAccordion } from '@/components/Accordion/Accordion';
+import { PricesTab } from '@/components/PricesTab/PricesTab';
 import { client } from '@/lib/client';
 
 interface IProps {
@@ -14,9 +15,7 @@ export default function Home({ prices }: IProps) {
         <title>Паравина - Цены</title>
       </Head>
 
-      {prices.map((price, index) => (
-        <Accordion key={index} items={price.items} title={price.title} />
-      ))}
+      <PricesTab prices={prices} />
     </>
   );
 }

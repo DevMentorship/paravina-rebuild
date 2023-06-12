@@ -15,9 +15,10 @@ export interface IAccordionItem {
 
 interface IProps {
   data: IAccordionItem;
+  tabIndex?: number;
 }
 
-export const AccordionItem = ({ data: { title, content, subItems } }: IProps) => {
+export const AccordionItem = ({ data: { title, content, subItems }, tabIndex }: IProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState(0);
   const [isOpen, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export const AccordionItem = ({ data: { title, content, subItems } }: IProps) =>
 
   return (
     <div className={cn(styles.wrapper, isOpen && styles.active)}>
-      <button className={cn(styles.trigger, 'heading4')} onClick={() => setOpen(!isOpen)}>
+      <button className={cn(styles.trigger, 'heading4')} onClick={() => setOpen(!isOpen)} tabIndex={tabIndex}>
         {title}
       </button>
 

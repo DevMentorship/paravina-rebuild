@@ -1,0 +1,75 @@
+
+.triggers-wrapper {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.triggers {
+  display: flex;
+  min-width: 100%;
+  overflow-x: auto;
+  background-color: #ffffff;
+  border: 1px #fac0aa solid;
+  border-radius: 12px;
+}
+
+.trigger {
+  min-width: 200px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.trigger--active {
+  min-width: 200px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #fac0aa;
+  border-radius: 12px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+.item-invisible {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.item-visible {
+  max-height: fit-content;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.title {
+  margin-top: 5px;
+}
+
+.description {
+  margin-top: 5px;
+}
+
+@media (max-width: 500px) {
+  .triggers {
+    flex-wrap: wrap;
+    overflow-x: none;
+  }
+
+  .trigger, .trigger--active {
+    min-width: 100%;
+    word-wrap: break-word;
+  }
+}
+

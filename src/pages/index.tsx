@@ -24,7 +24,7 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />
-      <Accordion items={faq} title="Часто задаваемые вопросы" />
+      <Accordion items={faq} title="Часто задаваемые вопросы" isVisible={true} />
     </>
   );
 }
