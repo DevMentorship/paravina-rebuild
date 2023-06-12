@@ -1,5 +1,6 @@
 .button {
-  padding: 20px;
+  padding: 10px 25px;
+  margin: 0 auto;
   color: #ffffff;
   cursor: pointer;
   background-color: #fac0aa;
@@ -8,5 +9,10 @@
 }
 
 .secondary {
+  color: #000000;
   background-color: #ffffff;
+}
+
+.link {
+  margin: 0 auto;
 }

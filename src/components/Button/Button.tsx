@@ -1,16 +1,32 @@
 import cn from 'classnames';
-import { ReactNode } from 'react';
+import Link from 'next/link';
+import { ReactEventHandler, ReactNode } from 'react';
 
 import styles from '@/components/Button/Button.module.css';
 
 interface IButton {
-  type?: 'secondary';
+  type?: 'secondary' | 'link';
   children?: ReactNode;
   className?: string;
+  href?: string;
+  onClick?: ReactEventHandler<HTMLButtonElement>;
+  onSubmit?: ReactEventHandler<HTMLButtonElement>;
 }
 
-export const Button = ({ children, type, className }: IButton) => (
+export const Button = ({ children, type, className, href, onClick, onSubmit }: IButton) => (
   <>
-    <button className={cn(styles.button, type === 'secondary' && styles.secondary, className)}>{children}</button>
+    {!href ? (
+      <button
+        onClick={onClick}
+        onSubmit={onSubmit}
+        className={cn(styles.button, type === 'secondary' && styles.secondary, className)}
+      >
+        {children}
+      </button>
+    ) : (
+      <Link href={href} className={cn(styles.button, type === 'link' && styles.link, className)}>
+        {children}
+      </Link>
+    )}
   </>
 );
