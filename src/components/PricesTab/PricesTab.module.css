@@ -10,7 +10,7 @@
   overflow-x: auto;
   background-color: #ffffff;
   border: 1px #fac0aa solid;
-  border-radius: 12px;
+  border-radius: 15px;
 }
 
 .trigger {
@@ -20,12 +20,23 @@
   cursor: pointer;
 }
 
+.trigger:hover {
+  color: #ffffff;
+  background-color: #4c5056;
+  border-radius: 15px;
+}
+
 .trigger--active {
   min-width: 200px;
-  color: #ffffff;
+  color: #4c5056;
   text-align: center;
   background-color: #fac0aa;
-  border-radius: 12px;
+  border-radius: 15px;
+}
+
+.trigger--active:hover {
+  color: #4c5056;
+  background-color: #fac0aa;
 }
 
 .content {
@@ -61,15 +72,27 @@
   margin-top: 5px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
   .triggers {
     flex-wrap: wrap;
     overflow-x: none;
+    border-radius: 15px;
   }
 
-  .trigger, .trigger--active {
+  .trigger,
+  .trigger--active {
     min-width: 100%;
+    padding: 10px 20px;
     word-wrap: break-word;
+    border-radius: 0;
+  }
+
+  .trigger:hover {
+    border-radius: 0;
+  }
+
+  .trigger:not(:last-child) {
+    border-bottom: 1px #fac0aa solid;
   }
 }
 

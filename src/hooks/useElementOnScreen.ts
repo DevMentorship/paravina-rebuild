@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useElementOnScreen = () => {
+const useElementOnScreen = (endAnimation?: string) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+
+  const triggerAnimation = () => {
+    if (ref.current) {
+      ref.current.querySelectorAll<HTMLElement>('[data-child]').forEach((block) => {
+        block.classList.add(endAnimation ?? 'end-animation-move', 'fade-in');
+      });
+    }
+  };
 
   useEffect(() => {
     const currentRef = ref.current;
@@ -29,12 +37,12 @@ const useElementOnScreen = () => {
   useEffect(() => {
     if (isIntersecting && ref.current) {
       ref.current.querySelectorAll<HTMLElement>('[data-child]').forEach((block) => {
-        block.classList.add('end-animation-top-down', 'fade-in');
+        block.classList.add(endAnimation ?? 'end-animation-move', 'fade-in');
       });
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, endAnimation]);
 
-  return { ref };
+  return { ref, triggerAnimation };
 };
 
 export default useElementOnScreen;

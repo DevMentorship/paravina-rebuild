@@ -12,6 +12,12 @@
   margin: 40px auto;
 }
 
+@media screen and (max-width: 768px) {
+  .accordion {
+    margin: 20px auto;
+  }
+}
+
 .invisible {
   max-height: 0;
   overflow: hidden;

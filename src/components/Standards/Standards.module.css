@@ -21,6 +21,11 @@
   max-width: 270px;
 }
 
+.img {
+  overflow: hidden;
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 580px) {
   .card {
     max-width: 100%;
@@ -31,9 +36,7 @@
   display: block;
   width: 100%;
   height: 150px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 580px) {

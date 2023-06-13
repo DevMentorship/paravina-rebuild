@@ -41,3 +41,29 @@
   border-top: 10vh solid #fac0aa;
   border-left: 100vw solid transparent;
 }
+
+@media screen and (max-width: 768px) {
+  .top {
+    padding-bottom: 40px;
+  }
+
+  .bottom {
+    padding-bottom: 40px;
+  }
+
+  .left.top::after {
+    border-top: 5vh solid #ffffff;
+  }
+
+  .right.top::after {
+    border-top: 5vh solid #ffffff;
+  }
+
+  .left.bottom::after {
+    border-top: 5vh solid #fac0aa;
+  }
+
+  .right.bottom::after {
+    border-top: 5vh solid #fac0aa;
+  }
+}

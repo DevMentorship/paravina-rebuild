@@ -16,6 +16,8 @@
 
 .img-wide {
   grid-row-start: span 3;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 .swiper {
@@ -33,6 +35,8 @@
   display: block;
   max-width: 100%;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
   transition: .3s;
   object-fit: cover;
 }
@@ -45,13 +49,13 @@
   }
 }
 
-.img:hover,
+/* .img:hover,
 .img-wide:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, .24) 0 3px 8px;
   transition: .3s;
   transform: scale(1.05);
-}
+} */
 
 @media screen and (max-width: 580px) {
   .img:hover,

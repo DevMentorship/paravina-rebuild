@@ -13,7 +13,7 @@ export const Page = ({ children }: { children?: ReactNode }) => {
   const route = useRouter();
   return (
     <>
-      <Header isVisible={route.asPath !== '/'} />
+      <Header isVisible={route.asPath !== '/' && route.asPath !== '/about'} />
       <main>
         <h1 className="visually-hidden">Стоматология Паравина</h1>
         <h2 className="visually-hidden">

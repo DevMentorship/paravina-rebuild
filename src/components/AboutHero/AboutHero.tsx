@@ -7,7 +7,6 @@ import styles from './AboutHero.module.css';
 
 export const AboutHero = ({ title, descr, image }: IAbout) => {
   const [firstTitlePart, secondTitlePart] = title.split(' ');
-  // wrap to the {}, and add return() before section
   return (
     <section>
       <div className={styles.about}>
