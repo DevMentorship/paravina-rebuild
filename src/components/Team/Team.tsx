@@ -79,18 +79,18 @@ export const Team = ({ doctors }: IDoctors) => {
                 <div className={styles.content}>
                   <div className={styles.name}>{doctor.name}</div>
                   <div className={styles.role}>{doctor.role}</div>
-                </div>
-                <div className={styles['btn-wrapper']}>
-                  <Button
-                    className={styles.btn}
-                    href={`/doctors/${encodeURIComponent(doctor.slug.current)}`}
-                    type="link"
-                  >
-                    О докторе
-                  </Button>
-                  <Button className={styles.btn} onClick={() => setIsClicked({ open: true, doctor: doctor.name })}>
-                    Записаться
-                  </Button>
+                  <div className={styles['btn-wrapper']}>
+                    <Button
+                      className={styles.btn}
+                      href={`/doctors/${encodeURIComponent(doctor.slug.current)}`}
+                      type="link"
+                    >
+                      О докторе
+                    </Button>
+                    <Button className={styles.btn} onClick={() => setIsClicked({ open: true, doctor: doctor.name })}>
+                      Записаться
+                    </Button>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>

@@ -1,18 +1,30 @@
 .button {
+  display: grid;
+  place-items: center;
+  height: fit-content;
+  min-height: 60px;
   padding: 10px 25px;
-  margin: 0 auto;
-  color: #ffffff;
+  margin: 0;
+  color: #4c5056;
   cursor: pointer;
-  background-color: #fac0aa;
+  background: #fac0aa;
   border: 0;
   border-radius: 15px;
+  transition: background .3s ease-in-out;
+  white-space: nowrap;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #4c5056;
 }
 
 .secondary {
-  color: #000000;
-  background-color: #ffffff;
+  color: #ffffff;
+  background: #4c5056;
 }
 
-.link {
-  margin: 0 auto;
+.secondary:hover {
+  color: #4c5056;
+  background: #fac0aa;
 }

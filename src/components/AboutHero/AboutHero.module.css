@@ -37,7 +37,8 @@
 @media screen and (max-width: 768px) {
   .about {
     align-items: flex-end;
-    min-height: 700px;
+    height: calc(var(--screen-height, 100vh));
+    min-height: inherit;
     padding-bottom: 50px;
   }
 
