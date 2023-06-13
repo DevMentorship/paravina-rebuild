@@ -12,6 +12,10 @@
   margin-bottom: 20px;
 }
 
+.map-link:hover {
+  opacity: .5;
+}
+
 @media screen and (max-width: 768px) {
   .map-wrapper {
     flex-wrap: wrap;
