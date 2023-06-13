@@ -1,34 +1,38 @@
-.map-wrapper {
+.wrapper {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 90px;
 }
 
-.map-title,
-.map-link,
-.map-desc {
+.title,
+.link,
+.desc {
   display: block;
   margin-bottom: 20px;
 }
 
-.map-link:hover {
+.link:hover {
   opacity: .5;
 }
 
+.window {
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 768px) {
-  .map-wrapper {
+  .wrapper {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .map-title,
-  .map-link,
-  .map-desc {
+  .title,
+  .link,
+  .desc {
     text-align: center;
   }
 
-  .map-window {
+  .window {
     max-width: 300px;
     max-height: 215px;
   }
