@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import cn from 'classnames';
 import { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';

@@ -1,0 +1,31 @@
+.map-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 90px;
+}
+
+.map-title,
+.map-link,
+.map-desc {
+  display: block;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .map-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .map-title,
+  .map-link,
+  .map-desc {
+    text-align: center;
+  }
+
+  .map-window {
+    max-width: 300px;
+    max-height: 215px;
+  }
+}
