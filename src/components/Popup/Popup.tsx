@@ -55,8 +55,6 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
     formState: { errors },
   } = useForm({ defaultValues: defaultFormFields, mode: 'onBlur' });
 
-  if (!modalIsOpened) return;
-
   function fetchSubmit(_data: IFormFields): Promise<string> {
     //Here should be backend endpoint for submitting
 
