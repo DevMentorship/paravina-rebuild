@@ -2950,11 +2950,6 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-next-yandex-metrica@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/next-yandex-metrica/-/next-yandex-metrica-1.0.0.tgz#aa6b16f063cffa2c0dfbaf1d7310cc517919b4af"
-  integrity sha512-8HcJs4XMFnN0LSs8o8iewzZnByOL91QzoKNIvHGMNevAVi9bpvnzv92fmFccbwghG6hGIhmIPERVbBBfzo9M5w==
-
 next@13.2.4:
   version "13.2.4"
   resolved "https://registry.npmjs.org/next/-/next-13.2.4.tgz"
