@@ -54,14 +54,13 @@
   height: 70px;
 }
 
-.popup > form > textarea:not(:focus-within) + span.popup-note-notification,
-.popup > form > textarea:focus-within ~ div > .popup-err {
+.popup > form > textarea:not(:focus-within) ~ div > span.popup-note-notification,
+.popup > form > textarea:focus-within ~ div > .popup-err,
+.popup > form > input:focus-within ~ div > .popup-err  {
   display: none;
 }
 
 span.popup-note-notification {
-  position: absolute;
-  bottom: 90px;
   font-size: 1.3rem;
   padding-left: 10px;
 }

@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Popup.module.css';
@@ -8,9 +9,12 @@ import styles from './Popup.module.css';
 enum errMessage {
   name = 'Имя не может содержать цифры',
   shortName = 'Имя не может быть короче 2 символов',
-  phone = 'Введите номер телефона в формате 7-999-111-1111',
+  noName = 'Укажите имя',
+  phoneSymbols = 'Телефон может содержать только цифры и символы + ( ) -',
+  phoneLength = 'Неверная длина телефона',
+  noPhone = 'Укажите телефон',
   note = 'Максимальная длина примечания 300 символов',
-  agreement = 'Примите соглашение, пожалуйста',
+  noAgreement = 'Примите соглашение, пожалуйста',
   fetchErr = 'Что-то пошло не так. Попробуйте позже',
 }
 
@@ -41,26 +45,17 @@ const defaultFormFields = {
 };
 
 export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps) => {
-  const [formFields, setFormFields] = useState(defaultFormFields);
   const [submitStatus, setSubmitStatus] = useState(defaultSubmitStatus);
-  const { name, phone, note, agreement } = formFields;
+  const [noteLength, setNoteLength] = useState(0);
+  const {
+    reset,
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm({ defaultValues: defaultFormFields, mode: 'onBlur' });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setSubmitStatus({ ...submitStatus, err: '' });
-
-    const { name, value } = event.target;
-    if (name === 'agreement') {
-      setFormFields({ ...formFields, agreement: !agreement });
-      return;
-    }
-    if (name === 'phone') {
-      const phone = value.replace(/[^0-9+\-\s()]/g, '');
-      setFormFields({ ...formFields, [name]: phone });
-      return;
-    }
-    setFormFields({ ...formFields, [name]: value });
-    return;
-  };
+  if (!modalIsOpened) return;
 
   function fetchSubmit(_data: IFormFields): Promise<string> {
     //Here should be backend endpoint for submitting
@@ -77,35 +72,11 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
     });
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (/\d/.test(name)) {
-      setSubmitStatus({ ...submitStatus, err: errMessage.name });
-      return;
-    }
-    if (name.length < 2) {
-      setSubmitStatus({ ...submitStatus, err: errMessage.shortName });
-      return;
-    }
-    const phoneLength = phone.replace(/\D/g, '').length;
-    if (phoneLength < 10 || phoneLength > 11) {
-      setSubmitStatus({ ...submitStatus, err: errMessage.phone });
-      return;
-    }
-    if (note.length > 300) {
-      setSubmitStatus({ ...submitStatus, err: errMessage.note });
-      return;
-    }
-    if (!agreement) {
-      setSubmitStatus({ ...submitStatus, err: errMessage.agreement });
-      return;
-    }
-    setSubmitStatus({ ...submitStatus, err: '', isLoading: true });
-
+  const onSubmit = async (data: IFormFields) => {
     async function handleFetchResult(message: string) {
       setSubmitStatus({ ...submitStatus, isLoading: false, status: message });
       if (message === '200') {
-        setFormFields(defaultFormFields);
+        reset();
       }
       setTimeout(() => {
         setSubmitStatus({ ...submitStatus, status: '' });
@@ -113,7 +84,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
       }, 6000);
     }
 
-    await fetchSubmit(formFields)
+    await fetchSubmit(data)
       .then((status) => {
         handleFetchResult(status);
       })
@@ -149,28 +120,65 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
       <div className={cn(styles.popup, modalIsOpened && styles['popup-opened'])} ref={popupRef}>
         {submitStatus.isLoading && <Spinner />}
         {!submitStatus.isLoading && submitStatus.status === '' && (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <h2 className="heading2">Связаться с нами</h2>
-            <input required placeholder="Имя" name="name" type="text" value={name} onChange={handleChange} />
-            <input required placeholder="Телефон" name="phone" type="text" value={phone} onChange={handleChange} />
-            <textarea placeholder="Примечание" name="note" value={note} onChange={handleChange} />
-            {note.length >= 250 && note.length <= 300 && (
-              <span className={cn(styles['popup-note-notification'])}>
-                Осталось&nbsp;{300 - note.length}&nbsp;{getNoun(300 - note.length, 'символ')}
-              </span>
-            )}
-            {note.length >= 301 && (
-              <span className={cn(styles['popup-note-notification'], styles.warning)}>
-                Вы превысили лимит на&nbsp;{note.length - 300}&nbsp;{getNoun(note.length, 'символ')}
-              </span>
-            )}
+            <input
+              {...register('name', {
+                required: errMessage.noName,
+                minLength: { value: 2, message: errMessage.shortName },
+                pattern: /\D/,
+              })}
+              placeholder="Имя"
+              type="text"
+            />
+            <input
+              {...register('phone', {
+                required: errMessage.noPhone,
+                pattern: {
+                  value: /[0-9+\-\s()]/g,
+                  message: errMessage.phoneSymbols,
+                },
+                validate: (value) => {
+                  const phoneLength = value.replace(/\D/g, '').length;
+                  if (phoneLength < 10 || phoneLength > 11) return errMessage.phoneLength;
+                },
+              })}
+              placeholder="Телефон"
+              type="text"
+            />
+            <textarea
+              {...register('note', {
+                maxLength: {
+                  value: 300,
+                  message: `Вы превысили лимит на ${noteLength - 300} ${getNoun(noteLength, 'символ')}`,
+                },
+              })}
+              placeholder="Примечание"
+              onChange={(event) => setNoteLength(event.currentTarget.value.length)}
+              onBlur={() => clearErrors}
+            />
             <div className={cn(styles['popup-info'])}>
               <label>
-                <input required type="checkbox" name="agreement" checked={agreement} onChange={handleChange} />
+                <input {...register('agreement', { required: errMessage.noAgreement })} type="checkbox" />
                 <span>Согласие с&nbsp;</span>
                 <a href="/agreement">условиями</a>
               </label>
-              {submitStatus.err && <span className={cn(styles['popup-err'])}>{submitStatus.err}</span>}
+              {Object.keys(errors).length > 0 && (
+                <span className={cn(styles['popup-err'])}>
+                  {errors[Object.keys(errors)[0] as keyof typeof errors]?.message}
+                </span>
+              )}
+              {noteLength >= 250 && noteLength <= 300 && (
+                <span className={cn(styles['popup-note-notification'])}>
+                  Осталось&nbsp;{300 - noteLength}&nbsp;{getNoun(300 - noteLength, 'символ')}
+                </span>
+              )}
+              {noteLength >= 301 && (
+                <span className={cn(styles['popup-note-notification'], styles.warning)}>
+                  Вы превысили лимит на&nbsp;{noteLength - 300}&nbsp;
+                  {getNoun(noteLength, 'символ')}
+                </span>
+              )}
             </div>
             <div className={cn(styles['popup-submit'])}>
               <button
