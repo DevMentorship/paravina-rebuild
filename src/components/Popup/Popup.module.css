@@ -55,17 +55,16 @@
 }
 
 .popup > form > textarea:not(:focus-within) ~ div > span.popup-note-notification,
-.popup > form > textarea:focus-within ~ div > .popup-err,
-.popup > form > input:focus-within ~ div > .popup-err  {
+.popup > form > textarea:focus-within ~ div > .popup-err  {
   display: none;
 }
 
-span.popup-note-notification {
+span.popup-note-notification, span.popup-err {
   font-size: 1.3rem;
   padding-left: 10px;
 }
 
-.warning {
+.warning, span.popup-err {
   color: red;
 }
 
@@ -106,14 +105,10 @@ span.popup-note-notification {
   font-weight: bold;
 }
 
-.popup-err {
-  color: red;
-  font-size: 1.3rem;
-}
-
 .popup-message {
   height: 60vh;
   width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

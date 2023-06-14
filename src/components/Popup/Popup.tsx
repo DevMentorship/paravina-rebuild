@@ -53,7 +53,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
     handleSubmit,
     clearErrors,
     formState: { errors },
-  } = useForm({ defaultValues: defaultFormFields, mode: 'onBlur' });
+  } = useForm({ defaultValues: defaultFormFields });
 
   function fetchSubmit(_data: IFormFields): Promise<string> {
     //Here should be backend endpoint for submitting
@@ -71,6 +71,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
   }
 
   const onSubmit = async (data: IFormFields) => {
+    setSubmitStatus({ ...submitStatus, isLoading: true, status: '' });
     async function handleFetchResult(message: string) {
       setSubmitStatus({ ...submitStatus, isLoading: false, status: message });
       if (message === '200') {
