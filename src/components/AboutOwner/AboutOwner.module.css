@@ -1,7 +1,6 @@
 .AboutOwner {
   max-width: 100%;
-  height: 829px;
-  margin-top: 150px;
+  margin-top: 75px;
 }
 
 .wrapper {
@@ -22,14 +21,34 @@
   text-align: center;
 }
 
+@media only screen and (max-width: 750px) {
+  .title {
+    font-size: 60px;
+  }
+}
+
 
 /* QUALITIES STYLES */
 
 .qualities {
   display: flex;
+  flex-wrap: wrap;
   gap: 100px;
   justify-content: center;
+  padding-bottom: 120px;
   margin-top: 120px;
+}
+
+@media only screen and (max-width: 1150px) {
+  .qualities {
+    gap: 50px;
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  /* .qualities {
+    flex-direction: column;
+  } */
 }
 
 .quality {
@@ -65,7 +84,31 @@
   height: 100%;
   background: url('../../../public/AboutOwnerPics/background-pic.png') no-repeat;
   background-attachment: fixed;
+  background-position: center center;
   background-size: cover;
+}
+
+
+/* LAPTOP */
+@media only screen and (max-width: 920px) and (max-height: 1380px) {
+  .background {
+    background-position: -700px 0;
+  }
+}
+
+/* 50% DESKTOP SCREEN */
+@media only screen and (max-width: 750px) {
+  .background {
+    background-position: -350px center;
+  }
+}
+
+/* PHONE */
+@media only screen and (max-width: 420px) {
+  .background {
+    background-position: -550px;
+    background-size: cover;
+  }
 }
 
 .blur {
