@@ -3,10 +3,10 @@ import Image from 'next/image';
 import expPic from '../../../public/AboutOwnerPics/svg/experience.svg';
 import inspPic from '../../../public/AboutOwnerPics/svg/inspiration.svg';
 import leadPic from '../../../public/AboutOwnerPics/svg/leadership.svg';
-import styles from './AboutOwner.module.css';
+import styles from './heroQualities.module.css';
 
-export const AboutOwner = () => (
-  <section className={styles.AboutOwner}>
+export const HeroQualities = () => (
+  <section className={styles.heroQualities}>
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Екатерина Правина</h2>
       <div className={styles.qualities}>
