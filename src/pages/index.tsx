@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { AboutOwner } from '@/components/AboutOwner/AboutOwner.component';
 import { Accordion } from '@/components/Accordion/Accordion';
 import { IAccordionItem } from '@/components/AccordionItem/AccordionItem';
 import { Gallery, IGalleryImages } from '@/components/Gallery/Gallery';
@@ -28,6 +29,7 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
       </Head>
 
       <Hero />
+      <AboutOwner />
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />
