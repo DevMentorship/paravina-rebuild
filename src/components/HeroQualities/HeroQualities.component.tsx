@@ -6,7 +6,13 @@ import inspPic from '../../../public/HeroQualitiesPics/svg/inspiration.svg';
 import leadPic from '../../../public/HeroQualitiesPics/svg/leadership.svg';
 import styles from './HeroQualities.module.css';
 
-const QUALITIES_DATA = [
+interface IQuality {
+  img: string;
+  title: string;
+  text: string;
+}
+
+const QUALITIES_DATA: IQuality[] = [
   {
     img: leadPic,
     title: 'Лидерство',
