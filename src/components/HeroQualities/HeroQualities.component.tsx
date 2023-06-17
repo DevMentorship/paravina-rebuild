@@ -3,7 +3,7 @@ import Image from 'next/image';
 import expPic from '../../../public/HeroQualitiesPics/svg/experience.svg';
 import inspPic from '../../../public/HeroQualitiesPics/svg/inspiration.svg';
 import leadPic from '../../../public/HeroQualitiesPics/svg/leadership.svg';
-import styles from './heroQualities.module.css';
+import styles from './HeroQualities.module.css';
 
 export const HeroQualities = () => (
   <section className={styles.heroQualities}>
