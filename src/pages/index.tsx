@@ -8,6 +8,7 @@ import { HeroQualities } from '@/components/HeroQualities/HeroQualities.componen
 import { IStandardImage, Standards } from '@/components/Standards/Standards';
 import { ITabImages, Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
+import { ClinickAdvantages } from '@/components/ClinicAdvantages/ClinicAdvantages.component';
 
 interface IProps {
   faq: IAccordionItem[];
@@ -32,6 +33,7 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
       <HeroQualities />
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
+      <ClinickAdvantages />
       <Gallery galleryImages={gallery} />
       <Accordion items={faq} title="Часто задаваемые вопросы" isVisible={true} />
     </>
