@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import expPic from '../../../public/AboutOwnerPics/svg/experience.svg';
-import inspPic from '../../../public/AboutOwnerPics/svg/inspiration.svg';
-import leadPic from '../../../public/AboutOwnerPics/svg/leadership.svg';
+import expPic from '../../../public/HeroQualitiesPics/svg/experience.svg';
+import inspPic from '../../../public/HeroQualitiesPics/svg/inspiration.svg';
+import leadPic from '../../../public/HeroQualitiesPics/svg/leadership.svg';
 import styles from './heroQualities.module.css';
 
 export const HeroQualities = () => (
