@@ -30,8 +30,8 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
       </Head>
 
       <Hero />
-      <HeroQualities />
       <Tabs tabImages={{ cosmetology, stomatology }} />
+      <HeroQualities />
       <Standards standardImages={standards} />
       <ClinickAdvantages />
       <Gallery galleryImages={gallery} />
