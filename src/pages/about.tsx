@@ -2,6 +2,7 @@ import { TypedObject } from '@portabletext/types';
 import Head from 'next/head';
 
 import { AboutHero } from '@/components/AboutHero/AboutHero';
+import { ClinickAdvantages } from '@/components/ClinicAdvantages/ClinicAdvantages.component';
 import { Map } from '@/components/Map/Map';
 import { IReview, Reviews } from '@/components/Reviews/Reviews';
 import { IDoctor, Team } from '@/components/Team/Team';
@@ -29,6 +30,7 @@ export default function About({ reviews, about, doctors }: IProps) {
       <AboutHero image={about.image} title={about.title} descr={about.descr} />
       <Team doctors={doctors} />
       <Reviews reviews={reviews} />
+      <ClinickAdvantages />
       <Map />
     </>
   );

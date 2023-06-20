@@ -35,14 +35,14 @@ const QUALITIES_DATA: IQuality[] = [
 export const HeroQualities = () => (
   <section className={styles.heroQualities}>
     <div className={styles.wrapper}>
-      <h2 className={cn(styles.title, 'heading2')}>Екатерина Правина</h2>
+      <h2 className={cn(styles.title, 'heading1')}>Екатерина Правина</h2>
 
       <div className={styles.qualities}>
         {QUALITIES_DATA.map(({ img, title, text }) => (
           <div className={styles.quality} key={title}>
             <Image src={img} alt={title} />
-            <h3 className="heading3">{title}</h3>
-            <p className="paragraph">{text}</p>
+            <h3 className="heading2">{title}</h3>
+            <p className="heading3">{text}</p>
           </div>
         ))}
       </div>

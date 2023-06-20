@@ -1,6 +1,6 @@
 .heroQualities {
   max-width: 100%;
-  margin-top: 75px;
+  margin: 80px 0;
 }
 
 .wrapper {
@@ -31,6 +31,7 @@
 
 @media only screen and (max-width: 1150px) {
   .qualities {
+    margin-top: 60px;
     gap: 50px;
   }
 }
@@ -40,6 +41,17 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.quality img {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+  .quality img {
+    width: 70px;
+    height: auto;
+  }
 }
 
 .quality h3 {
