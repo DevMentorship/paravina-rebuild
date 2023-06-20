@@ -57,6 +57,11 @@
     width: 100%;
     margin-top: 40px;
   }
+
+  .subscribe img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .adress,
@@ -65,8 +70,6 @@
 .documentation,
 .link,
 .consultation {
-  font-size: 2rem;
-  line-height: 45px;
   text-align: center;
 }
 

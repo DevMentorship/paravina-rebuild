@@ -36,14 +36,26 @@
 }
 
 .item {
+  display: flex;
+  flex-direction: column;
   width: 250px;
   padding: 20px;
   border: 1px #fac0aa solid;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 580px) {
+  .item {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .img {
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 .title {

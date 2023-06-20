@@ -13,6 +13,9 @@ const VARIANTS = {
 };
 
 export interface ITabImages {
+  index: number;
+  cosmetologyImage: string;
+  stomatologyImages: string;
   title: string;
   description: string;
 }
@@ -25,40 +28,68 @@ interface ITabProps {
 }
 
 export const Tabs = ({ tabImages }: ITabProps) => {
-  const { ref } = useElementOnScreen();
+  const { ref, triggerAnimation } = useElementOnScreen();
 
   const [selectedCategory, setSelectedCategory] = useState<'stomatology' | 'cosmetology'>(VARIANTS.STOMATOLOGY);
+
+  const handleClick = (variant: 'stomatology' | 'cosmetology') => {
+    setSelectedCategory(variant);
+    setTimeout(() => {
+      triggerAnimation(), 1000;
+    });
+  };
 
   return (
     <section className="container">
       <div className={styles.wrapper}>
         <div className={styles['triggers-wrapper']}>
           <div className={styles.triggers}>
-            <a
-              href={`#${VARIANTS.STOMATOLOGY}`}
+            <button
               className={cn(styles.trigger, selectedCategory === VARIANTS.STOMATOLOGY && styles['trigger--active'])}
-              onClick={() => setSelectedCategory(VARIANTS.STOMATOLOGY)}
+              onClick={() => handleClick(VARIANTS.STOMATOLOGY)}
             >
               Стоматология
-            </a>
-            <a
-              href={`#${VARIANTS.COSMETOLOGY}`}
+            </button>
+            <button
               className={cn(styles.trigger, selectedCategory === VARIANTS.COSMETOLOGY && styles['trigger--active'])}
-              onClick={() => setSelectedCategory(VARIANTS.COSMETOLOGY)}
+              onClick={() => handleClick(VARIANTS.COSMETOLOGY)}
             >
               Косметология
-            </a>
+            </button>
           </div>
         </div>
       </div>
-      <div className={styles.items} ref={ref}>
-        {tabImages[selectedCategory].map((tabImage, index) => (
-          <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
-            <Image src={urlFor(tabImage).url()} alt={tabImage.title} className={styles.img} width={100} height={100} />
-            <h3 className={cn(styles.title, 'heading4')}>{tabImage.title}</h3>
-            <p className={styles.description}>{tabImage.description}</p>
-          </div>
-        ))}
+      <div ref={ref}>
+        <div className={cn(styles.items, selectedCategory !== VARIANTS.COSMETOLOGY && 'hidden')}>
+          {tabImages.cosmetology.map((tabImage, index) => (
+            <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
+              <Image
+                src={urlFor(tabImage.cosmetologyImage).url()}
+                alt={tabImage.title}
+                className={styles.img}
+                width={100}
+                height={100}
+              />
+              <h3 className={cn(styles.title, 'heading4')}>{tabImage.title}</h3>
+              <p className={styles.description}>{tabImage.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className={cn(styles.items, selectedCategory !== VARIANTS.STOMATOLOGY && 'hidden')}>
+          {tabImages.stomatology.map((tabImage, index) => (
+            <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
+              <Image
+                src={urlFor(tabImage.stomatologyImages).url()}
+                alt={tabImage.title}
+                className={styles.img}
+                width={100}
+                height={100}
+              />
+              <h3 className={cn(styles.title, 'heading4')}>{tabImage.title}</h3>
+              <p className={styles.description}>{tabImage.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

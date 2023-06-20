@@ -1,18 +1,24 @@
 import Head from 'next/head';
 
-import { Accordion, IAccordion } from '@/components/Accordion/Accordion';
+import { Accordion } from '@/components/Accordion/Accordion';
+import { IAccordionItem } from '@/components/AccordionItem/AccordionItem';
 import { Gallery, IGalleryImages } from '@/components/Gallery/Gallery';
+import { Hero } from '@/components/Hero/Hero';
 import { IStandardImage, Standards } from '@/components/Standards/Standards';
 import { ITabImages, Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
 
 interface IProps {
-  faq: IAccordion[];
+  faq: IAccordionItem[];
   standards: IStandardImage[];
   gallery: IGalleryImages[];
   stomatology: ITabImages[];
   cosmetology: ITabImages[];
 }
+
+const sortDocs = (a: { index: number }, b: { index: number }) => {
+  if (a.index && b.index) return a.index - b.index;
+};
 
 export default function Home({ faq, standards, gallery, stomatology, cosmetology }: IProps) {
   return (
@@ -21,10 +27,11 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
         <title>Паравина</title>
       </Head>
 
+      <Hero />
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />
-      <Accordion items={faq} title="Часто задаваемые вопросы" />
+      <Accordion items={faq} title="Часто задаваемые вопросы" isVisible={true} />
     </>
   );
 }
@@ -37,11 +44,11 @@ export const getStaticProps = async () => {
   }`;
   const result = await client.fetch(query);
 
-  const faq = result.faq[0].faqItems;
-  const standards = result.standards[0].standardImages;
-  const gallery = result.gallery[0].galleryImages;
-  const stomatology = result.stomatology[0].stomatologyImages;
-  const cosmetology = result.cosmetology[0].cosmetologyImages;
+  const faq = result.faq.sort(sortDocs);
+  const standards = result.standards.sort(sortDocs);
+  const gallery = result.gallery.sort(sortDocs);
+  const stomatology = result.stomatology.sort(sortDocs);
+  const cosmetology = result.cosmetology.sort(sortDocs);
 
   return { props: { faq, standards, gallery, stomatology, cosmetology } };
 };

@@ -1,0 +1,30 @@
+.button {
+  display: grid;
+  place-items: center;
+  height: fit-content;
+  min-height: 60px;
+  padding: 10px 25px;
+  margin: 0;
+  color: #4c5056;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fac0aa;
+  border: 0;
+  border-radius: 15px;
+  transition: background .3s ease-in-out;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #4c5056;
+}
+
+.secondary {
+  color: #ffffff;
+  background: #4c5056;
+}
+
+.secondary:hover {
+  color: #4c5056;
+  background: #fac0aa;
+}

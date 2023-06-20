@@ -1,8 +1,11 @@
 .team {
+  position: relative;
   width: 100%;
   padding: 40px 0;
   object-fit: cover;
-  background-image: url('https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685610020/Paravina-rebuild/bg-team_d8lfet.png');
+  background:
+    url('https://res.cloudinary.com/dkqwi0tah/image/upload/q_auto/v1685610020/Paravina-rebuild/bg-team_d8lfet.png'),
+    #ffffff;
   background-repeat: no-repeat;
 }
 
@@ -40,7 +43,9 @@
   width: 100%;
   height: 540px;
   padding-bottom: 20px;
+  overflow: hidden;
   background-color: #ffffff;
+  border-radius: 15px;
 }
 
 .img {
@@ -50,7 +55,7 @@
 }
 
 .content {
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .name {
@@ -66,17 +71,15 @@
   color: #4c5056;
 }
 
+.btn-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
 .btn {
-  display: block;
-  padding: 10px 25px;
-  margin: 0 auto;
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff;
-  cursor: pointer;
-  background-color: #fac0aa;
-  border: none;
-  border-radius: 15px;
+  width: 100%;
 }
 
 .arrows {
@@ -88,6 +91,9 @@
 
 .prev,
 .next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   color: #ffffff;
   cursor: pointer;
@@ -99,3 +105,11 @@
 .prev {
   transform: rotate(180deg);
 }
+
+@media (max-width: 300px) {
+  .btn {
+    max-width: 100px;
+    font-size: .9rem;
+  }
+}
+

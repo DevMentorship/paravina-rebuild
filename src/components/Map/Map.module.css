@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 90px;
+}
+
+.title,
+.link,
+.desc {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.link:hover {
+  opacity: .5;
+}
+
+.window {
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .title,
+  .link,
+  .desc {
+    text-align: center;
+  }
+
+  .window {
+    max-width: 300px;
+    max-height: 215px;
+  }
+}

@@ -8,6 +8,8 @@ import styles from './Reviews.module.css';
 
 export interface IReview {
   _type: string;
+  reviewImage: string;
+  index: number;
 }
 
 interface IProps {
@@ -34,13 +36,20 @@ export const Reviews = ({ reviews }: IProps): JSX.Element => (
     </p>
     <div className={styles.review}>
       {reviews.map((review, idx) => (
-        <Image key={idx} src={urlFor(review).url()} alt={'Отзыв'} width={310} height={210} />
+        <Image key={idx} src={urlFor(review.reviewImage).url()} alt={'Отзыв'} width={310} height={210} />
       ))}
     </div>
     <Swiper spaceBetween={0} slidesPerView={1} centeredSlides={true}>
       {reviews.map((review, idx) => (
         <SwiperSlide key={idx} className={styles.swiper__content}>
-          <Image key={idx} src={urlFor(review).url()} alt={'Отзыв'} width={310} height={210} className={styles.slide} />
+          <Image
+            key={idx}
+            src={urlFor(review.reviewImage).url()}
+            alt={'Отзыв'}
+            width={310}
+            height={210}
+            className={styles.slide}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

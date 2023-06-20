@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Image from 'next/image';
 
 import { urlFor } from '@/lib/client';
 import { IAbout } from '@/pages/about';
@@ -8,7 +7,6 @@ import styles from './AboutHero.module.css';
 
 export const AboutHero = ({ title, descr, image }: IAbout) => {
   const [firstTitlePart, secondTitlePart] = title.split(' ');
-  // wrap to the {}, and add return() before section
   return (
     <section>
       <div className={styles.about}>
@@ -22,7 +20,14 @@ export const AboutHero = ({ title, descr, image }: IAbout) => {
           </h3>
           <p className="heading2">{descr}</p>
         </div>
-        <Image className={styles.image} src={urlFor(image).url()} alt="image" width={1920} height={1197} />
+        <div
+          className={styles.image}
+          style={{
+            backgroundImage: `url(${urlFor(image).url()})`,
+            width: 1920,
+            height: 1197,
+          }}
+        ></div>
       </div>
     </section>
   );

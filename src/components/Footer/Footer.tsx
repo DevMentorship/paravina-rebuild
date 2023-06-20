@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -36,16 +37,16 @@ export const Footer = () => (
         <Link href="/">
           <Image
             src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609950/Paravina-rebuild/vk_awkwtt.svg"
-            width="90"
-            height="90"
+            width="70"
+            height="70"
             alt="VK"
           />
         </Link>
         <Link href="/">
           <Image
             src="https://res.cloudinary.com/dkqwi0tah/image/upload/f_auto,q_auto/v1685609944/Paravina-rebuild/youtube_ta7dh0.svg"
-            width="90"
-            height="90"
+            width="70"
+            height="70"
             alt="YouTub"
           />
         </Link>
@@ -54,6 +55,10 @@ export const Footer = () => (
     <Link href="/" className={styles.link}>
       Политика конфиденциальности
     </Link>
-    <p className={styles.consultation}>Имеются противопоказания. Необходима консультация специалиста.</p>
+    <p className={cn(styles.consultation, 'heading1')}>
+      Имеются противопоказания.
+      <br />
+      Необходима консультация специалиста.
+    </p>
   </footer>
 );

@@ -8,6 +8,8 @@ import { Triangle } from '../Triangle/Triangle';
 import styles from './Standards.module.css';
 
 export interface IStandardImage {
+  standardImage: string;
+  index: number;
   text: string;
   title: string;
 }
@@ -32,9 +34,9 @@ export const Standards = ({ standardImages }: IStandardProps) => {
 
           <ul className={styles['cards-list']}>
             {standardImages.map((standardImage, index) => (
-              <li key={index} className={cn(styles.card, 'invisible-child', 'start-animation-side-left')} data-child>
+              <li key={index} className={cn(styles.card, 'invisible-child', 'start-animation-down-top')} data-child>
                 <Image
-                  src={urlFor(standardImage).url()}
+                  src={urlFor(standardImage.standardImage).url()}
                   alt={`${standardImage.title}`}
                   width={100}
                   height={100}
