@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -9,12 +10,12 @@ import styles from './Popup.module.css';
 enum errMessage {
   name = 'Имя не может содержать цифры',
   shortName = 'Имя не может быть короче 2 символов',
-  noName = 'Укажите имя',
+  noName = 'Пожалуйста, введите имя',
   phoneSymbols = 'Телефон может содержать только цифры и символы + ( ) -',
   phoneLength = 'Неверная длина телефона',
-  noPhone = 'Укажите телефон',
+  noPhone = 'Пожалуйста, введите номер телефона',
   note = 'Максимальная длина примечания 300 символов',
-  noAgreement = 'Примите соглашение, пожалуйста',
+  noAgreement = 'Пожалуйста, примите условия',
   fetchErr = 'Что-то пошло не так. Попробуйте позже',
 }
 
@@ -137,10 +138,11 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
                   value: /[0-9+\-\s()]/g,
                   message: errMessage.phoneSymbols,
                 },
-                validate: (value) => {
-                  const phoneLength = value.replace(/\D/g, '').length;
-                  if (phoneLength < 10 || phoneLength > 11) return errMessage.phoneLength;
-                },
+                // temporary disabled
+                // validate: (value) => {
+                //   const phoneLength = value.replace(/\D/g, '').length;
+                //   if (phoneLength < 10 || phoneLength > 11) return errMessage.phoneLength;
+                // },
               })}
               placeholder="Телефон"
               type="text"
@@ -160,7 +162,7 @@ export const Popup = ({ popupRef, modalIsOpened, setModalIsOpened }: IPopupProps
               <label>
                 <input {...register('agreement', { required: errMessage.noAgreement })} type="checkbox" />
                 <span>Согласие с&nbsp;</span>
-                <a href="/agreement">условиями</a>
+                <Link href="/agreement">условиями</Link>
               </label>
               {Object.keys(errors).length > 0 && (
                 <span className={cn(styles['popup-err'])}>
