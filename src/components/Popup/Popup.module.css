@@ -1,0 +1,143 @@
+.popup {
+  display: none;
+  width: 680px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-color: #f5f5f5;
+  color: #4c5056;
+  border: none;
+  border-radius: 15px;
+}
+
+.popup-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  border: none;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup-opened {
+  display: initial;
+}
+
+.popup > form {
+  position: relative;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.popup > form > input,
+.popup > form > textarea {
+  padding: 6px;
+  font-size: 1.5rem;
+}
+
+.popup > form > input[name='name'] {
+  text-transform: capitalize;
+}
+
+.popup > form > textarea {
+  resize: vertical;
+  height: 70px;
+}
+
+.popup > form > textarea:not(:focus-within) ~ div > span.popup-note-notification,
+.popup > form > textarea:focus-within ~ div > .popup-err  {
+  display: none;
+}
+
+span.popup-note-notification, span.popup-err {
+  font-size: 1.3rem;
+  padding-left: 10px;
+}
+
+.warning, span.popup-err {
+  color: red;
+}
+
+.popup-submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-info {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+
+}
+
+.popup label > span {
+  margin-left: 8px;
+  font-size: 1.5rem;
+}
+
+.popup label > a {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.popup label > a:hover {
+  color: blue;
+}
+
+.popup-submit > button {
+  padding: 10px 20px;
+  color: #ffffff;
+  cursor: pointer;
+  background: #fac0aa;
+  border: 0;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.popup-message {
+  height: 60vh;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 680px) {
+  .popup {
+    width: 100%;
+  }
+  .popup-info {
+    position: relative;
+    display: block;
+    text-align: start;
+    padding-bottom: 18px;
+  }
+  .popup-info > .popup-err {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+}
+@media screen and (max-width: 420px) {
+  .popup > form {
+    padding: 20px;
+  }
+
+  .popup-info {
+    padding-bottom: 34px;
+  }
+  
+}
