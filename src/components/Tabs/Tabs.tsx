@@ -13,6 +13,9 @@ const VARIANTS = {
 };
 
 export interface ITabImages {
+  index: number;
+  cosmetologyImage: string;
+  stomatologyImages: string;
   title: string;
   description: string;
 }
@@ -61,7 +64,7 @@ export const Tabs = ({ tabImages }: ITabProps) => {
           {tabImages.cosmetology.map((tabImage, index) => (
             <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
               <Image
-                src={urlFor(tabImage).url()}
+                src={urlFor(tabImage.cosmetologyImage).url()}
                 alt={tabImage.title}
                 className={styles.img}
                 width={100}
@@ -76,7 +79,7 @@ export const Tabs = ({ tabImages }: ITabProps) => {
           {tabImages.stomatology.map((tabImage, index) => (
             <div key={index} className={cn(styles.item, 'invisible-child', 'start-animation-side-left')} data-child>
               <Image
-                src={urlFor(tabImage).url()}
+                src={urlFor(tabImage.stomatologyImages).url()}
                 alt={tabImage.title}
                 className={styles.img}
                 width={100}

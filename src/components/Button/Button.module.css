@@ -6,12 +6,12 @@
   padding: 10px 25px;
   margin: 0;
   color: #4c5056;
+  white-space: nowrap;
   cursor: pointer;
   background: #fac0aa;
   border: 0;
   border-radius: 15px;
   transition: background .3s ease-in-out;
-  white-space: nowrap;
 }
 
 .button:hover {

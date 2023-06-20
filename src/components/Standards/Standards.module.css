@@ -26,12 +26,6 @@
   border-radius: 15px;
 }
 
-@media screen and (max-width: 580px) {
-  .card {
-    max-width: 100%;
-  }
-}
-
 .img {
   display: block;
   width: 100%;
@@ -39,12 +33,6 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 580px) {
-  .img {
-    width: 100%;
-    height: auto;
-  }
-}
 
 .card-title {
   margin: 10px 0 0;
@@ -53,4 +41,15 @@
 
 .text {
   margin: 10px 0 0;
+}
+
+@media screen and (max-width: 580px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+  }
 }

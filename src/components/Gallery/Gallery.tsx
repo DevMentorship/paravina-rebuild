@@ -12,6 +12,8 @@ import styles from './Gallery.module.css';
 
 export interface IGalleryImages {
   alt: string;
+  galleryImage: string;
+  index: number;
 }
 
 interface IGalleryProps {
@@ -49,7 +51,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
           <Image
             onClick={() => handleImageClick(galleryImage)}
             key={idx}
-            src={urlFor(galleryImage).url()}
+            src={urlFor(galleryImage.galleryImage).url()}
             alt={`${galleryImage.alt}`}
             width={270}
             height={idx == 1 ? 400 : 190}
@@ -88,7 +90,7 @@ export const Gallery = ({ galleryImages }: IGalleryProps) => {
               <Image
                 width={320}
                 height={380}
-                src={urlFor(galleryImage).url()}
+                src={urlFor(galleryImage.galleryImage).url()}
                 alt={galleryImage.alt}
                 className={styles.img}
               />

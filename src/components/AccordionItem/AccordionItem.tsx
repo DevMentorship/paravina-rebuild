@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './AccordionItem.module.css';
 
 export interface IAccordionItem {
+  index?: number;
   title?: string;
   content?: string;
   subItems?: {

@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
   }`;
   const result = await client.fetch(query);
 
-  const reviews = result.review[0].reviews;
+  const reviews = result.review;
   const about = result.aboutData[0];
   const doctors = result.doctors;
 
