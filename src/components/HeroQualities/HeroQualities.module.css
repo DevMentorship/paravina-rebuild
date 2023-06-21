@@ -1,0 +1,129 @@
+.heroQualities {
+  max-width: 100%;
+  margin: 80px 0;
+}
+
+.wrapper {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 100px 0;
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    padding: 50px 0;
+  }
+}
+
+/* TITLE STYLES */
+
+.title {
+  text-align: center;
+}
+
+/* QUALITIES STYLES */
+
+.qualities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 1150px) {
+  .qualities {
+    gap: 50px;
+    margin-top: 50px;
+  }
+}
+
+.quality {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.quality img {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+  .quality img {
+    width: 70px;
+    height: auto;
+    filter: brightness(0);
+  }
+}
+
+.quality h3 {
+  margin-top: 10px;
+}
+
+.quality p {
+  width: 220px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+  .quality {
+    background-color: #fff;
+    border-radius: 25px;
+    opacity: .6;
+    padding: 20px;
+  }
+}
+
+/* BACKGROUND STYLES */
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: url('../../../public/HeroQualitiesPics/background-pic.png') no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* LAPTOP */
+@media only screen and (max-width: 920px) and (min-width: 750px) and (max-height: 1380px) {
+  .background {
+    background-attachment: scroll;
+  }
+}
+
+/* 50% DESKTOP SCREEN */
+@media only screen and (max-width: 750px) {
+  .background {
+    background-position: 0;
+    background: url('../../../public/HeroQualitiesPics/background-pic-mob.jpg') no-repeat;
+    background-size: cover;
+  }
+}
+
+/* PHONE */
+@media only screen and (max-width: 420px) {
+  .background {
+    background-attachment: scroll;
+    background-position: -180vw;
+  }
+}
+
+.blur {
+  height: 100%;
+  background: rgba(250, 192, 170, .4);
+  backdrop-filter: blur(5px);
+}
+
+@media screen and (max-width: 750px) {
+  .blur {
+    background: rgba(255, 255, 255, .25);
+  }
+}

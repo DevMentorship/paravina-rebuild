@@ -23,9 +23,9 @@ export const Standards = ({ standardImages }: IStandardProps) => {
 
   return (
     <>
-      <section className="background-accent-1" ref={ref}>
+      <section className="background-accent-1">
         <Triangle x="left" y="top" />
-        <div className="container">
+        <div className="container" ref={ref}>
           <h2 className={cn(styles.title, 'heading2')}>Авторская клиника по стандартам Италии</h2>
           <p className={styles.description}>
             Создавая клинику «Паравина», мы руководствовались новыми российскими отраслевыми требованиями и компиляцией

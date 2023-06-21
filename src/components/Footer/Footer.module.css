@@ -54,6 +54,7 @@
   .subscribe {
     flex-direction: row;
     gap: 30px;
+    justify-content: center;
     width: 100%;
     margin-top: 40px;
   }

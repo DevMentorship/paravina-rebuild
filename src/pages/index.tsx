@@ -4,6 +4,7 @@ import { Accordion } from '@/components/Accordion/Accordion';
 import { IAccordionItem } from '@/components/AccordionItem/AccordionItem';
 import { Gallery, IGalleryImages } from '@/components/Gallery/Gallery';
 import { Hero } from '@/components/Hero/Hero';
+import { HeroQualities } from '@/components/HeroQualities/HeroQualities.component';
 import { IStandardImage, Standards } from '@/components/Standards/Standards';
 import { ITabImages, Tabs } from '@/components/Tabs/Tabs';
 import { client } from '@/lib/client';
@@ -31,6 +32,7 @@ export default function Home({ faq, standards, gallery, stomatology, cosmetology
       <Tabs tabImages={{ cosmetology, stomatology }} />
       <Standards standardImages={standards} />
       <Gallery galleryImages={gallery} />
+      <HeroQualities />
       <Accordion items={faq} title="Часто задаваемые вопросы" isVisible={true} />
     </>
   );
