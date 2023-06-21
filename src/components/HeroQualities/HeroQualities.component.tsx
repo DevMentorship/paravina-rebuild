@@ -33,7 +33,7 @@ const QUALITIES_DATA: IQuality[] = [
 ];
 
 export const HeroQualities = () => (
-  <section className={styles.heroQualities}>
+  <section className={styles['hero-qualities']}>
     <div className={styles.wrapper}>
       <h2 className={cn(styles.title, 'heading1')}>Екатерина Правина</h2>
 
