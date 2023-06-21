@@ -7,12 +7,18 @@
   position: relative;
   display: block;
   height: 100%;
+  padding: 100px 0;
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    padding: 50px 0;
+  }
 }
 
 /* TITLE STYLES */
 
 .title {
-  padding-top: 90px;
   text-align: center;
 }
 
@@ -23,14 +29,13 @@
   flex-wrap: wrap;
   gap: 100px;
   justify-content: center;
-  padding-bottom: 120px;
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 @media only screen and (max-width: 1150px) {
   .qualities {
     gap: 50px;
-    margin-top: 60px;
+    margin-top: 50px;
   }
 }
 
@@ -49,6 +54,7 @@
   .quality img {
     width: 70px;
     height: auto;
+    filter: brightness(0);
   }
 }
 
@@ -60,6 +66,15 @@
   width: 220px;
   margin-top: 10px;
   text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+  .quality {
+    background-color: #fff;
+    border-radius: 25px;
+    opacity: .6;
+    padding: 20px;
+  }
 }
 
 /* BACKGROUND STYLES */
@@ -87,7 +102,9 @@
 /* 50% DESKTOP SCREEN */
 @media only screen and (max-width: 750px) {
   .background {
-    background-position: -85vw;
+    background-position: 0;
+    background: url('../../../public/HeroQualitiesPics/background-pic-mob.jpg') no-repeat;
+    background-size: cover;
   }
 }
 
@@ -103,4 +120,10 @@
   height: 100%;
   background: rgba(250, 192, 170, .4);
   backdrop-filter: blur(5px);
+}
+
+@media screen and (max-width: 750px) {
+  .blur {
+    background: rgba(255, 255, 255, .25);
+  }
 }
