@@ -80,21 +80,21 @@
 /* LAPTOP */
 @media only screen and (max-width: 920px) and (max-height: 1380px) {
   .background {
-    background-position: -80vw;
+    background-position: center center;
   }
 }
 
 /* 50% DESKTOP SCREEN */
 @media only screen and (max-width: 750px) {
   .background {
-    background-position: -85vw;
+    background-position: center center;
   }
 }
 
 /* PHONE */
 @media only screen and (max-width: 420px) {
   .background {
-    background-position: -125vw;
+    background-position: center center;
     background-size: cover;
   }
 }
