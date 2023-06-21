@@ -51,13 +51,14 @@
 
 @media only screen and (max-width: 1000px) {
   .background {
-    background-position: -20vw 0;
+    background-attachment: scroll;
   }
 }
 
 @media only screen and (max-width: 420px) {
   .background {
-    background-position: -45vw 0;
+    background-attachment: scroll;
+    background-position: -30vw;
   }
 }
 
