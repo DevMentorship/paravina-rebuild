@@ -21,8 +21,8 @@ const useElementOnScreen = (endAnimation?: string) => {
           setIsIntersecting(entry.isIntersecting);
         },
         {
-          rootMargin: '-100px',
-          threshold: 0.1,
+          rootMargin: '-50px',
+          threshold: 0.05,
         },
       );
 
