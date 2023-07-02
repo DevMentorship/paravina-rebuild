@@ -1,6 +1,6 @@
 .footer {
   padding: 90px 50px 70px;
-  color: #fff;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -96,6 +96,6 @@
 }
 
 .consultation {
-  font-size: 4vh;
   margin-top: 30px;
+  font-size: 4vh;
 }
