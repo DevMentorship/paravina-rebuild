@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from '@/components/Footer/Footer.module.css';
 
 export const Footer = () => (
-  <footer className={styles.footer}>
+  <footer className={cn(styles.footer, 'background-secondary')}>
     <section className={styles.container}>
       <div className={styles.additional}>
         <div className={styles.adress}>

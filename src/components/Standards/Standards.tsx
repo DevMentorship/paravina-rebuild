@@ -23,8 +23,8 @@ export const Standards = ({ standardImages }: IStandardProps) => {
 
   return (
     <>
-      <section className="background-accent-1">
-        <Triangle x="left" y="top" />
+      <section className="">
+        {/* <Triangle x="left" y="top" /> */}
         <div className="container" ref={ref}>
           <h2 className={cn(styles.title, 'heading2')}>Авторская клиника по стандартам Италии</h2>
           <p className={styles.description}>
@@ -48,7 +48,7 @@ export const Standards = ({ standardImages }: IStandardProps) => {
             ))}
           </ul>
         </div>
-        <Triangle x="right" y="bottom" />
+        {/* <Triangle x="right" y="bottom" /> */}
       </section>
     </>
   );

@@ -41,8 +41,10 @@
 
 .popup > form > input,
 .popup > form > textarea {
-  padding: 6px;
+  padding: 12px;
   font-size: 1.5rem;
+  border: 1px solid #4c5056;
+  border-radius: 15px;
 }
 
 .popup > form > input[name='name'] {
