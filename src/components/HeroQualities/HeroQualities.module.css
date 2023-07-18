@@ -66,10 +66,10 @@
 
 @media screen and (max-width: 750px) {
   .quality {
-    background-color: #fff;
+    padding: 20px;
+    background-color: #ffffff;
     border-radius: 25px;
     opacity: .6;
-    padding: 20px;
   }
 }
 
@@ -94,10 +94,10 @@
 
 @media only screen and (max-width: 750px) {
   .background {
-    background-position: 0;
     background: url('../../../public/HeroQualitiesPics/background-pic-mob.jpg') no-repeat;
-    background-size: cover;
     background-attachment: scroll;
+    background-position: 0;
+    background-size: cover;
   }
 }
 
